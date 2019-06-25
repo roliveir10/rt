@@ -2,7 +2,7 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0
+		"ambient":0.01
 	},
 	"camera":
 	{
