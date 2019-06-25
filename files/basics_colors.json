@@ -1,0 +1,49 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":0
+	},
+	"camera":
+	{
+		"origin":[0, 0, -80],
+		"rotation":[0, 0, 45]
+	},
+	"light":[
+	{
+		"origin":[-10, 3, -5],
+		"color":[255,255,255],
+		"type":"point"
+	}],
+	"object":[
+		{
+			"name":"sphere",
+			"origin":[-30, 5, 30],
+			"rayon":5,
+			"color":[255, 0, 0]
+		},
+		{
+			"name":"sphere",
+			"origin":[30, 5, 30],
+			"rayon":5,
+			"color":[255, 255, 0]
+		},
+		{
+			"name":"sphere",
+			"origin":[0, 20, 30],
+			"rayon":5,
+			"color":[0, 255, 0]
+		},
+		{
+			"name":"sphere",
+			"origin":[0, -15, 30],
+			"rayon":5,
+			"color":[0, 0, 255]
+		},
+		{
+			"name":"plan",
+			"origin":[0, -5, 100], 
+			"rotation":[90, 0, 0],
+			"color":[255, 255, 255]
+		}]
+}

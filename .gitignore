@@ -1,0 +1,14 @@
+*.o
+*.d
+.o
+*.swp
+.vscode
+libft/libft.a
+a.out
+testing.c
+void
+search_utility
+testing.c
+rt.dSYM
+test
+to_do
