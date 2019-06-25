@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 19:49:55 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/24 13:57:09 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/25 12:05:56 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_form				pars_one_form(t_token **token, t_env *env)
 {
 	t_form			form;
 
-	ft_bzero(&form, sizeof(t_form));
+	init_form(&form, sizeof(t_form));
 	env->scene.spec = 0.316;
 	form.material = rt_get_material(NOTHING, env->scene);
 	free_move(token);

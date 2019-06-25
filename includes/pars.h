@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:15:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/24 14:15:23 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/25 12:17:38 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int					size_lst(t_lstlum *tmp);
 int					size_lst_form(t_lstform *tmp);
 t_lum				*lstlum_to_lum(t_lstlum *lstlum, int size);
 t_form				*lstform_to_form(t_lstform *lstform, int size);
+void				init_form(t_form *form, int size);
 
 /*
 **	Parsing tokens

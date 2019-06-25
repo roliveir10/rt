@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 13:59:20 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/25 12:43:17 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
+#define NB_FIELDS 9
+
 typedef struct			s_form
 {
 	t_ftype				ftype;
@@ -158,6 +160,7 @@ typedef struct			s_form
 	t_vector			color;
 	t_vector			rotation;
 	t_material			material;
+	char				fields[NB_FIELDS];
 	double				mat[3][3][3];
 	double				mati[3][3][3];
 }						t_form;
