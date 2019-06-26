@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 20:35:34 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 07:01:37 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:36:47 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ static int		pars_select_field(t_token **token, t_lum *light)
 	char			*word;
 	int				k;
 	static char		*names[NB_FIELDS_LUM] = {
-		"\"origin\"", "\"direct\"", "\"color\"", "\"type\"", "\"intensity\""};
+		"\"origin\"", "\"direct\"", "\"color\"", "\"type\"", "\"intensity\"",
+		"\"cutoff\""};
 	static void		*(*fct_set[NB_FIELDS])(t_lum*, t_token**) = {
 		set_origin_lum, set_direct_lum, set_color_lum, set_type_lum,
-		set_intensity_lum};
+		set_intensity_lum, set_cutoff_lum};
 
 	k = -1;
 	word = ft_strdup((*token)->word);

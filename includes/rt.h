@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/26 09:41:14 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:40:51 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct			s_material
 	float				shininess;
 }						t_material;
 
-#define NB_FIELDS_LUM 5
+#define NB_FIELDS_LUM 6
 
 typedef struct			s_lum
 {
@@ -128,6 +128,7 @@ typedef struct			s_lum
 	t_vector			color;
 	t_ltype				type;
 	char				fields[NB_FIELDS_LUM];
+	double				cutoff;
 	double				constant;
 	double				linear;
 	double				quadratic;

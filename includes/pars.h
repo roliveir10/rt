@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:15:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 07:15:15 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:44:00 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ typedef enum		e_fields_lum
 	LUMDIR,
 	LUMCOLOR,
 	LUMTYPE,
-	LUMINT
+	LUMINT,
+	LUMCUT
 }					t_fields_lum;
 
 typedef struct		s_pile
@@ -217,5 +218,6 @@ void				*set_direct_lum(t_lum *lum, t_token **token);
 void				*set_color_lum(t_lum *lum, t_token **token);
 void				*set_type_lum(t_lum *lum, t_token **token);
 void				*set_intensity_lum(t_lum *lum, t_token **token);
+void				*set_cutoff_lum(t_lum *lum, t_token **token);
 
 #endif
