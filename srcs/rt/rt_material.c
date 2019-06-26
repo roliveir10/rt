@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 01:26:51 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/23 18:48:21 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 08:22:42 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,25 @@ static t_material		rt_mat_nothing(t_scene scene)
 	return (mat);
 }
 
-static t_material		rt_mat_jade(t_scene scene)
+static t_material		rt_mat_all(t_ematerial emat)
 {
 	t_material			mat;
+	double				buff[3];
 
-	(void)scene;
-	rt_attr_material(&mat.ambient, 0.135, 0.2225, 0.1575);
-	rt_attr_material(&mat.diffuse, 0.54, 0.89, 0.63);
-	rt_attr_material(&mat.specular, 0.316228, 0.316228, 0.316228);
-	mat.shininess = 0.1;
+	rt_material_ambient(buff, emat);
+	rt_attr_material(&mat.ambient, buff[0], buff[1], buff[2]);
+	rt_material_diffuse(buff, emat);
+	rt_attr_material(&mat.diffuse, buff[0], buff[1], buff[2]);
+	rt_material_specular(buff, emat);
+	rt_attr_material(&mat.specular, buff[0], buff[1], buff[2]);
+	mat.shininess = rt_material_shininess(emat);
 	return (mat);
 }
 
 t_material				rt_get_material(t_ematerial emat, t_scene scene)
 {
-	static int			mat_tab[NBR_MATERIAL] = {NOTHING, JADE};
-	static t_material	(*func[NBR_MATERIAL])(t_scene) = {
-		rt_mat_nothing, rt_mat_jade};
-	int					i;
-
-	i = -1;
-	while (++i < NBR_MATERIAL)
-		if (emat == mat_tab[i])
-			return (func[i](scene));
-	return (func[0](scene));
+	if (emat == NOTHING)
+		return (rt_mat_nothing(scene));
+	else
+		return (rt_mat_all(emat - 1));
 }

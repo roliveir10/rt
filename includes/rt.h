@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/26 06:58:43 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 09:41:14 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define NBR_TEXT 1
 # define NBR_FORM 4
 # define NBR_THREAD 4
-# define NBR_MATERIAL 2
+# define NBR_MATERIAL 12
 # define NBR_KEY 13
 # define NBR_KEY_REPEAT 11
 # define NBR_MKEY 2
@@ -291,5 +291,9 @@ void					rt_reset_point(t_form form, t_vector *inte);
 */
 
 t_material				rt_get_material(t_ematerial emat, t_scene scene);
+int						rt_material_diffuse(double mat[3], int type);
+int						rt_material_specular(double mat[3], int type);
+int						rt_material_ambient(double mat[3], int type);
+double					rt_material_shininess(int type);
 
 #endif

@@ -6,12 +6,13 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 02:07:21 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 13:08:00 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/26 09:25:14 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "rt.h"
+#include <stdio.h>
 
 t_vector		rt_spec(t_vector light, t_inter inter, t_material mat,
 		double attenuation)
