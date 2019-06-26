@@ -12,6 +12,7 @@
 	{
 		"origin":[30, 0, 20],
 		"color":[255, 255, 255],
+		"intensity":0,
 		"type":"point"
 	}],
 	"object":[

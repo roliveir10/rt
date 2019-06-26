@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:15:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 03:36:34 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:14:35 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,15 @@ typedef enum		e_fields
 	ROTATION
 }					t_fields;
 
+typedef enum		e_fields_lum
+{
+	LUMPOS,
+	LUMDIR,
+	LUMCOLOR,
+	LUMTYPE,
+	LUMINT
+}					t_fields_lum;
+
 typedef struct		s_pile
 {
 	int				type;
@@ -146,6 +155,7 @@ t_lum				*lstlum_to_lum(t_lstlum *lstlum, int size);
 t_form				*lstform_to_form(t_lstform *lstform, int size);
 void				init_form(t_form *form, int size);
 void				print_warning(char *str);
+int					print_no_field(char *field, char *elmt, char *type);
 
 /*
 **	Parsing tokens
@@ -178,6 +188,8 @@ t_vector			pars_vector(t_token **token);
 double				pars_double(t_token **token);
 int					pars_name(t_token **token);
 int					pars_check_form(t_form form);
+int					pars_check_light(t_lum light);
+int					pars_name_light(t_token **token);
 
 /*
 **	Setting functions
@@ -192,5 +204,10 @@ void				*set_radius_form(t_form *form, t_token **token);
 void				*set_height_form(t_form *form, t_token **token);
 void				*set_angle_form(t_form *form, t_token **token);
 void				*set_name_form(t_form *form, t_token **token);
+void				*set_origin_lum(t_lum *lum, t_token **token);
+void				*set_direct_lum(t_lum *lum, t_token **token);
+void				*set_color_lum(t_lum *lum, t_token **token);
+void				*set_type_lum(t_lum *lum, t_token **token);
+void				*set_intensity_lum(t_lum *lum, t_token **token);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: roliveir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 10:04:52 by roliveir          #+#    #+#              #
-#    Updated: 2019/06/26 03:36:53 by oboutrol         ###   ########.fr        #
+#    Updated: 2019/06/26 05:35:17 by oboutrol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ PARSER =	parser_main.c		\
 			free_token.c		\
 			free_move.c			\
 			pars_check_form.c	\
+			pars_check_light.c	\
 			set_form.c			\
+			set_light.c			\
 			set_form_double.c	\
 			pars_init.c			\
 			lex_add_char.c

@@ -6,21 +6,23 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 02:35:09 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 03:52:40 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:14:43 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "pars.h"
 
-void	print_no_field(char *field, char *form)
+int		print_no_field(char *field, char *elmt, char *type)
 {
 	ft_putstr_fd("Undefine necessary field `", 2);
 	ft_putstr_fd(field, 2);
-	ft_putstr_fd("' in form `", 2);
-	ft_putstr_fd(form, 2);
+	ft_putstr_fd("' in ", 2);
+	ft_putstr_fd(type, 2);
+	ft_putstr_fd(" `", 2);
+	ft_putstr_fd(elmt, 2);
 	ft_putstr_fd("'\n", 2);
-
+	return (1);
 }
 
 char	*get_name(int k)
@@ -57,12 +59,9 @@ int		pars_check_form(t_form form)
 	while (++k < NB_FIELDS)
 	{
 		if (!form.fields[k] && mat[form.ftype][k] == 1)
-		{
-			print_no_field(get_field(k), get_name(form.ftype));
-			ret = 1;
-		}
+			ret = print_no_field(get_field(k), get_name(form.ftype), "form");
 	}
 	if (ret)
-		ft_putstr("rt: Warning: Dropping form\n");
+		ft_putstr_fd("rt: Warning: Dropping form\n", 2);
 	return (ret);
 }
