@@ -17,8 +17,6 @@
 	"object":[
 		{
 			"name":"sphere",
-			"origin":[-30, 0, 30],
-			"rayon":5,
 			"color":[255, 255, 255]
 		},
 		{
@@ -30,7 +28,7 @@
 		{
 			"name":"cylindre",
 			"origin":[0, 0, 30],
-			"rayon":2,
+			"radius":2,
 			"color":[255, 255, 255]
 		},
 		{

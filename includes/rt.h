@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/25 12:43:17 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 00:22:35 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef struct			s_cam
 }						t_cam;
 
 #define NB_FIELDS 9
+#define NBR_VECTOR_FORM 5
 
 typedef struct			s_form
 {

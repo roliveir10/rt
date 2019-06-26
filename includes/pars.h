@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:15:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/25 12:17:38 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 03:36:34 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,19 @@ typedef enum		e_types
 	CHAR
 }					t_types;
 
+typedef enum		e_fields
+{
+	NAME,
+	ORIGIN,
+	POINT,
+	DIRECT,
+	RADIUS,
+	HEIGHT,
+	ANGLE,
+	COLOR,
+	ROTATION
+}					t_fields;
+
 typedef struct		s_pile
 {
 	int				type;
@@ -132,6 +145,7 @@ int					size_lst_form(t_lstform *tmp);
 t_lum				*lstlum_to_lum(t_lstlum *lstlum, int size);
 t_form				*lstform_to_form(t_lstform *lstform, int size);
 void				init_form(t_form *form, int size);
+void				print_warning(char *str);
 
 /*
 **	Parsing tokens
@@ -163,5 +177,20 @@ t_vector			pars_vector_color(t_token **token);
 t_vector			pars_vector(t_token **token);
 double				pars_double(t_token **token);
 int					pars_name(t_token **token);
+int					pars_check_form(t_form form);
+
+/*
+**	Setting functions
+*/
+
+void				*set_rotation_form(t_form *form, t_token **token);
+void				*set_direct_form(t_form *form, t_token **token);
+void				*set_point_form(t_form *form, t_token **token);
+void				*set_origin_form(t_form *form, t_token **token);
+void				*set_color_form(t_form *form, t_token **token);
+void				*set_radius_form(t_form *form, t_token **token);
+void				*set_height_form(t_form *form, t_token **token);
+void				*set_angle_form(t_form *form, t_token **token);
+void				*set_name_form(t_form *form, t_token **token);
 
 #endif
