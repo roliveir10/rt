@@ -27,8 +27,9 @@ static t_vector		rt_light_tocolor(t_env *env, int indsh, int indli,
 {
 	t_vector		color;
 
-	if (indli == 0)
-		rt_get_texture(TCHECKER, inter->norm, &env->form[inter->id], inter);
+	if (indli == 0 && env->form[inter->id].texture.type != TNOTHING)
+		rt_get_texture(env->form[inter->id].texture, inter->norm,
+			&env->form[inter->id], inter);
 	if (indsh == env->nbr_form)
 		color = (rt_nolight_inter(env->lum[indli], inter,
 				env->form[inter->id].material));

@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 06:43:44 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 07:14:35 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 11:12:55 by mmoussa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int			pars_texture(t_token **token)
 {
 	char		*name;
-	static char	*lst[NBR_TEXT] = {"\"nothing\""};
+	static char	*lst[NBR_TEXT] = {"\"nothing\"", "\"checkerboard\""};
 	int			k;
 
 	if (!(name = ft_strdup((*token)->word)))

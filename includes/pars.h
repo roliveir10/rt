@@ -108,7 +108,8 @@ typedef enum		e_fields
 	ROTATION,
 	TEXT,
 	ATEXT,
-	REC
+	REC,
+	TCOLOR
 }					t_fields;
 
 typedef enum		e_fields_lum
@@ -209,6 +210,7 @@ void				*set_radius_form(t_form *form, t_token **token);
 void				*set_height_form(t_form *form, t_token **token);
 void				*set_angle_form(t_form *form, t_token **token);
 void				*set_name_form(t_form *form, t_token **token);
+void				*set_tcolor_form(t_form *lum, t_token **token);
 void				*set_texture_form(t_form *form, t_token **token);
 void				*set_atexture_form(t_form *form, t_token **token);
 void				*set_recurrence_form(t_form *form, t_token **token);

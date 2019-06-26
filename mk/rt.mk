@@ -27,7 +27,8 @@ RT = rt_main.c					\
 	 rt_camera.c				\
 	 rt_anti_aliasing.c			\
 	 rt_keyfunction.c			\
-	 rt_texture.c
+	 rt_texture.c				\
+	 rt_texture_check.c
 
 RT_SRCS = $(addprefix $(RT_PATH),$(RT))
 SRCS += $(RT_SRCS)

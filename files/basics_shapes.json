@@ -20,7 +20,7 @@
 			"name":"sphere",
 			"origin":[-30, 0, 30],
 			"radius":5,
-			"texture":"nothing",
+			"texture":"checkerboard",
 			"atexture":0.5,
 			"recurrence":25,
 			"color":[255, 255, 255]
@@ -29,24 +29,39 @@
 			"name":"cone",
 			"origin":[-30, 0, 110],
 			"color":[255, 255, 255],
+			"texture":"checkerboard",
+			"atexture":0.5,
+			"recurrence":10,
+			"tilscolor":[0, 255, 255],
 			"angle":0.5
 		},
 		{
 			"name":"plan",
 			"origin":[0, 0, 100], 
 			"rotation":[-90, 0, 0],
+			"texture":"checkerboard",
+			"atexture":0.15,
+			"recurrence":10,
+			"tilscolor":[0, 255, 0],
 			"color":[255, 255, 255]
 		},
 		{
 			"name":"cylindre",
 			"origin":[0, 0, 30],
-			"radius":2,
+			"radius":5,
+			"texture":"checkerboard",
+			"atexture":0.1,
+			"recurrence": 10,
+			"tilscolor":[0, 0, 255],
 			"color":[255, 255, 255]
 		},
 		{
 			"name":"cone",
 			"origin":[30, 0, 30],
 			"angle":0.3,
+			"texture":"checkerboard",
+			"atexture":0.5,
+			"recurrence":10,
 			"color":[255, 255, 255]
 		}]
 }

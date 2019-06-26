@@ -67,6 +67,9 @@
 			"name":"plan",
 			"origin":[30, 30, 0],
 			"rotation":[0, 0, 90],
+			"texture":"checkerboard",
+			"atexture": 1,
+			"recurrence": 100,
 			"color":[255, 255, 255]
 		}]
 }

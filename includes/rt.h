@@ -19,7 +19,7 @@
 # define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
-# define NBR_TEXT 1
+# define NBR_TEXT 2
 # define NBR_FORM 4
 # define NBR_THREAD 4
 # define NBR_MATERIAL 2
@@ -125,6 +125,14 @@ typedef struct			s_material
 	float				shininess;
 }						t_material;
 
+typedef struct			s_texture
+{
+	t_vector			color;
+	double				atexture;
+	int					recurrence;
+	int					type;
+}						t_texture;	
+
 #define NB_FIELDS_LUM 5
 
 typedef struct			s_lum
@@ -156,7 +164,7 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
-#define NB_FIELDS 12
+#define NB_FIELDS 13
 #define NBR_VECTOR_FORM 5
 
 typedef struct			s_form
@@ -170,9 +178,7 @@ typedef struct			s_form
 	double				angle;
 	t_vector			color;
 	t_vector			rotation;
-	int					texture;
-	double				atexture;
-	int					recurrence;
+	t_texture			texture;
 	t_material			material;
 	char				fields[NB_FIELDS];
 	double				mat[3][3][3];
@@ -302,7 +308,9 @@ t_material				rt_get_material(t_ematerial emat, t_scene scene);
 **	texture
 */
 
-void					rt_get_texture(t_etexture texture, t_vector lightdir,
-		 t_form *form, t_inter *inter);
+void					rt_get_texture(t_texture texture, t_vector lightdir,
+		t_form *form, t_inter *inter);
+t_vector				rt_tchecker(t_vector normal, t_vector intercolor, t_form *form,
+		t_inter *inter);
 
 #endif
