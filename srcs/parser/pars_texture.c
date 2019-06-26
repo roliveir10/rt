@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_errors.c                                     :+:      :+:    :+:   */
+/*   pars_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/26 01:11:14 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 07:16:41 by oboutrol         ###   ########.fr       */
+/*   Created: 2019/06/26 06:43:44 by oboutrol          #+#    #+#             */
+/*   Updated: 2019/06/26 07:14:35 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "pars.h"
 #include "libft.h"
 
-void		print_warning(char *str)
+int			pars_texture(t_token **token)
 {
-	ft_putstr_fd("rt: Warning: ", 2);
-	ft_putstr_fd(str, 2);
-	ft_putchar_fd('\n', 2);
-}
+	char		*name;
+	static char	*lst[NBR_TEXT] = {"\"nothing\""};
+	int			k;
 
-void		print_na_recon(char *str, char *type)
-{
-	ft_putstr_fd("rt: Warning: `", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("' is not reconized for `", 2);
-	ft_putstr_fd(type, 2);
-	ft_putstr_fd("': Dropping\n", 2);
+	if (!(name = ft_strdup((*token)->word)))
+		return (0);
+	k = -1;
+	while (++k < NBR_TEXT)
+		if (!ft_strcmp(name, lst[k]))
+		{
+			free_move(token);
+			ft_strdel(&name);
+			return (k);
+		}
+	free_move(token);
+	print_na_recon(name, "texture");
+	ft_strdel(&name);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/26 06:14:46 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:58:43 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
+# define NBR_TEXT 1
 # define NBR_FORM 4
 # define NBR_THREAD 4
 # define NBR_MATERIAL 2
@@ -149,7 +150,7 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
-#define NB_FIELDS 9
+#define NB_FIELDS 12
 #define NBR_VECTOR_FORM 5
 
 typedef struct			s_form
@@ -163,6 +164,9 @@ typedef struct			s_form
 	double				angle;
 	t_vector			color;
 	t_vector			rotation;
+	int					texture;
+	double				atexture;
+	int					recurrence;
 	t_material			material;
 	char				fields[NB_FIELDS];
 	double				mat[3][3][3];

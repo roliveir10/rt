@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 20:35:34 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 06:14:40 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 07:01:37 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int				pars_name_light(t_token **token)
 
 static int		pars_select_field(t_token **token, t_lum *light)
 {
-	char		*word;
-	int			k;
+	char			*word;
+	int				k;
 	static char		*names[NB_FIELDS_LUM] = {
 		"\"origin\"", "\"direct\"", "\"color\"", "\"type\"", "\"intensity\""};
 	static void		*(*fct_set[NB_FIELDS])(t_lum*, t_token**) = {

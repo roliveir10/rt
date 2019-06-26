@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 02:35:09 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 06:14:43 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 07:16:45 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*get_name(int k)
 char	*get_field(int k)
 {
 	static char	*names[NB_FIELDS] = {"name", "origin", "point", "direct",
-		"radius", "height", "angle", "color", "rotation"};	
+		"radius", "height", "angle", "color", "rotation"};
 
 	if (k < 0 || k >= NB_FIELDS)
 		return ("NOTAFIELD");

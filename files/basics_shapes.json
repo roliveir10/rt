@@ -12,7 +12,7 @@
 	{
 		"origin":[30, 0, 20],
 		"color":[255, 255, 255],
-		"intensity":0,
+		"intensity":100,
 		"type":"point"
 	}],
 	"object":[
@@ -20,6 +20,9 @@
 			"name":"sphere",
 			"origin":[-30, 0, 30],
 			"radius":5,
+			"texture":"nothing",
+			"atexture":0.5,
+			"recurrence":25,
 			"color":[255, 255, 255]
 		},
 		{
