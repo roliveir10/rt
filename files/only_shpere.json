@@ -1,0 +1,26 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":0.1
+	},
+	"camera":
+	{
+		"origin":[0, 0, -80],
+		"rotation":[0, 0, 0]
+	},
+	"light":[
+	{
+		"origin":[-10, 3, -5],
+		"color":[255,255,255],
+		"type":"point"
+	}],
+	"object":[
+		{
+			"name":"sphere",
+			"origin":[0, 0, 0],
+			"rotation":[45, 0, 0],
+			"rayon":20,
+			"color":[0, 0, 255]
+		}]
+}

@@ -27,12 +27,14 @@ static t_vector		rt_light_tocolor(t_env *env, int indsh, int indli,
 {
 	t_vector		color;
 
+	if (indli == 0)
+		rt_get_texture(TCHECKER, inter->norm, &env->form[inter->id], inter);
 	if (indsh == env->nbr_form)
-		color = rt_nolight_inter(env->lum[indli], inter,
-				env->form[inter->id].material);
+		color = (rt_nolight_inter(env->lum[indli], inter,
+				env->form[inter->id].material));
 	else
-		color = rt_ambient_only(env->lum[indli],
-				env->form[inter->id].material, *inter);
+		color = (rt_ambient_only(env->lum[indli],
+				env->form[inter->id].material, *inter));
 	return (color);
 }
 

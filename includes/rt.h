@@ -84,6 +84,12 @@ typedef enum			e_ematerial
 	JADE
 }						t_ematerial;
 
+typedef enum			e_etexture
+{
+	TNOTHING,
+	TCHECKER
+}						t_etexture;
+
 /*
 **	STRUCT
 */
@@ -280,5 +286,12 @@ void					rt_reset_point(t_form form, t_vector *inte);
 */
 
 t_material				rt_get_material(t_ematerial emat, t_scene scene);
+
+/*
+**	texture
+*/
+
+void					rt_get_texture(t_etexture texture, t_vector lightdir,
+		 t_form *form, t_inter *inter);
 
 #endif
