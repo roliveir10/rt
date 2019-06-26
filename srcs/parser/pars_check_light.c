@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_init.c                                        :+:      :+:    :+:   */
+/*   pars_check_light.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/10 19:11:34 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/25 12:43:12 by oboutrol         ###   ########.fr       */
+/*   Created: 2019/06/26 05:21:50 by oboutrol          #+#    #+#             */
+/*   Updated: 2019/06/26 05:42:05 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pars.h"
-#include "rt.h"
 #include "libft.h"
+#include "pars.h"
 
-void		init_form(t_form *form, int size)
+int		pars_check_light(t_lum lum)
 {
-	ft_bzero(form, size);
-	form->ftype = NOTAFORM;
-}
+	int	ret;
 
-t_token		*lex_init_token(int type, char *str)
-{
-	t_token	*token;
-
-	if (!(token = (t_token*)ft_memalloc(sizeof(t_token))))
-		return (NULL);
-	if (str)
-		token->word = ft_strdup(str);
-	token->type = type;
-	return (token);
+	ret = 0;
+	if (!lum.fields[LUMPOS])
+		ret = print_no_field("origin", "light", "element");
+	if (!lum.fields[LUMCOLOR])
+		ret = print_no_field("color", "light", "element");
+	if (!lum.fields[LUMTYPE])
+		ret = print_no_field("type", "light", "element");
+	if (ret)
+		ft_putstr_fd("rt: Warning: Dropping Light\n", 2);
+	return (ret);
 }

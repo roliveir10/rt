@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 22:48:56 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/23 17:01:20 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 05:36:47 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void			add_light(t_lstlum **lstlum, t_lum light)
 {
 	t_lstlum	*tmp;
 
+	if (pars_check_light(light))
+		return ;
 	if (!*lstlum)
 		*lstlum = new_lum(light);
 	else

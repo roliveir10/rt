@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 17:41:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/23 22:09:49 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 07:16:44 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int				pars_name(t_token **token)
 			return (k);
 		}
 	free_move(token);
+	print_na_recon(name, "form name");
 	ft_strdel(&name);
 	return (NOTAFORM);
 }

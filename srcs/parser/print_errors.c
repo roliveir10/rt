@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_init.c                                        :+:      :+:    :+:   */
+/*   print_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/10 19:11:34 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/25 12:43:12 by oboutrol         ###   ########.fr       */
+/*   Created: 2019/06/26 01:11:14 by oboutrol          #+#    #+#             */
+/*   Updated: 2019/06/26 07:16:41 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pars.h"
-#include "rt.h"
 #include "libft.h"
 
-void		init_form(t_form *form, int size)
+void		print_warning(char *str)
 {
-	ft_bzero(form, size);
-	form->ftype = NOTAFORM;
+	ft_putstr_fd("rt: Warning: ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putchar_fd('\n', 2);
 }
 
-t_token		*lex_init_token(int type, char *str)
+void		print_na_recon(char *str, char *type)
 {
-	t_token	*token;
-
-	if (!(token = (t_token*)ft_memalloc(sizeof(t_token))))
-		return (NULL);
-	if (str)
-		token->word = ft_strdup(str);
-	token->type = type;
-	return (token);
+	ft_putstr_fd("rt: Warning: `", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("' is not reconized for `", 2);
+	ft_putstr_fd(type, 2);
+	ft_putstr_fd("': Dropping\n", 2);
 }

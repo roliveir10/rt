@@ -12,14 +12,24 @@
 	{
 		"origin":[30, 0, 20],
 		"color":[255, 255, 255],
+		"intensity":100,
 		"type":"point"
 	}],
 	"object":[
 		{
 			"name":"sphere",
 			"origin":[-30, 0, 30],
-			"rayon":5,
+			"radius":5,
+			"texture":"nothing",
+			"atexture":0.5,
+			"recurrence":25,
 			"color":[255, 255, 255]
+		},
+		{
+			"name":"cone",
+			"origin":[-30, 0, 110],
+			"color":[255, 255, 255],
+			"angle":0.5
 		},
 		{
 			"name":"plan",
@@ -30,7 +40,7 @@
 		{
 			"name":"cylindre",
 			"origin":[0, 0, 30],
-			"rayon":2,
+			"radius":2,
 			"color":[255, 255, 255]
 		},
 		{

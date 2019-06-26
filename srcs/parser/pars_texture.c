@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_init.c                                        :+:      :+:    :+:   */
+/*   pars_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/10 19:11:34 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/25 12:43:12 by oboutrol         ###   ########.fr       */
+/*   Created: 2019/06/26 06:43:44 by oboutrol          #+#    #+#             */
+/*   Updated: 2019/06/26 07:14:35 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pars.h"
-#include "rt.h"
 #include "libft.h"
 
-void		init_form(t_form *form, int size)
+int			pars_texture(t_token **token)
 {
-	ft_bzero(form, size);
-	form->ftype = NOTAFORM;
-}
+	char		*name;
+	static char	*lst[NBR_TEXT] = {"\"nothing\""};
+	int			k;
 
-t_token		*lex_init_token(int type, char *str)
-{
-	t_token	*token;
-
-	if (!(token = (t_token*)ft_memalloc(sizeof(t_token))))
-		return (NULL);
-	if (str)
-		token->word = ft_strdup(str);
-	token->type = type;
-	return (token);
+	if (!(name = ft_strdup((*token)->word)))
+		return (0);
+	k = -1;
+	while (++k < NBR_TEXT)
+		if (!ft_strcmp(name, lst[k]))
+		{
+			free_move(token);
+			ft_strdel(&name);
+			return (k);
+		}
+	free_move(token);
+	print_na_recon(name, "texture");
+	ft_strdel(&name);
+	return (0);
 }
