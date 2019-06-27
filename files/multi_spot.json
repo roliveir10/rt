@@ -17,31 +17,31 @@
 	{
 		"origin":[-50, 0, 25],
 		"color":[0, 200, 239],
-		"type":"point"
+		"type":"spot"
 	}],
 	"object":[
 		{
 			"name":"sphere",
 			"origin":[-30, 5, 30],
-			"rayon":2,
+			"radius":2,
 			"color":[255, 0, 0]
 		},
 		{
 			"name":"sphere",
 			"origin":[30, 5, 30],
-			"rayon":2,
+			"radius":2,
 			"color":[255, 255, 0]
 		},
 		{
 			"name":"sphere",
 			"origin":[0, 20, 30],
-			"rayon":2,
+			"radius":2,
 			"color":[0, 255, 0]
 		},
 		{
 			"name":"sphere",
 			"origin":[0, -15, 30],
-			"rayon":2,
+			"radius":2,
 			"color":[0, 0, 255]
 		},
 		{
@@ -54,7 +54,7 @@
 			"name":"cylindre",
 			"origin":[-40, 0, 30],
 			"rotation":[0, 0, -20],
-			"rayon":1,
+			"radius":1,
 			"color":[0, 255, 255]
 		},
 		{

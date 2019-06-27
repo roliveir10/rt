@@ -11,6 +11,7 @@
 	},
 	"light":[
 	{
+		"origin":[2, -3, 0],
 		"direct":[2, -3, 0],
 		"color":[255, 255, 255],
 		"type":"cast"
@@ -19,18 +20,19 @@
 		{
 			"name":"sphere",
 			"origin":[0, -3, 0],
-			"rayon":5,
+			"radius":5,
 			"color":[58, 157, 35]
 		},
 		{
 			"name":"sphere",
 			"origin":[3, -5, -7],
-			"rayon":3,
+			"radius":3,
 			"color":[157, 35, 59]
 		},
 		{
 			"name":"plan",
 			"origin":[0, -8, 0],
+			"reflection":0.7,
 			"color":[120, 75, 30]
 		}]
 }

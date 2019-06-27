@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_init.c                                        :+:      :+:    :+:   */
+/*   set_light_double.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/10 19:11:34 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/25 12:43:12 by oboutrol         ###   ########.fr       */
+/*   Created: 2019/06/26 13:38:02 by oboutrol          #+#    #+#             */
+/*   Updated: 2019/06/27 17:01:50 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pars.h"
-#include "rt.h"
 #include "libft.h"
 
-void		init_form(t_form *form, int size)
+void		*set_cutoff_lum(t_lum *light, t_token **token)
 {
-	ft_bzero(form, size);
-	form->ftype = NOTAFORM;
-}
-
-t_token		*lex_init_token(int type, char *str)
-{
-	t_token	*token;
-
-	if (!(token = (t_token*)ft_memalloc(sizeof(t_token))))
-		return (NULL);
-	if (str)
-		token->word = ft_strdup(str);
-	token->type = type;
-	return (token);
+	light->cutoff = pars_double(token);
+	if (light->fields[LUMCUT])
+		print_warning("redifinition of CutOff field");
+	light->fields[LUMCUT] = 1;
+	return (NULL);
 }

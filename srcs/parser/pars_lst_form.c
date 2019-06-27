@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 23:39:23 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/23 17:09:30 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:14:41 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ void			add_form(t_lstform **lstform, t_form form)
 {
 	t_lstform	*tmp;
 
+	if (form.ftype == NOTAFORM)
+	{
+		ft_putstr_fd("rt: Warning: ", 2);
+		return (ft_putstr_fd("form type is Undefine: Dropping form\n", 2));
+	}
+	else if (pars_check_form(form))
+		return ;
 	if (!*lstform)
 		*lstform = new_form(form);
 	else

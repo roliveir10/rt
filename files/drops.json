@@ -1,0 +1,129 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":0
+	},
+	"camera":
+	{
+		"origin":[0, 0, -50]
+	},
+	"light":[
+	{
+		"origin":[-30, 0, -60],
+		"color":[255, 255, 255],
+		"intensity":80,
+		"type":"point"
+	},
+	{
+		"origin":[10, 10, -60],
+		"color":[255, 255, 255],
+		"intensity":40,
+		"type":"point"
+	},
+	{
+		"origin":[-10, 10, -60],
+		"color":[255, 255, 255],
+		"intensity":40,
+		"type":"point"
+	},
+	{
+		"origin":[30, 0, -60],
+		"color":[255, 255, 255],
+		"intensity":80,
+		"type":"point"
+	}],
+	"object":[
+		{
+			"name":"plan",
+			"origin":[0, 0, 100],
+			"radius":5,
+			"material":"nothing",
+			"rotation":[90, 0, 0],
+			"color":[255, 100, 55]
+		},
+		{
+			"name":"sphere",
+			"origin":[-40, 0, 30],
+			"radius":5,
+			"material":"ruby",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[40, 0, 30],
+			"radius":5,
+			"material":"emerald",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[0, 40, 30],
+			"radius":5,
+			"material":"gold",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[0, -40, 30],
+			"radius":5,
+			"material":"silver",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[-30, 30, 30],
+			"radius":5,
+			"material":"obsidian",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[-30, -30, 30],
+			"radius":5,
+			"material":"pearl",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[30, 30, 30],
+			"radius":5,
+			"material":"turquoise",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[30, -30, 30],
+			"radius":5,
+			"material":"brass",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[10, 0, 30],
+			"radius":5,
+			"material":"bronze",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[0, 10, 30],
+			"radius":5,
+			"material":"chrome",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[-10, 0, 30],
+			"radius":5,
+			"material":"copper",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[0, -10, 30],
+			"radius":5,
+			"material":"jade",
+			"color":[255, 255, 255]
+		}]
+}

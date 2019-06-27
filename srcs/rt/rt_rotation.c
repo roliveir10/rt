@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 04:57:13 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/27 16:22:52 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/27 17:08:08 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void		rt_initialize_rotation(t_env *env)
 	{
 		ft_fmat(&env->form[i].mat, env->form[i].rotation, -1);
 		ft_fmat(&env->form[i].mati, env->form[i].rotation, 1);
-		if (env->form[i].ftype == PLAN)
-			env->form[i].ireflec = 1;
 	}
 	i = -1;
 	ft_fmat(&cmat, env->cam.rotation, -1);

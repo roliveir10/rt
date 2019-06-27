@@ -10,16 +10,47 @@
 	},
 	"light":[
 	{
-		"origin":[30, 0, 20],
+		"origin":[-30, 0, 10],
 		"color":[255, 255, 255],
+		"intensity":20,
 		"type":"point"
+	},
+	{
+		"origin":[-10, -7, 20],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"type":"point"
+	},
+	{	
+		"origin":[50, 20, 30],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"type":"point"
+	},
+
+	{
+		"origin":[20, 20, 20],
+		"color":[255, 180, 150],
+		"intensity":40,
+		"type":"point"
+
 	}],
 	"object":[
 		{
 			"name":"sphere",
 			"origin":[-30, 0, 30],
-			"rayon":5,
+			"radius":5,
+			"texture":"nothing",
+			"atexture":0.5,
+			"recurrence":25,
 			"color":[255, 255, 255]
+		},
+		{
+			"name":"cone",
+			"origin":[-30, 0, 110],
+			"material":"ruby",
+			"color":[255, 255, 255],
+			"angle":0.5
 		},
 		{
 			"name":"plan",
@@ -30,12 +61,14 @@
 		{
 			"name":"cylindre",
 			"origin":[0, 0, 30],
-			"rayon":2,
+			"material":"silver",
+			"radius":2,
 			"color":[255, 255, 255]
 		},
 		{
 			"name":"cone",
 			"origin":[30, 0, 30],
+			"material":"emerald",
 			"angle":0.3,
 			"color":[255, 255, 255]
 		}]

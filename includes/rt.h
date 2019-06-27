@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/27 16:10:51 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/27 17:41:32 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 # define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
+# define NBR_TEXT 1
 # define NBR_FORM 4
 # define NBR_THREAD 4
-# define NBR_MATERIAL 2
+# define NBR_MATERIAL 12
 # define NBR_KEY 13
 # define NBR_KEY_REPEAT 11
 # define NBR_MKEY 2
 # define PIX 32
-# define DEPTH_MAX 5
+# define DEPTH_MAX 8
 
 /*
 ** ENUM
@@ -119,16 +120,19 @@ typedef struct			s_material
 	float				shininess;
 }						t_material;
 
+# define NB_FIELDS_LUM 6
+
 typedef struct			s_lum
 {
 	t_vector			pos;
 	t_vector			dir;
 	t_vector			color;
 	t_ltype				type;
+	char				fields[NB_FIELDS_LUM];
+	double				cutoff;
 	double				constant;
 	double				linear;
 	double				quadratic;
-	double				cutoff;
 	double				outercutoff;
 }						t_lum;
 
@@ -149,6 +153,9 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
+# define NB_FIELDS 13
+# define NBR_VECTOR_FORM 5
+
 typedef struct			s_form
 {
 	t_ftype				ftype;
@@ -160,8 +167,12 @@ typedef struct			s_form
 	double				angle;
 	t_vector			color;
 	t_vector			rotation;
+	int					texture;
+	double				atexture;
+	int					recurrence;
 	t_material			material;
 	double				ireflec;
+	char				fields[NB_FIELDS];
 	double				mat[3][3][3];
 	double				mati[3][3][3];
 }						t_form;
@@ -287,5 +298,9 @@ void					rt_reset_point(t_form form, t_vector *inte);
 */
 
 t_material				rt_get_material(t_ematerial emat, t_scene scene);
+int						rt_material_diffuse(double mat[3], int type);
+int						rt_material_specular(double mat[3], int type);
+int						rt_material_ambient(double mat[3], int type);
+double					rt_material_shininess(int type);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 12:46:44 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/26 16:19:03 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/27 17:40:04 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ t_vector			rt_get_lightdir(t_vector o, t_lum lum)
 		return (ft_get_vector(o, lum.pos));
 	return (ft_vmul(lum.dir, -1));
 }
-
-#include <stdio.h>
 
 double				rt_spotlight(t_vector pos, t_lum lum)
 {
