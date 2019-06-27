@@ -6,7 +6,7 @@
 #    By: roliveir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 10:06:25 by roliveir          #+#    #+#              #
-#    Updated: 2019/06/24 02:53:09 by roliveir         ###   ########.fr        #
+#    Updated: 2019/06/27 10:29:59 by roliveir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,15 @@ RT = rt_main.c					\
 	 rt_keyhandler.c			\
 	 rt_inter_manager.c			\
 	 rt_light_manager.c			\
+	 rt_light_type.c			\
 	 rt_light_utils.c			\
 	 rt_color_manager.c			\
 	 rt_rotation.c				\
 	 rt_material.c				\
 	 rt_camera.c				\
 	 rt_anti_aliasing.c			\
-	 rt_keyfunction.c
+	 rt_keyfunction.c			\
+	 rt_reflection.c
 
 RT_SRCS = $(addprefix $(RT_PATH),$(RT))
 SRCS += $(RT_SRCS)

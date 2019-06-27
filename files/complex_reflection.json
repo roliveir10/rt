@@ -1,0 +1,47 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":0.1
+	},
+	"camera":
+	{
+		"origin":[0, 0, -50],
+		"rotation":[-5, 0, 0]
+	},
+	"light":[
+	{
+		"direct":[2, -3, 0],
+		"color":[255, 255, 255],
+		"type":"cast"
+	}],
+	"object":[
+		{
+			"name":"sphere",
+			"origin":[3, -5, -7],
+			"rayon":3,
+			"color":[157, 35, 59]
+		},
+		{
+			"name":"plan",
+			"origin":[0, -8, 0],
+			"color":[120, 75, 30]
+		},
+		{
+			"name":"plan",
+			"origin":[-8, 0, 0],
+			"color":[120, 75, 30],
+			"rotation":[0, 0, 90]
+		},
+		{
+			"name":"plan",
+			"origin":[0, 8, 0],
+			"color":[120, 75, 30],
+			"rotation":[0, 0, 90]
+		},
+		{
+			"name":"plan",
+			"origin":[0, 8, 0],
+			"color":[120, 75, 30]
+		}]
+}

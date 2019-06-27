@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 11:05:07 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 02:53:08 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/27 10:28:37 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void				*rt_print_line(void *param)
 	while (pos < limit)
 	{
 		ray.dir = rt_get_vecdir(env->cam, pos % SCREENX, pos / SCREENX);
-		color = rt_viewdir_inter(env, ray);
+		color = rt_viewdir_inter(env, ray, 1);
 		rt_add_pixel(env, color, pos);
 		if (env->offset >= PIX / 2)
 			pos += PIX;

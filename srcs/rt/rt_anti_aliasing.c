@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 13:00:00 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 14:32:42 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/27 10:39:39 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_vector			rt_getaverage(t_ray (*ray)[], t_env *env, int pos)
 	{
 		(*ray)[i].dir = rt_get_vecdir(env->cam, (double)(pos % SCREENX)
 				+ vx[i], (double)(pos / SCREENX) + vy[i]);
-		color[i] = rt_viewdir_inter(env, (*ray)[i]);
+		color[i] = rt_viewdir_inter(env, (*ray)[i], 1);
 	}
 	average.x = (color[0].x + color[1].x + color[2].x + color[3].x) / 4;
 	average.y = (color[0].y + color[1].y + color[2].y + color[3].y) / 4;

@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 13:59:20 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/27 16:10:51 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define NBR_KEY_REPEAT 11
 # define NBR_MKEY 2
 # define PIX 32
+# define DEPTH_MAX 5
 
 /*
 ** ENUM
@@ -127,6 +128,8 @@ typedef struct			s_lum
 	double				constant;
 	double				linear;
 	double				quadratic;
+	double				cutoff;
+	double				outercutoff;
 }						t_lum;
 
 typedef	struct			s_ray
@@ -158,6 +161,7 @@ typedef struct			s_form
 	t_vector			color;
 	t_vector			rotation;
 	t_material			material;
+	double				ireflec;
 	double				mat[3][3][3];
 	double				mati[3][3][3];
 }						t_form;
@@ -193,7 +197,7 @@ void					rt_delenv(t_env *env);
 **	shapes
 */
 
-t_vector				rt_viewdir_inter(t_env *env, t_ray ray);
+t_vector				rt_viewdir_inter(t_env *env, t_ray ray, int depth);
 double					rt_sphere(t_ray ray, t_form form);
 double					rt_plan(t_ray ray, t_form form);
 double					rt_cylindre(t_ray ray, t_form form);
@@ -207,6 +211,8 @@ int						rt_print(void *param);
 void					rt_thread(void *env, void *(func)(void*));
 void					rt_add_pixel(t_env *env, t_vector color, int pos);
 int						rt_antialiasing(t_env *env);
+t_vector				rt_reflection(t_env *env, t_inter inter, t_ray ray,
+		int depth);
 
 /*
 **	light
@@ -220,6 +226,8 @@ t_vector				rt_diffuse(t_vector light, double angle,
 t_vector				rt_ambient(t_vector light, t_material mat,
 		double attenuation);
 double					rt_attenuation(t_lum lum, double dist);
+t_vector				rt_get_lightdir(t_vector o, t_lum lum);
+double					rt_spotlight(t_vector pos, t_lum lum);
 
 /*
 ** color
@@ -270,8 +278,7 @@ void					rt_mmovecam_pos(t_env *env, int keycode);
 **	rotation
 */
 
-void					rt_initialize_rotation(t_form **form, t_cam *cam,
-		int nbr_form);
+void					rt_initialize_rotation(t_env *env);
 void					rt_set_ref(t_ray *ray, t_form form);
 void					rt_reset_point(t_form form, t_vector *inte);
 

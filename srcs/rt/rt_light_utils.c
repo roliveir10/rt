@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 02:07:21 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 13:08:00 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/26 11:32:51 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_vector		rt_ambient(t_vector light, t_material mat, double attenuation)
 
 double			rt_attenuation(t_lum lum, double dist)
 {
-	if (lum.type != LPOINT)
+	if (lum.type == LCAST)
 		return (1);
 	return (1.0 / (lum.constant + lum.linear * dist + lum.quadratic * dist));
 }

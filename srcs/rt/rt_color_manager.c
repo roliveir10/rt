@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 17:17:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 13:08:42 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/26 16:21:29 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_vector		rt_get_color(t_lum lum, t_inter inter, t_material mat)
 	t_vector	color;
 	t_vector	ltot;
 	double		attenuation;
+	double		s_atte;
 	double		angle;
 
 	angle = ft_dot(inter.norm, inter.lightdir);
@@ -32,9 +33,12 @@ t_vector		rt_get_color(t_lum lum, t_inter inter, t_material mat)
 	if (angle > -1e-2)
 	{
 		attenuation = rt_attenuation(lum, ft_vdist(lum.pos, inter.pos));
+		s_atte = 1;
+		if (lum.type == LSPOT)
+			s_atte = rt_spotlight(inter.pos, lum);
 		ltot = ft_vadd(ft_vadd(
-					rt_spec(lum.color, inter, mat, attenuation),
-					rt_diffuse(lum.color, angle, mat, attenuation)),
+					rt_spec(lum.color, inter, mat, attenuation * s_atte),
+					rt_diffuse(lum.color, angle, mat, attenuation * s_atte)),
 					rt_ambient(lum.color, mat, attenuation));
 		return (ft_vvmul(ltot, inter.color));
 	}
@@ -43,6 +47,8 @@ t_vector		rt_get_color(t_lum lum, t_inter inter, t_material mat)
 
 t_vector		rt_ambient_only(t_lum lum, t_material mat, t_inter inter)
 {
-	return (ft_vvmul(rt_ambient(lum.color, mat, rt_attenuation(lum,
-						ft_vdist(lum.pos, inter.pos))), inter.color));
+	double		attenuation;
+
+	attenuation = rt_attenuation(lum, ft_vdist(lum.pos, inter.pos));
+	return (ft_vvmul(rt_ambient(lum.color, mat, attenuation), inter.color));
 }

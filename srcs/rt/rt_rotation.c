@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 04:57:13 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 14:23:20 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/27 16:22:52 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,29 @@ void		rt_reset_point(t_form form, t_vector *inte)
 	*inte = ft_vadd(*inte, form.center);
 }
 
-void		rt_initialize_rotation(t_form **form, t_cam *cam, int nbr_form)
+void		rt_initialize_rotation(t_env *env)
 {
 	int		i;
 	int		j;
 	double	cmat[3][3][3];
 
 	i = -1;
-	while (++i < nbr_form)
+	while (++i < env->nbr_form)
 	{
-		ft_fmat(&(*form)[i].mat, (*form)[i].rotation, -1);
-		ft_fmat(&(*form)[i].mati, (*form)[i].rotation, 1);
+		ft_fmat(&env->form[i].mat, env->form[i].rotation, -1);
+		ft_fmat(&env->form[i].mati, env->form[i].rotation, 1);
+		if (env->form[i].ftype == PLAN)
+			env->form[i].ireflec = 1;
 	}
 	i = -1;
-	ft_fmat(&cmat, cam->rotation, -1);
+	ft_fmat(&cmat, env->cam.rotation, -1);
 	while (++i < 3)
 	{
 		j = -1;
 		while (++j < 3)
-			cam->vec_dir[i] = ft_vrotate(cam->vec_dir[i], cmat[j]);
+			env->cam.vec_dir[i] = ft_vrotate(env->cam.vec_dir[i], cmat[j]);
 	}
+	i = -1;
+	while (++i < env->nbr_lum)
+		env->lum[i].dir = ft_normalize(env->lum[i].dir);
 }
