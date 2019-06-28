@@ -2,7 +2,7 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0
+		"ambient":1
 	},
 	"camera":
 	{
@@ -31,19 +31,16 @@
 			"color":[255, 255, 255],
 			"texture":"checkerboard",
 			"atexture":0.5,
-			"recurrence":10,
+			"recurrence":100,
 			"tilscolor":[0, 255, 255],
 			"angle":0.5
 		},
 		{
 			"name":"plan",
-			"origin":[0, 0, 100], 
+			"origin":[0, 0, 400], 
 			"rotation":[-90, 0, 0],
-			"texture":"checkerboard",
-			"atexture":0.15,
-			"recurrence":10,
-			"tilscolor":[0, 255, 0],
-			"color":[255, 255, 255]
+			"texture":"tmap",
+			"color":[0, 0, 0]
 		},
 		{
 			"name":"cylindre",
@@ -61,7 +58,7 @@
 			"angle":0.3,
 			"texture":"checkerboard",
 			"atexture":0.5,
-			"recurrence":10,
+			"recurrence": 15,
 			"color":[255, 255, 255]
 		}]
 }

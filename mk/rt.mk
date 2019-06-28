@@ -28,7 +28,9 @@ RT = rt_main.c					\
 	 rt_anti_aliasing.c			\
 	 rt_keyfunction.c			\
 	 rt_texture.c				\
-	 rt_texture_check.c
+	 rt_texture_map.c			\
+	 rt_texture_check.c			\
+	 rt_texture_perlin.c
 
 RT_SRCS = $(addprefix $(RT_PATH),$(RT))
 SRCS += $(RT_SRCS)

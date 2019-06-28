@@ -13,11 +13,14 @@
 #include <math.h>
 #include "rt.h"
 
-void			rt_attribute_color(int color, t_vector *s_color)
+t_vector		rt_attribute_color(int color)
 {
-	s_color->x = (double)(color >> 16 & 0xFF) / 255;
-	s_color->y = (double)(color >> 8 & 0xFF) / 255;
-	s_color->z = (double)(color & 0xFF) / 255;
+	t_vector	vcolor;
+
+	vcolor.x = (double)(color >> 16 & 0xFF) / 255;
+	vcolor.y = (double)(color >> 8 & 0xFF) / 255;
+	vcolor.z = (double)(color & 0xFF) / 255;
+	return  (vcolor);
 }
 
 t_vector		rt_get_color(t_lum lum, t_inter inter, t_material mat)

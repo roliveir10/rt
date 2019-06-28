@@ -19,7 +19,7 @@
 # define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
-# define NBR_TEXT 2
+# define NBR_TEXT 4
 # define NBR_FORM 4
 # define NBR_THREAD 4
 # define NBR_MATERIAL 2
@@ -88,7 +88,9 @@ typedef enum			e_ematerial
 typedef enum			e_etexture
 {
 	TNOTHING,
-	TCHECKER
+	TCHECKER,
+	TMAP,
+	TPERLIN
 }						t_etexture;
 
 /*
@@ -131,7 +133,15 @@ typedef struct			s_texture
 	double				atexture;
 	int					recurrence;
 	int					type;
-}						t_texture;	
+}						t_texture;
+
+typedef struct			s_timage
+{
+	int					height;
+	int					width;
+	void				*buffer;
+	char				*buffer_ptr;
+}						t_timage;
 
 #define NB_FIELDS_LUM 5
 
@@ -179,6 +189,7 @@ typedef struct			s_form
 	t_vector			color;
 	t_vector			rotation;
 	t_texture			texture;
+	t_timage			timage;
 	t_material			material;
 	char				fields[NB_FIELDS];
 	double				mat[3][3][3];
@@ -248,7 +259,7 @@ double					rt_attenuation(t_lum lum, double dist);
 ** color
 */
 
-void					rt_attribute_color(int color, t_vector *s_color);
+t_vector				rt_attribute_color(int color);
 t_vector				rt_get_color(t_lum lum, t_inter inter,
 		t_material mat);
 t_vector				rt_ambient_only(t_lum lum, t_material mat,
@@ -308,9 +319,13 @@ t_material				rt_get_material(t_ematerial emat, t_scene scene);
 **	texture
 */
 
-void					rt_get_texture(t_texture texture, t_vector lightdir,
-		t_form *form, t_inter *inter);
-t_vector				rt_tchecker(t_vector normal, t_vector intercolor, t_form *form,
+void					rt_init_texture(t_env *env);
+void					rt_get_texture(t_env *env, t_texture texture, t_vector normal, t_inter *inter);
+t_vector				rt_tchecker(t_vector normal, t_vector intercolor, t_env *env,
+		t_inter *inter);
+t_vector				rt_tmap(t_vector normal, t_vector intercolor, t_env *env,
+		t_inter *inter);
+t_vector				rt_tperlin(t_vector normal, t_vector intercolor, t_env *env,
 		t_inter *inter);
 
 #endif

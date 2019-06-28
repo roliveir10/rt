@@ -38,6 +38,7 @@ int					rt_main(t_env *env)
 	rt_initmlx(env);
 	rt_initialize_rotation(&env->form, &env->cam, env->nbr_form);
 	rt_update_campos(&env->cam);
+	rt_init_texture(env);
 	mlx_hook(env->mlx.id, KEYPRESS, 0, rt_keypress, (void*)env);
 	mlx_hook(env->mlx.id, REDBUTTON, 0, rt_close, (void*)env);
 	mlx_hook(env->mlx.id, MOUSEPRESS, 0, rt_mousepress, (void*)env);
