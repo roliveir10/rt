@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 02:01:40 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/27 17:05:38 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/28 10:55:16 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		*set_name_form(t_form *form, t_token **token)
 
 void		*set_reflection_form(t_form *form, t_token **token)
 {
-	form->ireflec = pars_double(token);
+	form->iref = pars_double(token);
 	if (form->fields[REFLECT])
 		print_warning("redifinition of Reflection field");
 	form->fields[REFLECT] = 1;

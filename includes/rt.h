@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/27 17:41:32 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/28 11:00:31 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ typedef struct			s_inter
 	t_vector			norm;
 	t_vector			viewdir;
 	t_vector			lightdir;
+	t_vector			refdir;
+	t_vector			refrdir;
 	char				blinn;
 	int					id;
 }						t_inter;
@@ -171,7 +173,9 @@ typedef struct			s_form
 	double				atexture;
 	int					recurrence;
 	t_material			material;
-	double				ireflec;
+	double				iref;
+	double				itpy;
+	double				irefr;
 	char				fields[NB_FIELDS];
 	double				mat[3][3][3];
 	double				mati[3][3][3];
@@ -222,8 +226,8 @@ int						rt_print(void *param);
 void					rt_thread(void *env, void *(func)(void*));
 void					rt_add_pixel(t_env *env, t_vector color, int pos);
 int						rt_antialiasing(t_env *env);
-t_vector				rt_reflection(t_env *env, t_inter inter, t_ray ray,
-		int depth);
+t_vector				rt_reflection(t_env *env, t_inter inter, int depth);
+t_vector				rt_refraction(t_env *env, t_inter inter, int depth);
 
 /*
 **	light
@@ -239,6 +243,8 @@ t_vector				rt_ambient(t_vector light, t_material mat,
 double					rt_attenuation(t_lum lum, double dist);
 t_vector				rt_get_lightdir(t_vector o, t_lum lum);
 double					rt_spotlight(t_vector pos, t_lum lum);
+t_vector				rt_get_refdir(t_vector normal, t_vector dir);
+t_vector				rt_get_refrdir(double n1, double n2, t_inter inter);
 
 /*
 ** color

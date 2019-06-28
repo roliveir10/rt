@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:28:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/27 13:36:41 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/28 11:00:30 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ static void			rt_getinter_data(t_env *env, t_inter *inter, t_vector vdir)
 	inter->pos = ft_vadd(ft_vmul(inter->norm, 1e-5), inter->pos);
 	inter->viewdir = ft_vmul(vdir, -1);
 	inter->blinn = env->scene.blinn;
+	if (env->form[inter->id].iref > 0)
+		inter->refdir = rt_get_refdir(inter->norm, vdir);
+//	if (env->form[inter->id].transparency > 0)
+	if (env->form[inter->id].ftype == SPHERE)
+		inter->refrdir = rt_get_refrdir(1, env->form[inter->id].irefr, *inter);
 }
 
 static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
@@ -88,5 +93,8 @@ t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 	if (min < 0)
 		return (ft_vadd(color, rt_no_inter()));
 	rt_getinter_data(env, &inter, ray_orig.dir);
-	return (ft_vadd(color, rt_reflection(env, inter, ray_orig, depth)));
+//	if (env->form[inter.id].transparency)
+	if (env->form[inter.id].ftype == SPHERE)
+		return (ft_vadd(color, rt_refraction(env, inter, depth)));
+	return (ft_vadd(color, rt_reflection(env, inter, depth)));
 }
