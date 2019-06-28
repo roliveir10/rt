@@ -32,7 +32,7 @@
 		{
 			"name":"plan",
 			"origin":[0, -8, 0],
-			"reflection":0.7,
+			"reflection":0.1,
 			"color":[120, 75, 30]
 		}]
 }

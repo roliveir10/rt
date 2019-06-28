@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:28:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/28 11:00:30 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/28 11:42:47 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void			rt_getinter_data(t_env *env, t_inter *inter, t_vector vdir)
 		inter->refdir = rt_get_refdir(inter->norm, vdir);
 //	if (env->form[inter->id].transparency > 0)
 	if (env->form[inter->id].ftype == SPHERE)
-		inter->refrdir = rt_get_refrdir(1, env->form[inter->id].irefr, *inter);
+		inter->refrdir = rt_get_refrdir(1.3, env->form[inter->id].irefr, *inter);
 }
 
 static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,

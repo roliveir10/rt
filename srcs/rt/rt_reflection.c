@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 10:30:06 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/28 11:00:33 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/28 11:29:40 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_vector			rt_refraction(t_env *env, t_inter inter, int depth)
 	t_ray			ray;
 
 	indice = 1;
-	if (env->form[inter.id].ftype == SPHERE && depth > DEPTH_MAX)
+	if (env->form[inter.id].ftype == SPHERE && depth < DEPTH_MAX)
 	{
 		ray.o = inter.pos;
 		ray.dir = inter.refrdir;
