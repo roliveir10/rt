@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:28:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/28 11:42:47 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/29 05:04:08 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ double				rt_inter(t_ftype ftype, t_ray *ray, t_form form)
 static void			rt_getinter_data(t_env *env, t_inter *inter, t_vector vdir)
 {
 	int				i;
+	double			ndoti;
 
 	i = 3;
 	inter->color = env->form[inter->id].color;
@@ -43,16 +44,21 @@ static void			rt_getinter_data(t_env *env, t_inter *inter, t_vector vdir)
 	rt_reset_point(env->form[inter->id], &inter->pos);
 	while (--i + 1)
 		inter->norm = ft_vrotate(inter->norm, env->form[inter->id].mati[i]);
-	if (ft_dot(inter->norm, vdir) > 0)
+	ndoti = ft_dot(inter->norm, vdir);
+	if (ndoti > 0)
 		inter->norm = ft_vmul(inter->norm, -1);
 	inter->pos = ft_vadd(ft_vmul(inter->norm, 1e-5), inter->pos);
 	inter->viewdir = ft_vmul(vdir, -1);
 	inter->blinn = env->scene.blinn;
 	if (env->form[inter->id].iref > 0)
-		inter->refdir = rt_get_refdir(inter->norm, vdir);
+		inter->refdir = rt_get_refdir(inter->norm, vdir, ndoti);
 //	if (env->form[inter->id].transparency > 0)
+	inter->kr = rt_fresnel(ndoti, *inter, 1.3);
 	if (env->form[inter->id].ftype == SPHERE)
-		inter->refrdir = rt_get_refrdir(1.3, env->form[inter->id].irefr, *inter);
+	{
+		if (inter->kr < 1)
+			inter->refrdir = rt_get_refrdir(1.3, *inter, ndoti, vdir);
+	}
 }
 
 static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
@@ -68,6 +74,7 @@ static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
 	}
 	return (0);
 }
+// case if only reflection
 
 t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 {
@@ -76,11 +83,14 @@ t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 	t_inter			inter;
 	double			min;
 	t_vector		color;
+	t_vector		refl_color;
+	t_vector		refr_color;
 
 	i = -1;
 	min = -1.0;
 	ft_bzero(&inter, sizeof(t_inter));
 	ft_bzero(&color, sizeof(t_vector));
+	ft_bzero(&refr_color, sizeof(t_vector));
 	while (++i < env->nbr_form)
 	{
 		ray = ray_orig;
@@ -93,8 +103,12 @@ t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 	if (min < 0)
 		return (ft_vadd(color, rt_no_inter()));
 	rt_getinter_data(env, &inter, ray_orig.dir);
-//	if (env->form[inter.id].transparency)
+	if (env->form[inter.id].ftype == SPHERE && inter.kr < 1)
+		refr_color = rt_refraction(env, inter, depth);
+	refl_color = rt_reflection(env, inter, depth);
 	if (env->form[inter.id].ftype == SPHERE)
-		return (ft_vadd(color, rt_refraction(env, inter, depth)));
-	return (ft_vadd(color, rt_reflection(env, inter, depth)));
+		return (ft_vadd(color, refr_color));
+	return (ft_vadd(color, refl_color));
+	return (ft_vadd(color, ft_vadd(ft_vmul(refr_color, 1.0 - inter.kr),
+				ft_vmul(refl_color, inter.kr))));
 }

@@ -6,26 +6,26 @@
 	},
 	"camera":
 	{
-		"origin":[0, 0, -50],
+		"origin":[0, 0, -55],
 		"rotation":[-5, 0, 0]
 	},
 	"light":[
 	{
 		"origin":[2, -3, 0],
-		"direct":[2, -3, 0],
+		"direct":[0, -3, 2],
 		"color":[255, 255, 255],
 		"type":"cast"
 	}],
 	"object":[
 		{
 			"name":"sphere",
-			"origin":[0, -3, 0],
+			"origin":[0, 0, -5],
 			"radius":5,
 			"color":[58, 157, 35]
 		},
 		{
 			"name":"sphere",
-			"origin":[8, -5, -7],
+			"origin":[8, -2, -12],
 			"radius":3,
 			"color":[157, 35, 59]
 		},

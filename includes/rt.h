@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/28 11:12:45 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/29 04:41:39 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct			s_inter
 	t_vector			lightdir;
 	t_vector			refdir;
 	t_vector			refrdir;
+	double				kr;
 	char				blinn;
 	int					id;
 }						t_inter;
@@ -243,8 +244,11 @@ t_vector				rt_ambient(t_vector light, t_material mat,
 double					rt_attenuation(t_lum lum, double dist);
 t_vector				rt_get_lightdir(t_vector o, t_lum lum);
 double					rt_spotlight(t_vector pos, t_lum lum);
-t_vector				rt_get_refdir(t_vector normal, t_vector dir);
-t_vector				rt_get_refrdir(double n1, double n2, t_inter inter);
+t_vector				rt_get_refdir(t_vector normal, t_vector dir,
+		double ndoti);
+t_vector				rt_get_refrdir(double n2, t_inter inter, double ndoti,
+		t_vector vdir);
+double					rt_fresnel(double idir, t_inter inter, double n2);
 
 /*
 ** color
