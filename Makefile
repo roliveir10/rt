@@ -14,10 +14,10 @@ include mk/parser.mk
 include mk/rt.mk
 
 CC = gcc
-LIBS = -lft
+LIBS = -lft minilibx/libmlx.a
 LIBSFOLDERS = -L./libft
 vpath %.c $(dir MAKEFILE_LIST)
-MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
+MLX_FLAG = -framework OpenGL -framework AppKit
 CFLAGS = -Wall -Wextra -Werror -flto -O2 -I./includes -I./libft/includes -I./minilibx/ -g3
 CPPFLAGS += -MMD -MP
 OBJDIR = .o

@@ -76,38 +76,45 @@ static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
 }
 // case if only reflection
 
+double				rt_first_inter(t_env *env, t_ray ray_o,
+	t_inter *inter)
+{
+	int			i;
+	double			min;
+	t_ray			ray;
+
+	i = -1;
+	min = -1.0;
+	while (++i < env->nbr_form)
+	{
+		ray = ray_o;
+		if (rt_shape_inter(env, &i, &ray, &min))
+		{
+			inter->id = i;
+			inter->pos = rt_get_posinter(ray, min);
+		}
+	}
+	return (min);
+}
+
 t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 {
-	int				i;
-	t_ray			ray;
 	t_inter			inter;
-	double			min;
 	t_vector		color;
 	t_vector		refl_color;
 	t_vector		refr_color;
 
-	i = -1;
-	min = -1.0;
 	ft_bzero(&inter, sizeof(t_inter));
 	ft_bzero(&color, sizeof(t_vector));
 	ft_bzero(&refr_color, sizeof(t_vector));
-	while (++i < env->nbr_form)
-	{
-		ray = ray_orig;
-		if (rt_shape_inter(env, &i, &ray, &min))
-		{
-			inter.id = i;
-			inter.pos = rt_get_posinter(ray, min);
-		}
-	}
-	if (min < 0)
+	if (rt_first_inter(env, ray_orig, &inter)  < 0)
 		return (ft_vadd(color, rt_no_inter()));
 	rt_getinter_data(env, &inter, ray_orig.dir);
-	if (env->form[inter.id].ftype == SPHERE && inter.kr < 1)
-		refr_color = rt_refraction(env, inter, depth);
+	//if (env->form[inter.id].ftype == SPHERE && inter.kr < 1)
+	//	refr_color = rt_refraction(env, inter, depth);
 	refl_color = rt_reflection(env, inter, depth);
-	if (env->form[inter.id].ftype == SPHERE)
-		return (ft_vadd(color, refr_color));
+	//if (env->form[inter.id].ftype == SPHERE)
+	//	return (ft_vadd(color, refr_color));
 	return (ft_vadd(color, refl_color));
 	return (ft_vadd(color, ft_vadd(ft_vmul(refr_color, 1.0 - inter.kr),
 				ft_vmul(refl_color, inter.kr))));

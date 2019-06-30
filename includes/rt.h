@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-# define SCREENX 2080
-# define SCREENY 1170
+# define SCREENX 1440
+# define SCREENY 860
 # define SCREEN SCREENX * SCREENY
 
 # define NBR_TEXT 1
