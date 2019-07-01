@@ -61,7 +61,7 @@ t_vector			rt_map_plan(t_vector normal, t_vector intercolor,
 
 	i = 3;
 	while (--i + 1)
-		u_axis = ft_vrotate(ft_normalize((t_vector) {normal.y, -normal.x, 0}),
+		u_axis = ft_vrotate(ft_normalize((t_vector) {normal.y, normal.x, 0}),
 			env->form[inter->id].mat[i]);
 	v_axis = ft_cross(normal, u_axis);
 	u_coord = ft_dot(u_axis, inter->pos) / env->form[inter->id].texture.scale;

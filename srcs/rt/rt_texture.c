@@ -18,11 +18,12 @@
 char			*rt_tpathname(t_env *env, int i)
 {
 	static int		ttext[NBR_TEXT - 3] = {TBRICK, TMARBLE, TDEARTH,
-		TNEARTH, TJUPITER, TSTARS, TSNOW};
+		TNEARTH, TJUPITER, TSTARS, TSNOW, TROCK, TWOOD};
 	static char		*path[NBR_TEXT - 3] = {"textures/natural/brick.xpm",
 		"textures/natural/marble.xpm", "textures/planet/day_earth.xpm",
 		"textures/planet/night_earth.xpm", "textures/planet/jupiter.xpm",
-		"textures/planet/stars.xpm", "textures/snow.xpm"};
+		"textures/planet/stars.xpm", "textures/background/snow.xpm",
+		"textures/natural/rock.xpm", "textures/natural/wood.xpm"};
 	int				j;
 
 	j = -1;

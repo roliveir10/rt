@@ -19,7 +19,7 @@
 # define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
-# define NBR_TEXT 10
+# define NBR_TEXT 12
 # define NBR_FORM 4
 # define NBR_THREAD 4
 # define NBR_MATERIAL 2
@@ -96,6 +96,8 @@ typedef enum			e_etexture
 	TJUPITER,
 	TSTARS,
 	TSNOW,
+	TROCK,
+	TWOOD,
 	TPERLIN
 }						t_etexture;
 

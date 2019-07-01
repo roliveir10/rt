@@ -22,8 +22,9 @@
 	"object":[
 		{
 			"name":"sphere",
-			"origin":[-30, 5, 30],
-			"radius":2,
+			"origin":[-5, -5, 15],
+			"radius":5,
+			"texture":"rock",
 			"color":[255, 0, 0]
 		},
 		{
@@ -53,7 +54,8 @@
 		{
 			"name":"cylindre",
 			"origin":[-40, 0, 30],
-			"rotation":[0, 0, -20],
+			"rotation":[0, 0, -70],
+			"texture":"brick",
 			"radius":1,
 			"color":[0, 255, 255]
 		},
@@ -67,9 +69,9 @@
 		},
 		{
 			"name":"plan",
-			"origin":[30, 30, 0],
-			"rotation":[-90, 0, 90],
-			"texture":"brick",
+			"origin":[0, -10, 0],
+			"rotation":[0, 0, 0],
+			"texture":"marble",
 			"scale":20,
 			"color":[0, 0, 0]
 		}]
