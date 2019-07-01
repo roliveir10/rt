@@ -2,26 +2,40 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0.1
+		"ambient":0.2
 	},
 	"camera":
 	{
-		"origin":[0, 0, -80],
+		"origin":[0, 0, -400],
 		"rotation":[0, 0, 0]
 	},
 	"light":[
 	{
-		"origin":[-10, 3, -5],
-		"color":[255,255,255],
+		"origin":[300, 35, 350],
+		"color":[255,200,67],
+		"intensity": 50,
+		"type":"point"
+	},
+	{
+		"origin":[0, 400, 0],
+		"color":[100, 255, 180],
+		"intensity": 100,
 		"type":"point"
 	}],
 	"object":[
 		{
 			"name":"sphere",
 			"origin":[0, 0, 0],
-			"rotation":[45, 0, 0],
+			"rotation":[0, 0, 0],
 			"radius":20,
-			"texture":"tmap",
 			"color":[0, 0, 255]
+		},
+		{
+			"name":"sphere",
+			"origin":[0, 0, 0],
+			"rotation":[0, 180, 0],
+			"radius":500,
+			"texture":"snow",
+			"color":[0, 0, 0]
 		}]
 }

@@ -22,7 +22,7 @@
 			"radius":5,
 			"texture":"checkerboard",
 			"atexture": 1,
-			"recurrence": 4,
+			"scale": 4,
 			"color":[255, 0, 0]
 		},
 		{
@@ -43,7 +43,7 @@
 			"radius":5,
 			"texture":"checkerboard",
 			"atexture": 0.2,
-			"recurrence": 2,
+			"scale": 2,
 			"tilscolor":[0, 0, 0],
 			"color":[255, 255, 255]
 		},

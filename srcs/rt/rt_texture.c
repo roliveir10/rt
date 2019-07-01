@@ -13,42 +13,68 @@
 #include <math.h>
 #include "rt.h"
 #include "mlx.h"
+#include <fcntl.h>
 
-void	rt_load_texture(t_env *env, int i)
+char			*rt_tpathname(t_env *env, int i)
 {
-	env->form[i].timage.buffer = mlx_xpm_file_to_image(env->mlx.mlx, "textures/brick.xpm", &env->form[i].timage.width, &env->form[i].timage.height);
-	// ft_putendlnb(env->form[i].timage.width);
-	env->form[i].timage.buffer_ptr = mlx_get_data_addr(env->form[i].timage.buffer, &env->mlx.pix, &env->mlx.size_line, &env->mlx.endian);
-/*				getcolor(env->form[i].timage, 5, 5);
-**		mlx_put_image_to_window(env->mlx.mlx, env->mlx.id, env->form[i].timage.buffer, 0, 0);
-*/
+	static int		ttext[NBR_TEXT - 3] = {TBRICK, TMARBLE, TDEARTH,
+		TNEARTH, TJUPITER, TSTARS, TSNOW};
+	static char		*path[NBR_TEXT - 3] = {"textures/natural/brick.xpm",
+		"textures/natural/marble.xpm", "textures/planet/day_earth.xpm",
+		"textures/planet/night_earth.xpm", "textures/planet/jupiter.xpm",
+		"textures/planet/stars.xpm", "textures/snow.xpm"};
+	int				j;
+
+	j = -1;
+	while (++j < NBR_TEXT - 3)
+		if (env->form[i].texture.type == ttext[j])
+			return (path[j]);
+	return (NULL);
+}
+
+void			rt_load_texture(t_env *env, int i)
+{
+	int				fd;
+	char			*pathname;
+
+	if (!(pathname = rt_tpathname(env, i)) ||
+		(fd = open(pathname, O_RDONLY)) < 0)
+	{
+		ft_putendl(pathname);
+		ft_putstr_fd("rt: can not read texture\n", 2);
+		env->form[i].color = (t_vector) {1, 0, 1};
+		env->form[i].texture.type = TCHECKER;
+		return ;
+	}
+	env->form[i].timage.buffer = mlx_xpm_file_to_image(env->mlx.mlx,
+		pathname, &env->form[i].timage.width,
+		&env->form[i].timage.height);
+	env->form[i].timage.buffer_ptr = mlx_get_data_addr(
+		env->form[i].timage.buffer, &env->mlx.pix, &env->mlx.size_line,
+		&env->mlx.endian);
 }
 
 void			rt_init_texture(t_env *env)
 {
-	int		i;
+	int				i;
 
 	i = -1;
 	while (++i < env->nbr_form)
-	{
-		rt_load_texture(env, i);
-	}
+		if (env->form[i].texture.type != TCHECKER
+			&& env->form[i].texture.type != TPERLIN
+			&& env->form[i].texture.type != TNOTHING)
+			rt_load_texture(env, i);
 }
 
-void			rt_get_texture(t_env *env, t_texture texture, t_vector normal, t_inter *inter)
+void			rt_get_texture(t_env *env, t_texture texture, t_vector normal,
+	t_inter *inter)
 {
-	static int		ttext[NBR_TEXT - 1] = {TCHECKER, TMAP, TPERLIN};
-	static t_vector	(*func[NBR_TEXT - 1])(t_vector, t_vector, t_env*,
-		t_inter*) = {rt_tchecker, rt_tmap, rt_tperlin};
-	int				i;
-
-	i = 3;
-	while (--i + 1)
-		normal = ft_vrotate(normal, env->form[inter->id].mat[i]);
-	while (++i < NBR_TEXT - 1)
-	{
-		if (texture.type == ttext[i])
-			inter->color = ft_vadd(inter->color,
-				(func[i](normal, inter->color, env, inter)));
-	}
+	if (texture.type == TCHECKER)
+		inter->color = ft_vadd(inter->color,
+			(rt_tchecker(normal, inter->color, env, inter)));
+	else if (texture.type == TPERLIN)
+		inter->color = ft_vadd(inter->color,
+			(rt_tperlin(normal, inter->color, env, inter)));
+	else if (texture.type != TNOTHING)
+		inter->color = rt_tmap(normal, inter->color, env, inter);
 }

@@ -20,12 +20,11 @@ t_vector		rt_checker_sphere(t_vector normal, t_vector intercolor,
 	double		p;
 	double		a;
 
-	(void)inter;
 	a = 1 - env->form[inter->id].texture.atexture;
 	p = acos(-1 * ft_dot(normal, (t_vector) {0, 1, 0}))
-		/ M_PI * env->form[inter->id].texture.recurrence;
+		/ M_PI * env->form[inter->id].texture.scale;
 	o = atan2(ft_dot(normal, (t_vector) {0, 0, 1}), ft_dot(normal,
-		(t_vector) {1, 0, 0})) / M_PI * env->form[inter->id].texture.recurrence;
+		(t_vector) {1, 0, 0})) / M_PI * env->form[inter->id].texture.scale;
 	if (o < 0)
 		o = fabs(o - 1);
 	if (((int)p % 2 == 0 && (int)o % 2 == 0) ||
@@ -50,9 +49,12 @@ t_vector		rt_checker_plan(t_vector normal, t_vector intercolor,
 	a = 1 - env->form[inter->id].texture.atexture;
 	axis[0] = (t_vector) {normal.y, normal.z, -normal.x};
 	axis[1] = ft_cross(axis[0], normal);
-	uv[0] = cos(ft_dot(inter->pos, axis[0]) / env->form[inter->id].texture.recurrence);
-	uv[1] = cos(ft_dot(inter->pos, axis[1]) / env->form[inter->id].texture.recurrence);
-	uv[2] = cos(ft_dot(inter->pos, normal) / env->form[inter->id].texture.recurrence);
+	uv[0] = cos(ft_dot(inter->pos, axis[0])
+		/ env->form[inter->id].texture.scale);
+	uv[1] = cos(ft_dot(inter->pos, axis[1])
+		/ env->form[inter->id].texture.scale);
+	uv[2] = cos(ft_dot(inter->pos, normal)
+		/ env->form[inter->id].texture.scale);
 	if (((uv[0] * uv[1] * uv[2]) > 0))
 	{
 		intercolor = ft_vsub(env->form[inter->id].texture.color,
@@ -73,8 +75,8 @@ t_vector		rt_checker_cylindre(t_vector normal, t_vector intercolor,
 
 	(void)normal;
 	a = 1 - env->form[inter->id].texture.atexture;
-	x = cos(inter->pos.x * env->form[inter->id].texture.recurrence);
-	y = sin(inter->pos.y * env->form[inter->id].texture.recurrence);
+	x = cos(inter->pos.x * env->form[inter->id].texture.scale);
+	y = sin(inter->pos.y * env->form[inter->id].texture.scale);
 	if (x * y > 0)
 	{
 		intercolor = ft_vsub(env->form[inter->id].texture.color,
@@ -94,13 +96,14 @@ t_vector		rt_checker_cone(t_vector normal, t_vector intercolor,
 
 	a = 1 - env->form[inter->id].texture.atexture;
 	o = atan2(ft_dot(normal, (t_vector) {0, 0, 1}), ft_dot(normal,
-		(t_vector) {1, 0, 0})) / M_PI * env->form[inter->id].texture.recurrence;
+		(t_vector) {1, 0, 0})) / M_PI * env->form[inter->id].texture.scale;
 	if (o < 0)
 		o = fabs(o - 1);
 	if (((int)o % 2 == 0 && (int)inter->pos.y % 2 == 0) ||
 		(((int)o + 1) % 2 == 0 && ((int)inter->pos.y + 1) % 2 == 0))
 	{
-		intercolor = ft_vsub(env->form[inter->id].texture.color, (t_vector) {1, 1, 1});
+		intercolor = ft_vsub(env->form[inter->id].texture.color,
+			(t_vector) {1, 1, 1});
 		intercolor = ft_vmul(intercolor, -a);
 	}
 	else

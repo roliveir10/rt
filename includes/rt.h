@@ -19,7 +19,7 @@
 # define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
-# define NBR_TEXT 4
+# define NBR_TEXT 10
 # define NBR_FORM 4
 # define NBR_THREAD 4
 # define NBR_MATERIAL 2
@@ -89,7 +89,13 @@ typedef enum			e_etexture
 {
 	TNOTHING,
 	TCHECKER,
-	TMAP,
+	TDEARTH,
+	TNEARTH,
+	TBRICK,
+	TMARBLE,
+	TJUPITER,
+	TSTARS,
+	TSNOW,
 	TPERLIN
 }						t_etexture;
 
@@ -131,7 +137,7 @@ typedef struct			s_texture
 {
 	t_vector			color;
 	double				atexture;
-	int					recurrence;
+	int					scale;
 	int					type;
 }						t_texture;
 

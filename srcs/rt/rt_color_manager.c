@@ -20,7 +20,7 @@ t_vector		rt_attribute_color(int color)
 	vcolor.x = (double)(color >> 16 & 0xFF) / 255;
 	vcolor.y = (double)(color >> 8 & 0xFF) / 255;
 	vcolor.z = (double)(color & 0xFF) / 255;
-	return  (vcolor);
+	return (vcolor);
 }
 
 t_vector		rt_get_color(t_lum lum, t_inter inter, t_material mat)

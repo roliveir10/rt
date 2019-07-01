@@ -31,11 +31,11 @@ void		*set_atexture_form(t_form *form, t_token **token)
 	return (NULL);
 }
 
-void		*set_recurrence_form(t_form *form, t_token **token)
+void		*set_scale_form(t_form *form, t_token **token)
 {
-	form->texture.recurrence = (int)pars_double(token);
+	form->texture.scale = (int)pars_double(token);
 	if (form->fields[REC])
-		print_warning("redefinition of Recurrence field");
+		print_warning("redefinition of Scale field");
 	form->fields[REC] = 1;
 	return (NULL);
 }

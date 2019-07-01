@@ -17,7 +17,7 @@
 void		init_form(t_form *form, int size)
 {
 	ft_bzero(form, size);
-	form->texture.recurrence = 10;
+	form->texture.scale = 10;
 	form->ftype = NOTAFORM;
 }
 

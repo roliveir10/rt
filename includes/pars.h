@@ -213,7 +213,7 @@ void				*set_name_form(t_form *form, t_token **token);
 void				*set_tcolor_form(t_form *lum, t_token **token);
 void				*set_texture_form(t_form *form, t_token **token);
 void				*set_atexture_form(t_form *form, t_token **token);
-void				*set_recurrence_form(t_form *form, t_token **token);
+void				*set_scale_form(t_form *form, t_token **token);
 void				*set_origin_lum(t_lum *lum, t_token **token);
 void				*set_direct_lum(t_lum *lum, t_token **token);
 void				*set_color_lum(t_lum *lum, t_token **token);
