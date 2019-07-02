@@ -6,7 +6,7 @@
 	},
 	"camera":
 	{
-		"origin":[13, 0, -30]
+		"origin":[0, 0, -30]
 	},
 	"light":[
 	{
@@ -51,14 +51,14 @@
 		"rotation":[0, 0, 50],
 		"angle":0.5,
 		"scale":20,
-		"texture":"checkerboard",
+		"texture":"plot",
 		"color":[255, 255, 255]
 	},
 	{
 		"name":"cylindre",
 		"origin":[-10, -5, 30],
 		"rotation":[0, 0, -20],
-		"texture":"checkerboard",
+		"texture":"wood",
 		"scale":20,
 		"radius":2,
 		"color":[0, 255, 255]

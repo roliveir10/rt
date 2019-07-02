@@ -6,7 +6,7 @@
 /*   By: mmoussa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 18:02:56 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/07/02 17:10:06 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/02 17:47:56 by mmoussa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,10 @@ t_vector			rt_map_cylindre(t_vector normal, t_vector intercolor,
 	u = 0.5 + atan2(d.z, d.x) / M_PI * 0.5;
 	v = d.y / env->form[inter->id].texture.scale;
 	v -= floor(v);
-	u = ft_clamp(u * env->form[inter->id].timage.width, 0,
-		env->form[inter->id].timage.width - 1);
-	v = ft_clamp(v * env->form[inter->id].timage.height, 0,
-		env->form[inter->id].timage.height - 1);
+	u = (int)(u * env->form[inter->id].timage.width/* + offset x*/)
+		% (env->form[inter->id].timage.width - 1);
+	v = (int)(v * env->form[inter->id].timage.height/* + offset y*/)
+		% (env->form[inter->id].timage.height - 1);
 	intercolor = rt_getcolor(env->form[inter->id].timage, (int)u, (int)v);
 	return (intercolor);
 }
