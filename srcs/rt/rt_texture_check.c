@@ -55,9 +55,9 @@ t_vector		rt_checker_plan(t_vector normal, t_vector intercolor,
 		normal = ft_vrotate(normal, env->form[inter->id].mat[i]);
 	axis[0] = (t_vector) {normal.y, normal.z, -normal.x};
 	axis[1] = ft_cross(axis[0], normal);
-	uv[0] = cos(ft_dot(inter->pos, axis[0])
+	uv[0] = cos((ft_dot(inter->pos, axis[0])/* + decalage y*/)
 		/ env->form[inter->id].texture.scale);
-	uv[1] = cos(ft_dot(inter->pos, axis[1])
+	uv[1] = cos((ft_dot(inter->pos, axis[1])/* + decalage x*/)
 		/ env->form[inter->id].texture.scale);
 	uv[2] = cos(ft_dot(inter->pos, normal)
 		/ env->form[inter->id].texture.scale);

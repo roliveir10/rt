@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-# define SCREENX 500
-# define SCREENY 500
+# define SCREENX 1500
+# define SCREENY 1500
 # define SCREEN SCREENX * SCREENY
 
 # define NBR_TEXT 14
@@ -143,6 +143,8 @@ typedef struct			s_texture
 	double				atexture;
 	int					scale;
 	int					type;
+	double				x;
+	double				y;
 }						t_texture;
 
 typedef struct			s_timage

@@ -6,7 +6,7 @@
 	},
 	"camera":
 	{
-		"origin":[-25, 0, -30]
+		"origin":[13, 0, -30]
 	},
 	"light":[
 	{
@@ -20,62 +20,63 @@
 		"type":"spot"
 	}],
 	"object":[
-		{
-			"name":"sphere",
-			"origin":[-5, -5, 15],
-			"radius":5,
-			"texture":"rock",
-			"color":[255, 0, 0]
-		},
-		{
-			"name":"sphere",
-			"origin":[20, -8, 5],
-			"rotation":[50, 0, 0],
-			"radius":2,
-			"texture":"checkerboard",
-			"scale":20,
-			"color":[255, 255, 0]
-		},
-		{
-			"name":"sphere",
-			"origin":[15, 0, 20],
-			"rotation":[-15, 115, 30],
-			"texture":"dayearth",
-			"radius":10,
-			"color":[0, 255, 0]
-		},
-		{
-			"name":"cone",
-			"origin":[-30, -5, 30],
-			"rotation":[0, 0, 50],
-			"angle":0.5,
-			"scale":20,
-			"texture":"checkerboard",
-			"color":[255, 255, 255]
-		},
-		{
-			"name":"cylindre",
-			"origin":[-10, -5, 30],
-			"rotation":[0, 0, -20],
-			"texture":"checkerboard",
-			"scale":20,
-			"radius":2,
-			"color":[0, 255, 255]
-		},
-		{
-			"name":"plan",
-			"origin":[0, -5, 45], 
-			"texture":"brick",
-			"scale":25,
-			"rotation":[90, 0, 0],
-			"color":[0, 0, 0]
-		},
-		{
-			"name":"plan",
-			"origin":[0, -10, 0],
-			"rotation":[0, 0, 0],
-			"texture":"marble",
-			"scale":20,
-			"color":[0, 0, 0]
-		}]
+	{
+		"name":"sphere",
+		"origin":[-5, -5, 15],
+		"rotation":[0, 180, 0],
+		"radius":5,
+		"texture":"rock",
+		"color":[255, 0, 0]
+	},
+	{
+		"name":"sphere",
+		"origin":[20, -8, 5],
+		"rotation":[50, 0, 0],
+		"radius":2,
+		"texture":"checkerboard",
+		"scale":20,
+		"color":[255, 255, 0]
+	},
+	{
+		"name":"sphere",
+		"origin":[15, 0, 20],
+		"rotation":[0, 180, 0],
+		"texture":"dayearth",
+		"radius":10,
+		"color":[0, 255, 0]
+	},
+	{
+		"name":"cone",
+		"origin":[-30, -5, 30],
+		"rotation":[0, 0, 50],
+		"angle":0.5,
+		"scale":20,
+		"texture":"checkerboard",
+		"color":[255, 255, 255]
+	},
+	{
+		"name":"cylindre",
+		"origin":[-10, -5, 30],
+		"rotation":[0, 0, -20],
+		"texture":"checkerboard",
+		"scale":20,
+		"radius":2,
+		"color":[0, 255, 255]
+	},
+	{
+		"name":"plan",
+		"origin":[0, -5, 45], 
+		"texture":"brick",
+		"scale":25,
+		"rotation":[90, 0, 0],
+		"color":[0, 0, 0]
+	},
+	{
+		"name":"plan",
+		"origin":[0, -10, 0],
+		"rotation":[0, 0, 0],
+		"texture":"checkerboard",
+		"scale":1,
+		"color":[200, 0, 0]
+	}]
 }
