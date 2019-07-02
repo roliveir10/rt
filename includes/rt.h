@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/29 04:41:39 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/03 01:14:28 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ typedef struct			s_material
 	float				shininess;
 }						t_material;
 
-# define NB_FIELDS_LUM 6
+# define NB_FIELDS_LUM 7
 
 typedef struct			s_lum
 {
@@ -156,7 +156,7 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
-# define NB_FIELDS 13
+# define NB_FIELDS 15
 # define NBR_VECTOR_FORM 5
 
 typedef struct			s_form
