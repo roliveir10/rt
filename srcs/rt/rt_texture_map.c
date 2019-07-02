@@ -41,7 +41,7 @@ t_vector			rt_map_sphere(t_vector normal, t_vector intercolor,
 	while (--i + 1)
 		normal = ft_vrotate(normal, env->form[inter->id].mat[i]);
 	u = 0.5 + atan2(normal.z, normal.x) / M_PI * 0.5;
-	v = 0.5 - asin(-normal.y) / M_PI;
+	v = 0.5 - asin(normal.y) / M_PI;
 	u = ft_clamp(u * env->form[inter->id].timage.width, 0,
 		env->form[inter->id].timage.width - 1);
 	v = ft_clamp(v * env->form[inter->id].timage.height, 0,
@@ -80,10 +80,13 @@ t_vector			rt_map_cylindre(t_vector normal, t_vector intercolor,
 	t_vector	d;
 	float		u;
 	float		v;
+	int			i;
 
 	(void)normal;
-	d = ft_vsub(inter->pos, ft_vvmul(env->form[inter->id].center,
-		env->form[inter->id].rotation));
+	i = 3;
+	d = ft_vsub(inter->pos, env->form[inter->id].center);
+	while (--i + 1)
+		d = ft_vrotate(d, env->form[inter->id].mat[i]);
 	u = 0.5 + atan2(d.z, d.x) / M_PI * 0.5;
 	v = d.y / env->form[inter->id].texture.scale;
 	v -= floor(v);

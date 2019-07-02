@@ -15,11 +15,11 @@
 
 # include "libft.h"
 
-# define SCREENX 2080
-# define SCREENY 1170
+# define SCREENX 500
+# define SCREENY 500
 # define SCREEN SCREENX * SCREENY
 
-# define NBR_TEXT 12
+# define NBR_TEXT 14
 # define NBR_FORM 4
 # define NBR_THREAD 4
 # define NBR_MATERIAL 2
@@ -98,6 +98,8 @@ typedef enum			e_etexture
 	TSNOW,
 	TROCK,
 	TWOOD,
+	TPLOT,
+	TBLUR,
 	TPERLIN
 }						t_etexture;
 

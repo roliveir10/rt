@@ -6,7 +6,7 @@
 	},
 	"camera":
 	{
-		"origin":[0, 0, -30]
+		"origin":[-25, 0, -30]
 	},
 	"light":[
 	{
@@ -29,41 +29,44 @@
 		},
 		{
 			"name":"sphere",
-			"origin":[30, 5, 30],
+			"origin":[20, -8, 5],
+			"rotation":[50, 0, 0],
 			"radius":2,
+			"texture":"checkerboard",
+			"scale":20,
 			"color":[255, 255, 0]
 		},
 		{
 			"name":"sphere",
-			"origin":[0, 20, 30],
-			"radius":2,
+			"origin":[15, 0, 20],
+			"rotation":[-15, 115, 30],
+			"texture":"dayearth",
+			"radius":10,
 			"color":[0, 255, 0]
 		},
 		{
-			"name":"sphere",
-			"origin":[0, -15, 30],
-			"radius":2,
-			"color":[0, 0, 255]
-		},
-		{
 			"name":"cone",
-			"origin":[-45, 0, 30],
+			"origin":[-30, -5, 30],
+			"rotation":[0, 0, 50],
 			"angle":0.5,
+			"scale":20,
+			"texture":"checkerboard",
 			"color":[255, 255, 255]
 		},
 		{
 			"name":"cylindre",
-			"origin":[-40, 0, 30],
-			"rotation":[0, 0, -70],
-			"texture":"brick",
-			"radius":1,
+			"origin":[-10, -5, 30],
+			"rotation":[0, 0, -20],
+			"texture":"checkerboard",
+			"scale":20,
+			"radius":2,
 			"color":[0, 255, 255]
 		},
 		{
 			"name":"plan",
 			"origin":[0, -5, 45], 
 			"texture":"brick",
-			"scale":20,
+			"scale":25,
 			"rotation":[90, 0, 0],
 			"color":[0, 0, 0]
 		},

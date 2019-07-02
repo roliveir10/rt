@@ -27,6 +27,7 @@
 			"origin":[0, -5, 100], 
 			"rotation":[90, 0, 0],
 			"texture": "checkerboard",
+			"scale": 5,
 			"color":[0, 255, 255]
 		},
 		{
