@@ -2,7 +2,7 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0
+		"ambient":1
 	},
 	"camera":
 	{
@@ -38,12 +38,9 @@
 	"object":[
 		{
 			"name":"sphere",
-			"origin":[-30, 0, 30],
+			"origin":[-30, 10, 30],
 			"radius":5,
-			"texture":"nothing",
-			"atexture":0.5,
-			"recurrence":25,
-			"color":[255, 255, 255]
+			"color":[0, 0, 0]
 		},
 		{
 			"name":"cone",
@@ -54,9 +51,9 @@
 		},
 		{
 			"name":"plan",
-			"origin":[0, 0, 100], 
-			"rotation":[-90, 0, 0],
-			"color":[255, 255, 255]
+			"origin":[0, 0, 200], 
+			"rotation":[90, 0, 0],
+			"color":[100, 150, 50]
 		},
 		{
 			"name":"cylindre",

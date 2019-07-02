@@ -15,7 +15,7 @@
 
 void		*set_texture_form(t_form *form, t_token **token)
 {
-	form->texture = pars_texture(token);
+	form->texture.type = pars_texture(token);
 	if (form->fields[TEXT])
 		print_warning("redefinition of Texture field");
 	form->fields[TEXT] = 1;
@@ -24,18 +24,27 @@ void		*set_texture_form(t_form *form, t_token **token)
 
 void		*set_atexture_form(t_form *form, t_token **token)
 {
-	form->atexture = pars_double(token);
+	form->texture.atexture = pars_double(token);
 	if (form->fields[ATEXT])
 		print_warning("redefinition of AlphaTexture field");
 	form->fields[ATEXT] = 1;
 	return (NULL);
 }
 
-void		*set_recurrence_form(t_form *form, t_token **token)
+void		*set_scale_form(t_form *form, t_token **token)
 {
-	form->recurrence = (int)pars_double(token);
+	form->texture.scale = (int)pars_double(token);
 	if (form->fields[REC])
-		print_warning("redefinition of Recurrence field");
+		print_warning("redefinition of Scale field");
 	form->fields[REC] = 1;
+	return (NULL);
+}
+
+void		*set_tcolor_form(t_form *form, t_token **token)
+{
+	form->texture.color = pars_vector_color(token);
+	if (form->fields[TCOLOR])
+		print_warning("redefinition of Texture Color field");
+	form->fields[TCOLOR] = 1;
 	return (NULL);
 }

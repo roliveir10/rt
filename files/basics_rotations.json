@@ -2,7 +2,7 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0.0
+		"ambient":0.1
 	},
 	"camera":
 	{
@@ -19,7 +19,7 @@
 		{
 			"name":"sphere",
 			"origin":[-30, 5, 30],
-			"rayon":5,
+			"radius":5,
 			"color":[255, 255, 255]
 		},
 		{
@@ -32,14 +32,14 @@
 			"name":"cylindre",
 			"origin":[0, 2, 0],
 			"rotation":[-20, 0, -60],
-			"rayon":1,
+			"radius":1,
 			"color":[255, 255, 255]
 		},
 		{
 			"name":"cylindre",
 			"origin":[0, 2, 0],
 			"rotation":[20, 0, 60],
-			"rayon":1,
+			"radius":1,
 			"color":[255, 255, 255]
 		},
 		{

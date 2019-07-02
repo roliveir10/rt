@@ -6,7 +6,7 @@
 #    By: roliveir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 10:06:25 by roliveir          #+#    #+#              #
-#    Updated: 2019/06/27 16:54:11 by roliveir         ###   ########.fr        #
+#    Updated: 2019/07/02 18:11:13 by mmoussa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,11 @@ RT = rt_main.c					\
 	 rt_camera.c				\
 	 rt_anti_aliasing.c			\
 	 rt_keyfunction.c			\
-	 rt_reflection.c
+	 rt_reflection.c			\
+	 rt_texture.c				\
+	 rt_texture_map.c			\
+	 rt_texture_check.c			\
+	 rt_texture_perlin.c
 
 RT_SRCS = $(addprefix $(RT_PATH),$(RT))
 SRCS += $(RT_SRCS)

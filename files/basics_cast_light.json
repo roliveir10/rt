@@ -19,7 +19,7 @@
 		{
 			"name":"sphere",
 			"origin":[0, 0, 0],
-			"rayon":3,
+			"radius":3,
 			"color":[58, 157, 35]
 		},
 		{
