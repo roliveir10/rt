@@ -27,7 +27,7 @@
 # define NBR_KEY_REPEAT 11
 # define NBR_MKEY 2
 # define PIX 32
-# define DEPTH_MAX 8
+# define DEPTH_MAX 10
 
 /*
 ** ENUM

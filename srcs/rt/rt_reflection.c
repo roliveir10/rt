@@ -35,7 +35,7 @@ t_vector			rt_refraction(t_env *env, t_inter inter, int depth)
 	t_ray			ray;
 	t_vector		light;
 
-	indice = 0.8;
+	indice = 1;
 	light = rt_light_manager(env, inter);
 	if (env->form[inter.id].ftype == SPHERE && depth < DEPTH_MAX)
 	{
@@ -89,6 +89,7 @@ double				rt_fresnel(double ndoti, t_inter inter, double n2)
 	else
 	{
 		double cost = sqrt(1 - pow(sint, 2));
+		ndoti = fabs(ndoti);
 		double Rs = ((n2 * ndoti) - (n1 * cost)) / ((n2 * ndoti) + (n1 * cost));
 		double Rp = ((n1 * ndoti) - (n2 * cost)) / ((n1 * ndoti) + (n2 * cost));
 		return ((pow(Rs, 2) + pow(Rp, 2)) / 2.0);

@@ -6,8 +6,8 @@
 	},
 	"camera":
 	{
-		"origin":[0, 0, -55],
-		"rotation":[-5, 0, 0]
+		"origin":[0, 1, -55],
+		"rotation":[-2, 0, 0]
 	},
 	"light":[
 	{
@@ -19,20 +19,20 @@
 	"object":[
 		{
 			"name":"sphere",
-			"origin":[0, 0, 0],
+			"origin":[0, 4, 10],
 			"radius":5,
 			"color":[58, 157, 35]
 		},
 		{
 			"name":"sphere",
-			"origin":[8, -2, -7],
+			"origin":[8, 2, -7],
 			"radius":3,
 			"color":[157, 35, 59]
 		},
 		{
 			"name":"plan",
 			"origin":[0, -8, 0],
-			"reflection":0.1,
+			"reflection":0.2,
 			"color":[120, 75, 30]
 		}]
 }
