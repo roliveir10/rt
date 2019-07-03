@@ -6,13 +6,14 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 11:05:07 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 02:53:08 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/25 22:49:42 by atelli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <math.h>
 #include <pthread.h>
+#include <stdlib.h>
 #include "rt.h"
 
 void					rt_add_pixel(t_env *env, t_vector color, int pos)
@@ -66,8 +67,10 @@ void					rt_thread(void *env, void *(func)(void*))
 {
 	pthread_t			id[NBR_THREAD];
 	int					i;
+	int					j;
 
 	i = -1;
+	j = 0;
 	while (++i < NBR_THREAD)
 		pthread_create(&id[i], NULL, func, env);
 	i = -1;
@@ -79,21 +82,26 @@ int						rt_print(void *param)
 {
 	int					pos;
 	t_env				*env;
+	static int			i = 0;
+	char				*loading;
 
 	env = (t_env*)param;
+	i = rt_loading(i, env, 0);
 	if (env->offset)
 	{
 		pos = 0;
-		while (pos < SCREEN)
+		while (pos < SCREENX * NBR_THREAD * env->offset)
 		{
 			rt_thread((void*)env, rt_print_line);
 			pos += SCREENX * NBR_THREAD * env->offset;
+			i = rt_loading(i, env, 1);
+			loading = rt_loading1(i);
 		}
-		if (!env->key_repeat)
-			env->offset /= 2;
 		mlx_put_image_to_window(env->mlx.mlx, env->mlx.id,
 				env->mlx.image, 0, 0);
-		env->line_id = 0;
+		mlx_string_put(env->mlx.mlx, env->mlx.id, 50, 50, 0xFFFFFF, loading);
+		rt_menu(env);
+		ft_strdel(&loading);
 		return (rt_antialiasing(env));
 	}
 	return (rt_antialiasing(env));

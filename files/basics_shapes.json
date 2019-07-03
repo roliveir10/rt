@@ -2,7 +2,7 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0
+		"ambient":1
 	},
 	"camera":
 	{
@@ -12,31 +12,50 @@
 	{
 		"origin":[30, 0, 20],
 		"color":[255, 255, 255],
+		"intensity":100,
 		"type":"point"
 	}],
 	"object":[
 		{
 			"name":"sphere",
-			"origin":[-30, 0, 30],
-			"rayon":5,
-			"color":[255, 255, 255]
+			"origin":[-30, 10, 30],
+			"radius":5,
+			"texture":"tmap",
+			"color":[0, 0, 0]
+		},
+		{
+			"name":"cone",
+			"origin":[-30, 0, 110],
+			"color":[0, 0, 0],
+			"texture":"tmap",
+			"atexture":0.5,
+			"scale":50,
+			"tilscolor":[0, 0, 0],
+			"angle":0.5
 		},
 		{
 			"name":"plan",
-			"origin":[0, 0, 100], 
-			"rotation":[-90, 0, 0],
-			"color":[255, 255, 255]
+			"origin":[0, 0, 200], 
+			"rotation":[90, 0, 0],
+			"color":[100, 150, 50]
 		},
 		{
 			"name":"cylindre",
 			"origin":[0, 0, 30],
-			"rayon":2,
+			"radius":5,
+			"texture":"checkerboard",
+			"atexture":0.1,
+			"scale": 10,
+			"tilscolor":[0, 0, 255],
 			"color":[255, 255, 255]
 		},
 		{
 			"name":"cone",
 			"origin":[30, 0, 30],
 			"angle":0.3,
+			"texture":"checkerboard",
+			"atexture":0.5,
+			"scale": 15,
 			"color":[255, 255, 255]
 		}]
 }

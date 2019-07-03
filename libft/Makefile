@@ -116,7 +116,8 @@ SRCS = ft_bzero.c\
 	   ft_2nd_degree.c\
 	   ft_vrotate.c\
 	   ft_fmat.c\
-	   ft_clamp.c
+	   ft_clamp.c\
+	   ft_cross.c
 PRINTF = ft_printf/ft_caster.c\
 		 ft_printf/ft_conv_base.c\
 		 ft_printf/ft_flag.c\

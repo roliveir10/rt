@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:57:56 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 13:49:19 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/03 18:00:41 by atelli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ static void			rt_initmlx(t_env *env)
 {
 	env->mlx.mlx = mlx_init();
 	env->mlx.image = mlx_new_image(env->mlx.mlx, SCREENX, SCREENY);
+	env->mlx.interface = mlx_new_image(env->mlx.mlx, 500, 500);
 	env->mlx.id = mlx_new_window(env->mlx.mlx, SCREENX, SCREENY, "rt");
+	env->mlx.id_interface = mlx_new_window(env->mlx.mlx, 500, 500, "interface");
 	env->mlx.mem_image = (unsigned int*)mlx_get_data_addr(env->mlx.image,
+			&env->mlx.pix, &env->mlx.size_line, &env->mlx.endian);
+	env->mlx.mem_interf = (unsigned int*)mlx_get_data_addr(env->mlx.interface,
 			&env->mlx.pix, &env->mlx.size_line, &env->mlx.endian);
 }
 
@@ -38,6 +42,7 @@ int					rt_main(t_env *env)
 	rt_initmlx(env);
 	rt_initialize_rotation(&env->form, &env->cam, env->nbr_form);
 	rt_update_campos(&env->cam);
+	rt_init_texture(env);
 	mlx_hook(env->mlx.id, KEYPRESS, 0, rt_keypress, (void*)env);
 	mlx_hook(env->mlx.id, REDBUTTON, 0, rt_close, (void*)env);
 	mlx_hook(env->mlx.id, MOUSEPRESS, 0, rt_mousepress, (void*)env);

@@ -46,6 +46,7 @@ t_vector			ft_vvmul(t_vector va, t_vector vb);
 t_vector			ft_vsub(t_vector pos_a, t_vector pos_b);
 t_vector			ft_vadd(t_vector pos_a, t_vector pos_b);
 t_vector			ft_vmul(t_vector v, double f);
+t_vector			ft_cross(t_vector pos_a, t_vector pos_b);
 int					ft_abs(int x);
 void				ft_swap_int(int *a, int *b);
 void				ft_swap(char **a, char **b);

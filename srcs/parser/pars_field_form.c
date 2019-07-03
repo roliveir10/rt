@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 00:14:42 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/25 09:17:23 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/26 07:00:18 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,7 @@
 
 static int		following(t_form *form, char *word, t_token **token, t_env *env)
 {
-	if (!ft_strcmp(word, "\"rotation\""))
-		form->rotation = pars_vector(token);
-	else if (!ft_strcmp(word, "\"name\""))
-		form->ftype = pars_name(token);
-	else if (!ft_strcmp(word, "\"direct\""))
-		form->direct = pars_vector(token);
-	else if (!ft_strcmp(word, "\"point\""))
-		form->point = pars_vector(token);
-	else if (!ft_strcmp(word, "\"material\""))
+	if (!ft_strcmp(word, "\"material\""))
 		form->material = pars_material(token, env);
 	else
 	{
@@ -37,28 +29,28 @@ static int		following(t_form *form, char *word, t_token **token, t_env *env)
 
 static int		pars_select_field(t_token **token, t_form *form, t_env *env)
 {
-	char		*word;
-	int			ret;
+	char			*word;
+	int				ret;
+	int				k;
+	static char		*names[NB_FIELDS] = {
+		"\"origin\"", "\"color\"", "\"rotation\"", "\"direct\"",
+		"\"point\"", "\"radius\"", "\"height\"", "\"angle\"", "\"name\"",
+		"\"texture\"", "\"atexture\"", "\"scale\"", "\"tilscolor\""};
+	static void		*(*fct_set[NB_FIELDS])(t_form*, t_token**) = {
+		set_origin_form, set_color_form, set_rotation_form, set_direct_form,
+		set_point_form, set_radius_form, set_height_form, set_angle_form,
+		set_name_form, set_texture_form, set_atexture_form,
+		set_scale_form, set_tcolor_form};
 
-	ret = 0;
-	word = ft_strdup((*token)->word);
-	if (!word)
+	if (!(word = ft_strdup((*token)->word)))
 		return (1);
-	if (free_move(token))
-		return (1);
-	if (free_move(token))
-		return (1);
-	if (!ft_strcmp(word, "\"origin\""))
-		form->center = pars_vector(token);
-	else if (!ft_strcmp(word, "\"color\""))
-		form->color = pars_vector_color(token);
-	else if (!ft_strcmp(word, "\"rayon\""))
-		form->r = pars_double(token);
-	else if (!ft_strcmp(word, "\"height\""))
-		form->h = pars_double(token);
-	else if (!ft_strcmp(word, "\"angle\""))
-		form->angle = pars_double(token);
-	else
+	free_double_move(token);
+	k = -1;
+	ret = 1;
+	while (++k < NB_FIELDS)
+		if (!ft_strcmp(names[k], word) && !(ret = 0))
+			fct_set[k](form, token);
+	if (ret)
 		ret = following(form, word, token, env);
 	ft_strdel(&word);
 	return (ret);
