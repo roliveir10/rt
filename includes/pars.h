@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:15:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/03 01:08:32 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/03 03:38:45 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,5 +226,6 @@ void				*set_color_lum(t_lum *lum, t_token **token);
 void				*set_type_lum(t_lum *lum, t_token **token);
 void				*set_intensity_lum(t_lum *lum, t_token **token);
 void				*set_cutoff_lum(t_lum *lum, t_token **token);
+void				*set_outercutoff_lum(t_lum *lum, t_token **token);
 
 #endif
