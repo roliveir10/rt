@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-# define SCREENX 1500
-# define SCREENY 1500
+# define SCREENX 2080
+# define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
 # define NBR_TEXT 14
@@ -359,5 +359,15 @@ t_vector				rt_tmap(t_vector normal, t_vector intercolor,
 		t_env *env, t_inter *inter);
 t_vector				rt_tperlin(t_vector normal, t_vector intercolor,
 		t_env *env, t_inter *inter);
+
+/*
+**	Perlin
+*/
+
+float					perlin2d(float x, float y, float freq, int depth);
+t_vector				rt_perlin_marble(float u, float v, t_texture text);
+t_vector				rt_perlin_lava(float u, float v, t_texture text);
+t_vector				rt_perlin_sand(float u, float v, t_texture text);
+t_vector				rt_perlin_wood(float u, float v, t_texture text);
 
 #endif
