@@ -60,13 +60,16 @@
 		{
 			"name":"plan",
 			"origin":[0, -5, 45], 
+			"texture":"brick",
 			"rotation":[90, 0, 0],
-			"color":[255, 255, 255]
+			"color":[0, 0, 0]
 		},
 		{
 			"name":"plan",
 			"origin":[30, 30, 0],
-			"rotation":[0, 0, 90],
-			"color":[255, 255, 255]
+			"rotation":[90, 0, 90],
+			"texture":"brick",
+			"atexture": 0,
+			"color":[0, 0, 0]
 		}]
 }

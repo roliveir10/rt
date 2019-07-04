@@ -43,7 +43,6 @@ t_vector			rt_refraction(t_env *env, t_inter inter, int depth)
 						rt_light_manager(env, inter))));
 	}
 	return (rt_light_manager(env, inter));
-
 }
 
 t_vector			rt_get_refdir(t_vector normal, t_vector dir)

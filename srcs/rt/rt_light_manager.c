@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 21:28:14 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/04 14:29:17 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/04 14:44:05 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static t_vector		rt_light_tocolor(t_env *env, int indsh, int indli,
 	t_lum			lum;
 
 	lum = env->lum[indli];
+	if (indli == 0 && env->form[inter->id].texture.type != TNOTHING)
+		rt_get_texture(env, env->form[inter->id].texture, inter->norm, inter);
 	if (indsh == env->nbr_form)
 		return (rt_nolight_inter(lum, inter, env->form[inter->id].material));
 	else
