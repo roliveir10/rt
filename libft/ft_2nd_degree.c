@@ -6,13 +6,14 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 02:45:29 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/23 02:47:42 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/26 09:31:21 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "libft.h"
 
+#include <stdio.h>
 double			ft_2nd_degree(double a, double b, double c)
 {
 	double		t1;

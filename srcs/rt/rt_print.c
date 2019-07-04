@@ -53,7 +53,7 @@ static void				*rt_print_line(void *param)
 	while (pos < limit)
 	{
 		ray.dir = rt_get_vecdir(env->cam, pos % SCREENX, pos / SCREENX);
-		color = rt_viewdir_inter(env, ray);
+		color = rt_viewdir_inter(env, ray, 1);
 		rt_add_pixel(env, color, pos);
 		if (env->offset >= PIX / 2)
 			pos += PIX;

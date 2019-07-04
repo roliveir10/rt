@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/03 18:00:31 by atelli           ###   ########.fr       */
+/*   Updated: 2019/07/02 18:20:08 by mmoussa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 
 # include "libft.h"
 
-# define SCREENX 2080
-# define SCREENY 1170
+# define SCREENX 1500
+# define SCREENY 1500
 # define SCREEN SCREENX * SCREENY
 
-# define NBR_TEXT 12
+# define NBR_TEXT 14
 # define NBR_FORM 4
 # define NBR_THREAD 4
-# define NBR_MATERIAL 2
+# define NBR_MATERIAL 12
 # define NBR_KEY 13
 # define NBR_KEY_REPEAT 11
 # define NBR_MKEY 2
 # define PIX 32
+# define DEPTH_MAX 8
 
 /*
 ** ENUM
@@ -98,6 +99,8 @@ typedef enum			e_etexture
 	TSNOW,
 	TROCK,
 	TWOOD,
+	TPLOT,
+	TBLUR,
 	TPERLIN
 }						t_etexture;
 
@@ -126,6 +129,8 @@ typedef struct			s_inter
 	t_vector			norm;
 	t_vector			viewdir;
 	t_vector			lightdir;
+	t_vector			refdir;
+	t_vector			refrdir;
 	char				blinn;
 	int					id;
 }						t_inter;
@@ -138,12 +143,16 @@ typedef struct			s_material
 	float				shininess;
 }						t_material;
 
+# define NB_FIELDS_LUM 6
+
 typedef struct			s_texture
 {
 	t_vector			color;
 	double				atexture;
 	int					scale;
 	int					type;
+	double				x;
+	double				y;
 }						t_texture;
 
 typedef struct			s_timage
@@ -154,7 +163,7 @@ typedef struct			s_timage
 	char				*buffer_ptr;
 }						t_timage;
 
-#define NB_FIELDS_LUM 5
+// #define NB_FIELDS_LUM 5
 
 typedef struct			s_lum
 {
@@ -163,9 +172,11 @@ typedef struct			s_lum
 	t_vector			color;
 	t_ltype				type;
 	char				fields[NB_FIELDS_LUM];
+	double				cutoff;
 	double				constant;
 	double				linear;
 	double				quadratic;
+	double				outercutoff;
 }						t_lum;
 
 typedef	struct			s_ray
@@ -185,8 +196,8 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
-#define NB_FIELDS 13
-#define NBR_VECTOR_FORM 5
+# define NB_FIELDS 14
+# define NBR_VECTOR_FORM 5
 
 typedef struct			s_form
 {
@@ -202,6 +213,9 @@ typedef struct			s_form
 	t_texture			texture;
 	t_timage			timage;
 	t_material			material;
+	double				iref;
+	double				itpy;
+	double				irefr;
 	char				fields[NB_FIELDS];
 	double				mat[3][3][3];
 	double				mati[3][3][3];
@@ -238,7 +252,7 @@ void					rt_delenv(t_env *env);
 **	shapes
 */
 
-t_vector				rt_viewdir_inter(t_env *env, t_ray ray);
+t_vector				rt_viewdir_inter(t_env *env, t_ray ray, int depth);
 double					rt_sphere(t_ray ray, t_form form);
 double					rt_plan(t_ray ray, t_form form);
 double					rt_cylindre(t_ray ray, t_form form);
@@ -252,6 +266,8 @@ int						rt_print(void *param);
 void					rt_thread(void *env, void *(func)(void*));
 void					rt_add_pixel(t_env *env, t_vector color, int pos);
 int						rt_antialiasing(t_env *env);
+t_vector				rt_reflection(t_env *env, t_inter inter, int depth);
+t_vector				rt_refraction(t_env *env, t_inter inter, int depth);
 
 /*
 **	light
@@ -265,6 +281,10 @@ t_vector				rt_diffuse(t_vector light, double angle,
 t_vector				rt_ambient(t_vector light, t_material mat,
 		double attenuation);
 double					rt_attenuation(t_lum lum, double dist);
+t_vector				rt_get_lightdir(t_vector o, t_lum lum);
+double					rt_spotlight(t_vector pos, t_lum lum);
+t_vector				rt_get_refdir(t_vector normal, t_vector dir);
+t_vector				rt_get_refrdir(double n1, double n2, t_inter inter);
 
 /*
 ** color
@@ -315,8 +335,7 @@ void					rt_mmovecam_pos(t_env *env, int keycode);
 **	rotation
 */
 
-void					rt_initialize_rotation(t_form **form, t_cam *cam,
-		int nbr_form);
+void					rt_initialize_rotation(t_env *env);
 void					rt_set_ref(t_ray *ray, t_form form);
 void					rt_reset_point(t_form form, t_vector *inte);
 
@@ -325,6 +344,24 @@ void					rt_reset_point(t_form form, t_vector *inte);
 */
 
 t_material				rt_get_material(t_ematerial emat, t_scene scene);
+int						rt_material_diffuse(double mat[3], int type);
+int						rt_material_specular(double mat[3], int type);
+int						rt_material_ambient(double mat[3], int type);
+double					rt_material_shininess(int type);
+
+/*
+**	texture
+*/
+
+void					rt_init_texture(t_env *env);
+void					rt_get_texture(t_env *env, t_texture texture,
+		t_vector normal, t_inter *inter);
+t_vector				rt_tchecker(t_vector normal, t_vector intercolor,
+		t_env *env,	t_inter *inter);
+t_vector				rt_tmap(t_vector normal, t_vector intercolor,
+		t_env *env, t_inter *inter);
+t_vector				rt_tperlin(t_vector normal, t_vector intercolor,
+		t_env *env, t_inter *inter);
 
 /*
 **	texture

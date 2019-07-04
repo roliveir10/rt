@@ -2,7 +2,7 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0.0
+		"ambient":0.01
 	},
 	"camera":
 	{
@@ -20,9 +20,6 @@
 			"name":"sphere",
 			"origin":[-30, 5, 30],
 			"radius":5,
-			"texture":"checkerboard",
-			"atexture": 1,
-			"scale": 4,
 			"color":[255, 0, 0]
 		},
 		{
@@ -41,10 +38,6 @@
 			"name":"sphere",
 			"origin":[0, -15, 30],
 			"radius":5,
-			"texture":"checkerboard",
-			"atexture": 0.2,
-			"scale": 2,
-			"tilscolor":[0, 0, 0],
 			"color":[255, 255, 255]
 		},
 		{

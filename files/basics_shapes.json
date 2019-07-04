@@ -10,27 +10,43 @@
 	},
 	"light":[
 	{
-		"origin":[30, 0, 20],
+		"origin":[-30, 0, 10],
 		"color":[255, 255, 255],
-		"intensity":100,
+		"intensity":20,
 		"type":"point"
+	},
+	{
+		"origin":[-10, -7, 20],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"type":"point"
+	},
+	{	
+		"origin":[50, 20, 30],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"type":"point"
+	},
+
+	{
+		"origin":[20, 20, 20],
+		"color":[255, 180, 150],
+		"intensity":40,
+		"type":"point"
+
 	}],
 	"object":[
 		{
 			"name":"sphere",
 			"origin":[-30, 10, 30],
 			"radius":5,
-			"texture":"tmap",
 			"color":[0, 0, 0]
 		},
 		{
 			"name":"cone",
 			"origin":[-30, 0, 110],
-			"color":[0, 0, 0],
-			"texture":"tmap",
-			"atexture":0.5,
-			"scale":50,
-			"tilscolor":[0, 0, 0],
+			"material":"ruby",
+			"color":[255, 255, 255],
 			"angle":0.5
 		},
 		{
@@ -42,16 +58,14 @@
 		{
 			"name":"cylindre",
 			"origin":[0, 0, 30],
-			"radius":5,
-			"texture":"checkerboard",
-			"atexture":0.1,
-			"scale": 10,
-			"tilscolor":[0, 0, 255],
+			"material":"silver",
+			"radius":2,
 			"color":[255, 255, 255]
 		},
 		{
 			"name":"cone",
 			"origin":[30, 0, 30],
+			"material":"emerald",
 			"angle":0.3,
 			"texture":"checkerboard",
 			"atexture":0.5,

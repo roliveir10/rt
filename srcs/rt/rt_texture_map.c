@@ -6,7 +6,7 @@
 /*   By: mmoussa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 18:02:56 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/06/26 18:02:59 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/02 17:47:56 by mmoussa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ t_vector			rt_map_sphere(t_vector normal, t_vector intercolor,
 	while (--i + 1)
 		normal = ft_vrotate(normal, env->form[inter->id].mat[i]);
 	u = 0.5 + atan2(normal.z, normal.x) / M_PI * 0.5;
-	v = 0.5 - asin(-normal.y) / M_PI;
-	u = ft_clamp(u * env->form[inter->id].timage.width, 0,
-		env->form[inter->id].timage.width - 1);
-	v = ft_clamp(v * env->form[inter->id].timage.height, 0,
-		env->form[inter->id].timage.height - 1);
+	v = 0.5 - asin(normal.y) / M_PI;
+	u = (int)(u * env->form[inter->id].timage.width
+		/* + offset x */) % env->form[inter->id].timage.width;
+	v = (int)(v * env->form[inter->id].timage.height
+		/* + offset y */) % env->form[inter->id].timage.height;
 	intercolor = rt_getcolor(env->form[inter->id].timage, (int)u, (int)v);
 	return (intercolor);
 }
@@ -53,24 +53,28 @@ t_vector			rt_map_sphere(t_vector normal, t_vector intercolor,
 t_vector			rt_map_plan(t_vector normal, t_vector intercolor,
 		t_inter *inter, t_env *env)
 {
-	t_vector		u_axis;
-	t_vector		v_axis;
-	double			u_coord;
-	double			v_coord;
+	t_vector		uv_axis[2];
+	double			uv_coord[2];
+	double			imagex;
+	double			imagey;
 	int				i;
 
 	i = 3;
 	while (--i + 1)
-		u_axis = ft_vrotate(ft_normalize((t_vector) {normal.y, normal.x, 0}),
-			env->form[inter->id].mat[i]);
-	v_axis = ft_cross(normal, u_axis);
-	u_coord = ft_dot(u_axis, inter->pos) / env->form[inter->id].texture.scale;
-	v_coord = ft_dot(v_axis, inter->pos) / env->form[inter->id].texture.scale;
-	u_coord -= floor(u_coord);
-	v_coord -= floor(v_coord);
-	intercolor = rt_getcolor(env->form[inter->id].timage, (int)(fabs(u_coord)
-		* (env->form[inter->id].timage.width - 1)), (int)(fabs(v_coord)
-		* (env->form[inter->id].timage.height - 1)));
+		uv_axis[0] = ft_vrotate(ft_normalize((t_vector) {normal.y,
+			normal.x, 0}), env->form[inter->id].mat[i]);
+	uv_axis[1] = ft_cross(normal, uv_axis[0]);
+	uv_coord[0] = ft_dot(uv_axis[0], inter->pos) /
+		env->form[inter->id].texture.scale;
+	uv_coord[1] = ft_dot(uv_axis[1], inter->pos) /
+		env->form[inter->id].texture.scale;
+	uv_coord[0] -= floor(uv_coord[0]);
+	uv_coord[1] -= floor(uv_coord[1]);
+	imagex = (int)(fabs(uv_coord[0]) * (env->form[inter->id].timage.width
+		- 1)/* + offset X */) % env->form[inter->id].timage.width;
+	imagey = (int)(fabs(uv_coord[1]) * (env->form[inter->id].timage.height
+		- 1)/* + offset y */) % env->form[inter->id].timage.height;
+	intercolor = rt_getcolor(env->form[inter->id].timage, imagex, imagey);
 	return (intercolor);
 }
 
@@ -80,17 +84,20 @@ t_vector			rt_map_cylindre(t_vector normal, t_vector intercolor,
 	t_vector	d;
 	float		u;
 	float		v;
+	int			i;
 
 	(void)normal;
-	d = ft_vsub(inter->pos, ft_vvmul(env->form[inter->id].center,
-		env->form[inter->id].rotation));
+	i = 3;
+	d = ft_vsub(inter->pos, env->form[inter->id].center);
+	while (--i + 1)
+		d = ft_vrotate(d, env->form[inter->id].mat[i]);
 	u = 0.5 + atan2(d.z, d.x) / M_PI * 0.5;
 	v = d.y / env->form[inter->id].texture.scale;
 	v -= floor(v);
-	u = ft_clamp(u * env->form[inter->id].timage.width, 0,
-		env->form[inter->id].timage.width - 1);
-	v = ft_clamp(v * env->form[inter->id].timage.height, 0,
-		env->form[inter->id].timage.height - 1);
+	u = (int)(u * env->form[inter->id].timage.width/* + offset x*/)
+		% (env->form[inter->id].timage.width - 1);
+	v = (int)(v * env->form[inter->id].timage.height/* + offset y*/)
+		% (env->form[inter->id].timage.height - 1);
 	intercolor = rt_getcolor(env->form[inter->id].timage, (int)u, (int)v);
 	return (intercolor);
 }

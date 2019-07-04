@@ -60,15 +60,15 @@
 		{
 			"name":"plan",
 			"origin":[0, -5, 45], 
-			"texture":"tmap",
+			"texture":"brick",
 			"rotation":[90, 0, 0],
 			"color":[0, 0, 0]
 		},
 		{
 			"name":"plan",
 			"origin":[30, 30, 0],
-			"rotation":[0, 0, 90],
-			"texture":"tmap",
+			"rotation":[90, 0, 90],
+			"texture":"brick",
 			"atexture": 0,
 			"color":[0, 0, 0]
 		}]

@@ -18,7 +18,8 @@ int			pars_texture(t_token **token)
 	char		*name;
 	static char	*lst[NBR_TEXT] = {"\"nothing\"", "\"checkerboard\"",
 		"\"dayearth\"", "\"nightearth\"", "\"brick\"", "\"marble\"",
-		"\"jupiter\"", "\"stars\"", "\"snow\"", "\"rock\"", "\"wood\"", "\"perlin\""};
+		"\"jupiter\"", "\"stars\"", "\"snow\"", "\"rock\"", "\"wood\"",
+		"\"plot\"", "\"blur\"", "\"perlin\""};
 	int			k;
 
 	if (!(name = ft_strdup((*token)->word)))

@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:28:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 13:07:59 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/06/28 11:00:30 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 static t_vector		rt_no_inter(void)
 {
 	t_vector		color_black;
+	t_vector		color_sky;
 
 	ft_bzero(&color_black, sizeof(t_vector));
-	return (color_black);
+	color_sky.x = 135.0 / 255.0;
+	color_sky.y = 206.0 / 255.0;
+	color_sky.z = 235.0 / 255.0;
+	return (color_sky);
 }
 
 double				rt_inter(t_ftype ftype, t_ray *ray, t_form form)
@@ -44,6 +48,11 @@ static void			rt_getinter_data(t_env *env, t_inter *inter, t_vector vdir)
 	inter->pos = ft_vadd(ft_vmul(inter->norm, 1e-5), inter->pos);
 	inter->viewdir = ft_vmul(vdir, -1);
 	inter->blinn = env->scene.blinn;
+	if (env->form[inter->id].iref > 0)
+		inter->refdir = rt_get_refdir(inter->norm, vdir);
+//	if (env->form[inter->id].transparency > 0)
+	if (env->form[inter->id].ftype == SPHERE)
+		inter->refrdir = rt_get_refrdir(1, env->form[inter->id].irefr, *inter);
 }
 
 static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
@@ -60,16 +69,18 @@ static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
 	return (0);
 }
 
-t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig)
+t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 {
 	int				i;
 	t_ray			ray;
 	t_inter			inter;
 	double			min;
+	t_vector		color;
 
 	i = -1;
 	min = -1.0;
 	ft_bzero(&inter, sizeof(t_inter));
+	ft_bzero(&color, sizeof(t_vector));
 	while (++i < env->nbr_form)
 	{
 		ray = ray_orig;
@@ -80,7 +91,10 @@ t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig)
 		}
 	}
 	if (min < 0)
-		return (rt_no_inter());
+		return (ft_vadd(color, rt_no_inter()));
 	rt_getinter_data(env, &inter, ray_orig.dir);
-	return (rt_light_manager(env, inter));
+//	if (env->form[inter.id].transparency)
+	if (env->form[inter.id].ftype == SPHERE)
+		return (ft_vadd(color, rt_refraction(env, inter, depth)));
+	return (ft_vadd(color, rt_reflection(env, inter, depth)));
 }
