@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:28:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 14:25:37 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/01 17:37:47 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void				ft_fmat(double (*mat)[3][3][3], t_vector rotation,
 		double way);
 t_vector			ft_vrotate(t_vector v, double mat[3][3]);
 double				ft_2nd_degree(double a, double b, double c);
+double				ft_3rd_degree(double a, double b, double c, double d);
+double				ft_3rd_degree_cardan(double a, double b,
+		double c, double d);
 t_vector			ft_normalize(t_vector v);
 double				ft_dot(t_vector va, t_vector vb);
 t_vector			ft_get_vector(t_vector pos_a, t_vector pos_b);

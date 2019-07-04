@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/28 11:00:31 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/02 15:46:02 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define SCREEN SCREENX * SCREENY
 
 # define NBR_TEXT 1
-# define NBR_FORM 4
+# define NBR_FORM 5
 # define NBR_THREAD 4
 # define NBR_MATERIAL 12
 # define NBR_KEY 13
@@ -70,6 +70,7 @@ typedef enum			e_ftype
 	PLAN,
 	CYLINDRE,
 	CONE,
+	TORUS,
 	NOTAFORM
 }						t_ftype;
 
@@ -214,9 +215,12 @@ void					rt_delenv(t_env *env);
 
 t_vector				rt_viewdir_inter(t_env *env, t_ray ray, int depth);
 double					rt_sphere(t_ray ray, t_form form);
+double					rt_torus(t_ray ray, t_form form);
 double					rt_plan(t_ray ray, t_form form);
 double					rt_cylindre(t_ray ray, t_form form);
 double					rt_cone(t_ray ray, t_form form);
+
+t_vector				rt_norm_torus(t_vector pos, t_form form);
 
 /*
 **	print
@@ -260,6 +264,7 @@ t_vector				rt_ambient_only(t_lum lum, t_material mat,
 **	calc
 */
 
+double					ft_4th_degree(double var[5]);
 t_vector				rt_get_vecdir(t_cam cam, double x, double y);
 t_vector				rt_get_posinter(t_ray ray, double dist);
 t_vector				rt_get_normal(t_vector v, t_form form);

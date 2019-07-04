@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 15:17:43 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/24 13:47:31 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/01 16:12:51 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ double			rt_cone(t_ray ray, t_form form)
 	double		b;
 	double		c;
 
-	(void)form;
 	a = pow(ray.dir.x, 2) + pow(ray.dir.z, 2)
 		- pow(ray.dir.y * tan(form.angle), 2);
 	b = 2 * (ray.dir.x * ray.o.x + ray.dir.z * ray.o.z

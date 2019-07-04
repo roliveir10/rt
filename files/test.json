@@ -1,0 +1,49 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":0
+	},
+	"camera":
+	{
+		"origin":[0, 0, -60]
+	},
+	"object":[
+		{
+			"name":"torus",
+			"origin":[0, 0, 0],
+			"rotation":[0, -45, 0],
+			"radius":8,
+			"angle":1.5,
+			"texture":"nothing",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"torus",
+			"origin":[0, 12, 0],
+			"rotation":[0, 45, 0],
+			"radius":8,
+			"angle":1.5,
+			"texture":"nothing",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"torus",
+			"origin":[0, 24, 0],
+			"rotation":[0, -45, 0],
+			"radius":8,
+			"angle":1.5,
+			"texture":"nothing",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"torus",
+			"origin":[0, -12, 0],
+			"rotation":[0, 45, 0],
+			"radius":8,
+			"angle":1.5,
+			"texture":"nothing",
+			"color":[255, 255, 255]
+
+		}]
+}

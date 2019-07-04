@@ -6,7 +6,7 @@
 #    By: roliveir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 10:41:12 by roliveir          #+#    #+#              #
-#    Updated: 2019/06/23 07:03:50 by roliveir         ###   ########.fr        #
+#    Updated: 2019/07/01 17:39:25 by oboutrol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,6 +114,8 @@ SRCS = ft_bzero.c\
 	   ft_vadd.c\
 	   ft_vmul.c\
 	   ft_2nd_degree.c\
+	   ft_3rd_degree.c\
+	   ft_3rd_degree_cardan.c\
 	   ft_vrotate.c\
 	   ft_fmat.c\
 	   ft_clamp.c

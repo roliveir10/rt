@@ -17,7 +17,7 @@
 	}],
 	"object":[
 		{
-			"name":"sphere",
+			"name":"spehere",
 			"origin":[-30, 5, 30],
 			"radius":5,
 			"color":[255, 0, 0]

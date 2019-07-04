@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:28:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/28 11:00:30 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/02 16:46:27 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_vector		rt_no_inter(void)
 double				rt_inter(t_ftype ftype, t_ray *ray, t_form form)
 {
 	static double	(*func[NBR_FORM])(t_ray, t_form) = {
-		rt_sphere, rt_plan, rt_cylindre, rt_cone};
+		rt_sphere, rt_plan, rt_cylindre, rt_cone, rt_torus};
 
 	rt_set_ref(ray, form);
 	return (func[ftype](*ray, form));

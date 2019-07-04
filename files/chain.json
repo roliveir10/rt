@@ -1,0 +1,81 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":0
+	},
+	"camera":
+	{
+		"origin":[0, 0, -60]
+	},
+	"light":[
+		{
+			"type":"point",
+			"origin":[10, 10, -20],
+			"intensity":1000,
+			"color":[255, 255, 255]
+		},
+		{
+			"type":"point",
+			"origin":[-10, 30, -20],
+			"intensity":1000,
+			"color":[255, 255, 255]
+		},
+		{
+			"type":"point",
+			"origin":[0, 20, -20],
+			"intensity":1000,
+			"color":[255, 255, 255]
+		}],
+	"object":[
+		{
+			"name":"torus",
+			"origin":[0, 0, 0],
+			"rotation":[0, -45, 0],
+			"radius":8,
+			"angle":1.5,
+			"material":"jade",
+			"texture":"nothing",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"torus",
+			"origin":[0, 12, 0],
+			"rotation":[0, 45, 0],
+			"radius":8,
+			"material":"ruby",
+			"angle":1.5,
+			"texture":"nothing",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"torus",
+			"origin":[0, 24, 0],
+			"rotation":[0, -45, 0],
+			"radius":8,
+			"material":"emerald",
+			"angle":1.5,
+			"texture":"nothing",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"plan",
+			"origin":[0, 0, 90],
+			"rotation":[90, 0, 0],
+			"radius":8,
+			"angle":1.5,
+			"texture":"nothing",
+			"color":[255, 255, 255]
+		},
+		{
+			"name":"torus",
+			"origin":[0, -12, 0],
+			"rotation":[0, 45, 0],
+			"radius":8,
+			"material":"gold",
+			"angle":1.5,
+			"texture":"nothing",
+			"color":[255, 255, 255]
+
+		}]
+}
