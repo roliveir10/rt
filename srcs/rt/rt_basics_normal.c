@@ -56,6 +56,17 @@ t_vector				rt_get_normal(t_vector pos, t_form form)
 {
 	static t_vector		(*func[NBR_FORM])(t_vector, t_form) = {
 		rt_norm_sphere, rt_norm_plan, rt_norm_cylindre, rt_norm_cone};
+	t_vector	bump;
+	float		e;
+	t_vector	point;
 
-	return (func[form.ftype](pos, form));
+	point = ft_vmul(pos, 2.5);
+	e = 0.15;
+	bump.x = rt_noise3(point.x - e, point.y, point.z)
+		- rt_noise3(point.x + e, point.y, point.z);
+	bump.y = rt_noise3(point.x, point.y - e, point.z)
+		- rt_noise3(point.x, point.y + e, point.z);
+	bump.z = rt_noise3(point.x, point.y, point.z - e)
+		- rt_noise3(point.x, point.y, point.z + e);
+	return (ft_normalize(ft_vadd(func[form.ftype](pos, form), bump)));
 }

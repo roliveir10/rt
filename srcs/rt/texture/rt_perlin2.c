@@ -69,7 +69,7 @@ static float	noise2d(float x, float y)
 	return (smooth_inter(low, high, xy_frac[1]));
 }
 
-float			perlin2d(float x, float y, float freq, int depth)
+float			rt_perlin2d(float x, float y, float freq, int depth)
 {
 	float	amp;
 	float	fin;

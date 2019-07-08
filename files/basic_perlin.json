@@ -20,31 +20,28 @@
 		{
 			"name":"cylindre",
 			"origin":[0, -3, 0],
-            "texture":"perlin",
 			"radius":5,
-			"color":[61, 43, 31]
+			"color":[255, 255, 255]
 		},
 		{
 			"name":"cone",
 			"origin":[-10, -30, -7],
 			"radius":3,
-            "texture":"perlin",
 			"angle":0.1,
-			"color":[157, 35, 59]
+			"color":[255, 255, 255]
         },
         {
 			"name":"sphere",
-			"origin":[22, -1, -7],
+			"origin":[22, -1, 20],
 			"rotation":[0, 90, 0],
             "radius":7,
-            "texture":"perlin",
-			"color":[155, 145, 137]
+			"color":[255, 255, 255]
 		},
 		{
 			"name":"plan",
 			"origin":[0, -8, 0],
-			"texture":"perlin",
-			"reflection":0.2,
-			"color":[255, 255, 255]
+			"texture":"marble",
+			"reflection":0.0,
+			"color":[0, 0, 0]
 		}]
 }

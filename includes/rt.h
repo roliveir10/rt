@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-# define SCREENX 2080
-# define SCREENY 1170
+# define SCREENX 1500
+# define SCREENY 1000
 # define SCREEN SCREENX * SCREENY
 
 # define NBR_TEXT 14
@@ -242,6 +242,35 @@ typedef struct			s_env
 	int					line_id;
 }						t_env;
 
+/*
+** perlin var
+*/
+
+typedef struct			s_perlin
+{
+	int					ix0;
+	int					iy0;
+	int					iz0;
+	int					ix1;
+	int					iy1;
+	int					iz1;
+	float				fx0;
+	float				fy0;
+	float				fz0;
+	float				fx1;
+	float				fy1;
+	float				fz1;
+	float				s;
+	float				t;
+	float				r;
+	float				nxy0;
+	float				nxy1;
+	float				nx0;
+	float				nx1;
+	float				n0;
+	float				n1;
+}						t_perlin;
+
 int						rt_main(t_env *env);
 void					rt_delenv(t_env *env);
 
@@ -364,10 +393,16 @@ t_vector				rt_tperlin(t_vector normal, t_vector intercolor,
 **	Perlin
 */
 
-float					perlin2d(float x, float y, float freq, int depth);
+unsigned char			rt_perm(int i);
+double					rt_fade(double t);
+double					rt_fastfloor(double x);
+double					rt_lerp(double t, double a, double b);
+float					rt_perlin2d(float x, float y, float freq, int depth);
+float					rt_noise3(float x, float y, float z);
 t_vector				rt_perlin_marble(float u, float v, t_texture text);
 t_vector				rt_perlin_lava(float u, float v, t_texture text);
 t_vector				rt_perlin_sand(float u, float v, t_texture text);
 t_vector				rt_perlin_wood(float u, float v, t_texture text);
+
 
 #endif

@@ -22,9 +22,9 @@ t_vector			rt_perlinval(float u, float v, t_texture text)
 	// else if (text.perlin == PLAVA)
 		// return (rt_perlin_lava(u, v, text));
 	// else if (text.perlin == PSAND)
-		return (rt_perlin_sand(u, v, text));
+		// return (rt_perlin_sand(u, v, text));
 	// else if (text.perlin == PWOOD)
-		// return (rt_perlin_wood(u, v, text));
+		return (rt_perlin_wood(u, v, text));
 	return ((t_vector) {1, 1, 1});
 }
 
