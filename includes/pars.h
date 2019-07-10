@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:15:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/02 18:15:44 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/10 14:44:33 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,9 @@ typedef enum		e_fields
 	ATEXT,
 	REC,
 	REFLECT,
-	TCOLOR
+	TCOLOR,
+	MIN,
+	MAX
 }					t_fields;
 
 typedef enum		e_fields_lum
@@ -223,5 +225,8 @@ void				*set_type_lum(t_lum *lum, t_token **token);
 void				*set_intensity_lum(t_lum *lum, t_token **token);
 void				*set_cutoff_lum(t_lum *lum, t_token **token);
 void				*set_reflection_form(t_form *form, t_token **token);
+void				*set_recurrence_form(t_form *form, t_token **token);
+void				*set_min_form(t_form *form, t_token **token);
+void				*set_max_form(t_form *form, t_token **token);
 
 #endif

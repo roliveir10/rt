@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:28:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/02 16:46:27 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/06 13:02:43 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,22 @@ static t_vector		rt_no_inter(void)
 	return (color_sky);
 }
 
-double				rt_inter(t_ftype ftype, t_ray *ray, t_form form)
+double				rt_selectf(t_ftype ftype, t_ray *ray, t_form form)
 {
 	static double	(*func[NBR_FORM])(t_ray, t_form) = {
-		rt_sphere, rt_plan, rt_cylindre, rt_cone, rt_torus};
+		rt_sphere, rt_plan, rt_cylindre, rt_cone, rt_torus, rt_hyperbol,
+		rt_cubet};
+
+	return (func[ftype](*ray, form));
+}
+
+double				rt_inter(t_ftype ftype, t_ray *ray, t_form form)
+{
+	double			res;
 
 	rt_set_ref(ray, form);
-	return (func[ftype](*ray, form));
+	res = rt_selectf(ftype, ray, form);
+	return (rt_limit(res, ftype, ray, form));
 }
 
 static void			rt_getinter_data(t_env *env, t_inter *inter, t_vector vdir)

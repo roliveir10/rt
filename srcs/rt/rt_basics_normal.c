@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 20:42:41 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/02 16:46:33 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/06 13:02:17 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_vector				rt_get_normal(t_vector pos, t_form form)
 {
 	static t_vector		(*func[NBR_FORM])(t_vector, t_form) = {
 		rt_norm_sphere, rt_norm_plan, rt_norm_cylindre, rt_norm_cone,
-		rt_norm_torus};
+		rt_norm_torus, rt_norm_hyper, rt_norm_cubet};
 
 	return (func[form.ftype](pos, form));
 }

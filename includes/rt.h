@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/04 14:43:21 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/06 12:47:14 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include "libft.h"
 
-# define SCREENX 1500
-# define SCREENY 1500
+# define SCREENX 2080
+# define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
 # define NBR_TEXT 14
-# define NBR_FORM 4
+# define NBR_FORM 7
 # define NBR_THREAD 4
 # define NBR_MATERIAL 12
 # define NBR_KEY 13
@@ -71,6 +71,8 @@ typedef enum			e_ftype
 	CYLINDRE,
 	CONE,
 	TORUS,
+	HYPER,
+	CUBET,
 	NOTAFORM
 }						t_ftype;
 
@@ -194,7 +196,7 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
-# define NB_FIELDS 14
+# define NB_FIELDS 16
 # define NBR_VECTOR_FORM 5
 
 typedef struct			s_form
@@ -203,6 +205,8 @@ typedef struct			s_form
 	t_vector			center;
 	t_vector			point;
 	t_vector			direct;
+	t_vector			max;
+	t_vector			min;
 	double				r;
 	double				h;
 	double				angle;
@@ -256,8 +260,16 @@ double					rt_torus(t_ray ray, t_form form);
 double					rt_plan(t_ray ray, t_form form);
 double					rt_cylindre(t_ray ray, t_form form);
 double					rt_cone(t_ray ray, t_form form);
+double					rt_hyperbol(t_ray ray, t_form form);
+double					rt_cubet(t_ray ray, t_form form);
 
 t_vector				rt_norm_torus(t_vector pos, t_form form);
+t_vector				rt_norm_hyper(t_vector pos, t_form form);
+t_vector				rt_norm_cubet(t_vector pos, t_form form);
+
+double					rt_limit(double res, t_ftype ftype, t_ray *ray,
+		t_form form);
+double					rt_selectf(t_ftype ftype, t_ray *ray, t_form form);
 
 /*
 **	print

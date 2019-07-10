@@ -1,0 +1,45 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":1
+	},
+	"camera":
+	{
+		"origin":[0, 5, -10]
+	},
+	"light":[
+	{
+		"origin":[-10, -7, 20],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"type":"point"
+	},
+	{	
+		"origin":[50, 20, 30],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"type":"point"
+	}],
+	"object":[
+		{
+			"name":"plan",
+			"origin":[0, 0, 10], 
+			"rotation":[90, 0, 0],
+			"max":[10, 0, 10],
+			"min":[-10, 0, -10],
+			"point":[0, 0, 0], 
+			"radius":5, 
+			"color":[100, 150, 50]
+		},
+		{
+			"name":"plan",
+			"origin":[0, 5, 20], 
+			"rotation":[90, 0, 0],
+			"max":[10, 0, 10],
+			"min":[-10, 0, -10],
+			"point":[0, 0, -7], 
+			"radius":5, 
+			"color":[100, 150, 50]
+		}]
+}

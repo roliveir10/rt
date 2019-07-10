@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 02:01:40 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/28 10:55:16 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/06 09:40:25 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,23 @@ void		*set_reflection_form(t_form *form, t_token **token)
 	if (form->fields[REFLECT])
 		print_warning("redifinition of Reflection field");
 	form->fields[REFLECT] = 1;
+	return (NULL);
+}
+
+void		*set_max_form(t_form *form, t_token **token)
+{
+	form->max = pars_vector(token);
+	if (form->fields[MAX])
+		print_warning("redifinition of Max field");
+	form->fields[MAX] = 1;
+	return (NULL);
+}
+
+void		*set_min_form(t_form *form, t_token **token)
+{
+	form->min = pars_vector(token);
+	if (form->fields[MIN])
+		print_warning("redifinition of Min field");
+	form->fields[MIN] = 1;
 	return (NULL);
 }

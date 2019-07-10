@@ -6,7 +6,7 @@
 #    By: roliveir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 10:06:25 by roliveir          #+#    #+#              #
-#    Updated: 2019/07/04 14:43:37 by oboutrol         ###   ########.fr        #
+#    Updated: 2019/07/06 07:48:24 by oboutrol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ RT = rt_main.c					\
 	 rt_medium_normal.c			\
 	 rt_keyhandler.c			\
 	 rt_inter_manager.c			\
+	 rt_limits.c				\
 	 rt_light_manager.c			\
 	 rt_light_type.c			\
 	 rt_light_utils.c			\

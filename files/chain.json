@@ -11,20 +11,20 @@
 	"light":[
 		{
 			"type":"point",
-			"origin":[10, 10, -20],
-			"intensity":1000,
+			"origin":[10, 10, -30],
+			"intensity":100,
 			"color":[255, 255, 255]
 		},
 		{
 			"type":"point",
 			"origin":[-10, 30, -20],
-			"intensity":1000,
+			"intensity":100,
 			"color":[255, 255, 255]
 		},
 		{
 			"type":"point",
 			"origin":[0, 20, -20],
-			"intensity":1000,
+			"intensity":100,
 			"color":[255, 255, 255]
 		}],
 	"object":[
@@ -61,18 +61,42 @@
 		{
 			"name":"plan",
 			"origin":[0, 0, 90],
-			"rotation":[90, 0, 0],
+			"rotation":[90, 0, 45],
+			"reflection":0.7,
+			"material":"obsidian",
+			"texture":"marble",
 			"radius":8,
 			"angle":1.5,
-			"texture":"nothing",
 			"color":[255, 255, 255]
+		},
+		{
+			"name":"plan",
+			"origin":[0, -15, 90],
+			"rotation":[90, 30, 50],
+			"material":"ruby",
+			"texture":"brick",
+			"reflection":0.6,
+			"radius":8,
+			"angle":1.5,
+			"color":[255, 255, 100]
+		},
+		{
+			"name":"plan",
+			"origin":[0, -15, 90],
+			"rotation":[90, -30, -50],
+			"material":"ruby",
+			"texture":"stars",
+			"reflection":0.6,
+			"radius":8,
+			"angle":1.5,
+			"color":[255, 100, 255]
 		},
 		{
 			"name":"torus",
 			"origin":[0, -12, 0],
 			"rotation":[0, 45, 0],
 			"radius":8,
-			"material":"gold",
+			"material":"brass",
 			"angle":1.5,
 			"texture":"nothing",
 			"color":[255, 255, 255]

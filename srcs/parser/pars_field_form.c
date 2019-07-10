@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 00:14:42 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/02 18:10:19 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/06 11:23:50 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ static int		pars_select_field(t_token **token, t_form *form, t_env *env)
 	static char		*names[NB_FIELDS] = {
 		"\"origin\"", "\"color\"", "\"rotation\"", "\"direct\"", "\"point\"",
 		"\"radius\"", "\"height\"", "\"angle\"", "\"name\"", "\"texture\"",
-		"\"atexture\"", "\"scale\"", "\"tilscolor\"", "\"reflection\""};
+		"\"atexture\"", "\"scale\"", "\"tilscolor\"", "\"reflection\"",
+		"\"max\"", "\"min\""};
 	static void		*(*fct_set[NB_FIELDS])(t_form*, t_token**) = {
 		set_origin_form, set_color_form, set_rotation_form, set_direct_form,
 		set_point_form, set_radius_form, set_height_form, set_angle_form,
 		set_name_form, set_texture_form, set_atexture_form,
-		set_scale_form, set_tcolor_form, set_reflection_form};
+		set_scale_form, set_tcolor_form, set_reflection_form, set_max_form,
+		set_min_form};
 
 	if (!(word = ft_strdup((*token)->word)))
 		return (1);

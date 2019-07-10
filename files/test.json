@@ -6,41 +6,35 @@
 	},
 	"camera":
 	{
-		"origin":[0, 0, -60]
+		"origin":[5, 5, -20],
+		"rotation":[-10, 10, 0]
 	},
+	"light":[{
+		"type":"point",
+		"color":[255, 255, 255],
+		"intensity":1000,
+		"origin":[0, 0, -10]
+	},
+	{
+		"type":"point",
+		"color":[255, 255, 255],
+		"intensity":100,
+		"origin":[10, 0, 0]
+	},
+	{
+		"type":"point",
+		"color":[255, 255, 255],
+		"intensity":100,
+		"origin":[10, 0, 0]
+
+	}],
 	"object":[
 		{
-			"name":"torus",
+			"name":"cubetroue",
 			"origin":[0, 0, 0],
-			"rotation":[0, -45, 0],
-			"radius":8,
-			"angle":1.5,
-			"texture":"nothing",
-			"color":[255, 255, 255]
-		},
-		{
-			"name":"torus",
-			"origin":[0, 12, 0],
-			"rotation":[0, 45, 0],
-			"radius":8,
-			"angle":1.5,
-			"texture":"nothing",
-			"color":[255, 255, 255]
-		},
-		{
-			"name":"torus",
-			"origin":[0, 24, 0],
-			"rotation":[0, -45, 0],
-			"radius":8,
-			"angle":1.5,
-			"texture":"nothing",
-			"color":[255, 255, 255]
-		},
-		{
-			"name":"torus",
-			"origin":[0, -12, 0],
-			"rotation":[0, 45, 0],
-			"radius":8,
+			"rotation":[30, 0, 0],
+			"direct":[2, 2, 2],
+			"radius":5,
 			"angle":1.5,
 			"texture":"nothing",
 			"color":[255, 255, 255]
