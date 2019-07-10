@@ -33,11 +33,12 @@
 			"origin":[-8, 0, 0],
 			"color":[255, 255, 255],
 			"reflection":0.5,
-			"rotation":[0, 0, 90]
+			"rotation":[0, 0, -90]
 		},
 		{
 			"name":"plan",
 			"origin":[0, 8, 0],
+			"rotation":[0, 0, 180],
 			"reflection":0.5,
 			"color":[255, 255, 255]
 		},
@@ -51,7 +52,7 @@
 		{
 			"name":"plan",
 			"origin":[0, 0, 8],
-			"rotation":[90, 0, 0],
+			"rotation":[-90, 0, 0],
 			"reflection":0.5,
 			"color":[255, 255, 255]
 		}]

@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "pars.h"
 #include "libft.h"
 
 void		*set_cutoff_lum(t_lum *light, t_token **token)
 {
-	light->cutoff = pars_double(token);
+	light->cutoff = cos(pars_double(token) / 180.0 * M_PI);
 	if (light->fields[LUMCUT])
 		print_warning("redifinition of CutOff field");
 	light->fields[LUMCUT] = 1;
@@ -24,7 +25,7 @@ void		*set_cutoff_lum(t_lum *light, t_token **token)
 
 void		*set_outercutoff_lum(t_lum *light, t_token **token)
 {
-	light->outercutoff = pars_double(token);
+	light->outercutoff = cos(pars_double(token) / 180.0 * M_PI);
 	if (light->fields[LUMOUT])
 		print_warning("redifinition of Outercutoff field");
 	light->fields[LUMOUT] = 1;

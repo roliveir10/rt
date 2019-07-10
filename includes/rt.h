@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-# define SCREENX 1440
-# define SCREENY 860
+# define SCREENX 2080
+# define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
 # define NBR_TEXT 1
@@ -133,10 +133,10 @@ typedef struct			s_lum
 	t_ltype				type;
 	char				fields[NB_FIELDS_LUM];
 	double				cutoff;
+	double				outercutoff;
 	double				constant;
 	double				linear;
 	double				quadratic;
-	double				outercutoff;
 }						t_lum;
 
 typedef	struct			s_ray

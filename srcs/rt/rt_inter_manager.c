@@ -51,15 +51,12 @@ static void			rt_getinter_data(t_env *env, t_inter *inter, t_vector vdir)
 	inter->viewdir = ft_vmul(vdir, -1);
 	inter->blinn = env->scene.blinn;
 	if (env->form[inter->id].iref > 0)
-	{
 		inter->refdir = rt_get_refdir(inter->norm, vdir, ndoti);
-		inter->kr = rt_fresnel(ndoti, *inter, 1);
-	}
-//	if (env->form[inter->id].transparency > 0)
-	if (env->form[inter->id].ftype == SPHERE)
+	if (env->form[inter->id].itpy)
 	{
-		if (inter->kr < 1)
-			inter->refrdir = rt_get_refrdir(1, *inter, ndoti, vdir);
+		if ((inter->kr = rt_fresnel(ndoti, *inter, env->form[inter->id].irefr)) < 1)
+			inter->refrdir = rt_get_refrdir(env->form[inter->id].irefr,
+				*inter, ndoti, vdir);
 	}
 }
 
@@ -76,7 +73,6 @@ static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
 	}
 	return (0);
 }
-// case if only reflection
 
 double				rt_first_inter(t_env *env, t_ray ray_o,
 	t_inter *inter)
@@ -111,7 +107,7 @@ t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 	if (rt_first_inter(env, ray_orig, &inter)  < 0)
 		return (ft_vadd(color, rt_no_inter()));
 	rt_getinter_data(env, &inter, ray_orig.dir);
-	if (env->form[inter.id].ftype == SPHERE && inter.kr < 1)
+	if (env->form[inter.id].itpy && inter.kr < 1)
 	{
 		refr_color = rt_refraction(env, inter, depth);
 		refl_color = rt_reflection(env, inter, depth);

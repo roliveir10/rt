@@ -6,35 +6,23 @@
 	},
 	"camera":
 	{
-		"origin":[0, 0, -55],
+		"origin":[0, 0, -5],
 		"rotation":[-5, 0, 0]
 	},
 	"light":[
 	{
 		"origin":[2, -3, 0],
-		"direct":[0, -3, 2],
+		"direct":[0, 0, 2],
 		"color":[255, 255, 255],
 		"type":"cast"
 	}],
 	"object":[
 		{
-			"name":"sphere",
+			"name":"cone",
 			"origin":[0, -3, 0],
-			"radius":5,
-			"reflection":0.7,
-			"color":[58, 157, 35]
-		},
-		{
-			"name":"sphere",
-			"origin":[8, -5, -7],
-			"radius":3,
-			"reflection":0.7,
-			"color":[157, 35, 59]
-		},
-		{
-			"name":"plan",
-			"origin":[0, -8, 0],
-			"reflection":0.1,
-			"color":[120, 75, 30]
+			"angle":0.5,
+			"material":"jade",
+			"rotation":[10, 0, 10],
+			"color":[255, 255, 255]
 		}]
 }

@@ -31,17 +31,17 @@ t_vector			rt_reflection(t_env *env, t_inter inter, int depth)
 
 t_vector			rt_refraction(t_env *env, t_inter inter, int depth)
 {
-	double			indice;
 	t_ray			ray;
 	t_vector		light;
+	double			tpy;
 
-	indice = 1;
 	light = rt_light_manager(env, inter);
 	if (env->form[inter.id].ftype == SPHERE && depth < DEPTH_MAX)
 	{
-		ray.o = ft_vsub(ft_vmul(inter.norm, 3e-5), inter.pos);
+		tpy = env->form[inter.id].itpy;
+		ray.o = ft_vsub(ft_vmul(inter.norm, 2e-5), inter.pos);
 		ray.dir = inter.refrdir;
-		return ((ft_vadd(ft_vmul(rt_viewdir_inter(env, ray, depth + 1), indice),
+		return ((ft_vadd(ft_vmul(rt_viewdir_inter(env, ray, depth + 1), tpy),
 						light)));
 	}
 	return (light);

@@ -19,14 +19,20 @@
 	"object":[
 		{
 			"name":"sphere",
-			"origin":[0, 4, 10],
-			"radius":5,
+			"origin":[0, 2, -6],
+			"radius":3,
+			"transp":1,
+			"density":1.1,
+			"reflection":1,
 			"color":[58, 157, 35]
 		},
 		{
 			"name":"sphere",
-			"origin":[8, 2, -7],
+			"origin":[8, 2, -6],
 			"radius":3,
+			"transp":1,
+			"density":1.1,
+			"reflection":1,
 			"color":[157, 35, 59]
 		},
 		{
