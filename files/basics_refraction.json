@@ -6,33 +6,39 @@
 	},
 	"camera":
 	{
-		"origin":[0, 0, -50],
-		"rotation":[-5, 0, 0]
+		"origin":[0, 1, -55],
+		"rotation":[-2, 0, 0]
 	},
 	"light":[
 	{
 		"origin":[2, -3, 0],
-		"direct":[2, -3, 0],
+		"direct":[0, -3, 2],
 		"color":[255, 255, 255],
 		"type":"cast"
 	}],
 	"object":[
 		{
 			"name":"sphere",
-			"origin":[0, -3, 0],
-			"radius":5,
+			"origin":[0, 2, -6],
+			"radius":3,
+			"transp":1,
+			"density":1.1,
+			"reflection":1,
 			"color":[58, 157, 35]
 		},
 		{
 			"name":"sphere",
-			"origin":[8, -5, -7],
+			"origin":[8, 2, -6],
 			"radius":3,
+			"transp":1,
+			"density":1.1,
+			"reflection":1,
 			"color":[157, 35, 59]
 		},
 		{
 			"name":"plan",
 			"origin":[0, -8, 0],
-			"reflection":0.7,
+			"reflection":0.2,
 			"color":[120, 75, 30]
 		}]
 }

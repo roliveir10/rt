@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 02:01:40 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/28 10:55:16 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/03 01:08:37 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,23 @@ void		*set_reflection_form(t_form *form, t_token **token)
 	if (form->fields[REFLECT])
 		print_warning("redifinition of Reflection field");
 	form->fields[REFLECT] = 1;
+	return (NULL);
+}
+
+void		*set_transp_form(t_form *form, t_token **token)
+{
+	form->itpy = pars_double(token);
+	if (form->fields[TRANSP])
+		print_warning("redifinition of Reflection field");
+	form->fields[TRANSP] = 1;
+	return (NULL);
+}
+
+void		*set_density_form(t_form *form, t_token **token)
+{
+	form->irefr = pars_double(token);
+	if (form->fields[DENSITY])
+		print_warning("redifinition of Reflection field");
+	form->fields[DENSITY] = 1;
 	return (NULL);
 }

@@ -19,6 +19,7 @@
 		"origin":[-10, -7, 20],
 		"color":[255, 255, 255],
 		"intensity":20,
+		"outercutoff":10.0,
 		"type":"point"
 	},
 	{	

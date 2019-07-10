@@ -20,8 +20,6 @@ t_vector			rt_get_lightdir(t_vector o, t_lum lum)
 	return (ft_vmul(lum.dir, -1));
 }
 
-//a ajouter dans le parsing
-
 double				rt_spotlight(t_vector pos, t_lum lum)
 {
 	double			theta;
@@ -29,11 +27,12 @@ double				rt_spotlight(t_vector pos, t_lum lum)
 
 	if (lum.type == LSPOT)
 	{
-		lum.cutoff = cos(0.0 / 180.0 * M_PI);
-		epsilon = lum.cutoff - cos(15.0 / 180.0 * M_PI);
+		epsilon = lum.cutoff - lum.outercutoff;
+		if (!epsilon)
+			return (0);
 		theta = ft_dot(rt_get_lightdir(pos, lum),
 				ft_vmul(ft_normalize(lum.dir), -1));
-		return (ft_clamp((theta - cos(15.0 / 180.0 * M_PI)) / epsilon, 0, 1));
+		return (ft_clamp((theta - lum.outercutoff) / epsilon, 0, 1));
 	}
 	return (1);
 }

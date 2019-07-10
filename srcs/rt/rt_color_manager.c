@@ -33,7 +33,7 @@ t_vector		rt_get_color(t_lum lum, t_inter inter, t_material mat)
 
 	angle = ft_dot(inter.norm, inter.lightdir);
 	ft_bzero(&color, sizeof(t_vector));
-	if (angle > -1e-2)
+	if (angle > 0)
 	{
 		attenuation = rt_attenuation(lum, ft_vdist(lum.pos, inter.pos));
 		s_atte = 1;
