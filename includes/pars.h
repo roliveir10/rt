@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:15:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/10 14:44:33 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/10 14:57:50 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,9 @@ typedef enum		e_fields
 	REFLECT,
 	TCOLOR,
 	MIN,
-	MAX
+	MAX,
+	TRANSP,
+	DENSITY
 }					t_fields;
 
 typedef enum		e_fields_lum
@@ -122,7 +124,8 @@ typedef enum		e_fields_lum
 	LUMCOLOR,
 	LUMTYPE,
 	LUMINT,
-	LUMCUT
+	LUMCUT,
+	LUMOUT
 }					t_fields_lum;
 
 typedef struct		s_pile
@@ -217,6 +220,10 @@ void				*set_name_form(t_form *form, t_token **token);
 void				*set_tcolor_form(t_form *lum, t_token **token);
 void				*set_texture_form(t_form *form, t_token **token);
 void				*set_atexture_form(t_form *form, t_token **token);
+void				*set_recurrence_form(t_form *form, t_token **token);
+void				*set_reflection_form(t_form *form, t_token **token);
+void				*set_transp_form(t_form *form, t_token **token);
+void				*set_density_form(t_form *form, t_token **token);
 void				*set_scale_form(t_form *form, t_token **token);
 void				*set_origin_lum(t_lum *lum, t_token **token);
 void				*set_direct_lum(t_lum *lum, t_token **token);
@@ -228,5 +235,6 @@ void				*set_reflection_form(t_form *form, t_token **token);
 void				*set_recurrence_form(t_form *form, t_token **token);
 void				*set_min_form(t_form *form, t_token **token);
 void				*set_max_form(t_form *form, t_token **token);
+void				*set_outercutoff_lum(t_lum *lum, t_token **token);
 
 #endif

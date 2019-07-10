@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/06 12:47:14 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/10 15:02:39 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define NBR_KEY_REPEAT 11
 # define NBR_MKEY 2
 # define PIX 32
-# define DEPTH_MAX 8
+# define DEPTH_MAX 10
 
 /*
 ** ENUM
@@ -131,6 +131,7 @@ typedef struct			s_inter
 	t_vector			lightdir;
 	t_vector			refdir;
 	t_vector			refrdir;
+	double				kr;
 	char				blinn;
 	int					id;
 }						t_inter;
@@ -143,7 +144,7 @@ typedef struct			s_material
 	float				shininess;
 }						t_material;
 
-# define NB_FIELDS_LUM 6
+# define NB_FIELDS_LUM 7
 
 typedef struct			s_texture
 {
@@ -173,10 +174,10 @@ typedef struct			s_lum
 	t_ltype				type;
 	char				fields[NB_FIELDS_LUM];
 	double				cutoff;
+	double				outercutoff;
 	double				constant;
 	double				linear;
 	double				quadratic;
-	double				outercutoff;
 }						t_lum;
 
 typedef	struct			s_ray
@@ -196,7 +197,7 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
-# define NB_FIELDS 16
+# define NB_FIELDS 18
 # define NBR_VECTOR_FORM 5
 
 typedef struct			s_form
@@ -296,8 +297,11 @@ t_vector				rt_ambient(t_vector light, t_material mat,
 double					rt_attenuation(t_lum lum, double dist);
 t_vector				rt_get_lightdir(t_vector o, t_lum lum);
 double					rt_spotlight(t_vector pos, t_lum lum);
-t_vector				rt_get_refdir(t_vector normal, t_vector dir);
-t_vector				rt_get_refrdir(double n1, double n2, t_inter inter);
+t_vector				rt_get_refdir(t_vector normal, t_vector dir,
+		double ndoti);
+t_vector				rt_get_refrdir(double n2, t_inter inter, double ndoti,
+		t_vector vdir);
+double					rt_fresnel(double idir, t_inter inter, double n2);
 
 /*
 ** color
