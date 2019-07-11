@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 10:30:06 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/29 05:04:11 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/11 14:29:55 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,14 @@ t_vector			rt_get_refrdir(double n2, t_inter inter, double c1,
 				ft_vmul(inter.norm, n * c1 - sqrt(c2))));
 }
 
-double				rt_fresnel(double ndoti, t_inter inter, double n2)
+double				rt_fresnel(double ndoti, double n2)
 {
 	double			n1;
 	double			tmp;
 	double			sint;
+	double			cost;
+	double			r[2];
 
-	(void)inter;
 	n1 = 1;
 	if (ndoti > 0)
 	{
@@ -88,11 +89,10 @@ double				rt_fresnel(double ndoti, t_inter inter, double n2)
 		return (1);
 	else
 	{
-		double cost = sqrt(1 - pow(sint, 2));
+		cost = sqrt(1 - pow(sint, 2));
 		ndoti = fabs(ndoti);
-		double Rs = ((n2 * ndoti) - (n1 * cost)) / ((n2 * ndoti) + (n1 * cost));
-		double Rp = ((n1 * ndoti) - (n2 * cost)) / ((n1 * ndoti) + (n2 * cost));
-		return ((pow(Rs, 2) + pow(Rp, 2)) / 2.0);
+		r[0] = ((n2 * ndoti) - (n1 * cost)) / ((n2 * ndoti) + (n1 * cost));
+		r[1] = ((n1 * ndoti) - (n2 * cost)) / ((n1 * ndoti) + (n2 * cost));
+		return ((pow(r[0], 2) + pow(r[1], 2)) / 2.0);
 	}
-
 }

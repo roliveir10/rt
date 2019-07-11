@@ -64,10 +64,10 @@ t_vector				rt_get_normal(t_vector pos, t_form form, t_vector vdir)
 	// if (form.texture.bump.type == BCOS)
 	// 	rt_bump_cos(&bump, pos);
 	// else if (form.texture.bump.type == BWATER)
-	//	rt_bump_water(&bump, pos);
+		rt_bump_water(&bump, pos);
 	// else if (form.texture.bump.type == BIDK)
-	// 	rt_bump_idk(&bump, pos);
-	// if (ft_dot(bump, vdir) > 0)
-	// 	bump = ft_vmul(bump, -1);
+		// rt_bump_idk(&bump, pos);
+	if (ft_dot(bump, vdir) > 0)
+		bump = ft_vmul(bump, -1);
 	return (ft_normalize(ft_vadd(func[form.ftype](pos, form), bump)));
 }

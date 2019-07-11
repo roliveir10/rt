@@ -6,22 +6,19 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:28:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/10 14:54:57 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 14:29:57 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static t_vector		rt_no_inter(void)
+double				rt_selectf(t_ftype ftype, t_ray *ray, t_form form)
 {
-	t_vector		color_black;
-	t_vector		color_sky;
+	static double	(*func[NBR_FORM])(t_ray, t_form) = {
+		rt_sphere, rt_plan, rt_cylindre, rt_cone, rt_torus, rt_hyperbol,
+		rt_cubet};
 
-	ft_bzero(&color_black, sizeof(t_vector));
-	color_sky.x = 135.0 / 255.0;
-	color_sky.y = 206.0 / 255.0;
-	color_sky.z = 235.0 / 255.0;
-	return (color_sky);
+	return (func[ftype](*ray, form));
 }
 
 double				rt_inter(t_ftype ftype, t_ray *ray, t_form form)
@@ -54,13 +51,14 @@ static void			rt_getinter_data(t_env *env, t_inter *inter, t_vector vdir)
 		inter->refdir = rt_get_refdir(inter->norm, vdir, ndoti);
 	if (env->form[inter->id].itpy)
 	{
-		if ((inter->kr = rt_fresnel(ndoti, *inter, env->form[inter->id].irefr)) < 1)
+		if ((inter->kr = rt_fresnel(ndoti, env->form[inter->id].irefr))
+				< 1)
 			inter->refrdir = rt_get_refrdir(env->form[inter->id].irefr,
 				*inter, ndoti, vdir);
 	}
 }
 
-static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
+int					rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
 		double *min)
 {
 	double			dist;
@@ -74,27 +72,6 @@ static int			rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
 	return (0);
 }
 
-double				rt_first_inter(t_env *env, t_ray ray_o,
-	t_inter *inter)
-{
-	int			i;
-	double			min;
-	t_ray			ray;
-
-	i = -1;
-	min = -1.0;
-	while (++i < env->nbr_form)
-	{
-		ray = ray_o;
-		if (rt_shape_inter(env, &i, &ray, &min))
-		{
-			inter->id = i;
-			inter->pos = rt_get_posinter(ray, min);
-		}
-	}
-	return (min);
-}
-
 t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 {
 	t_inter			inter;
@@ -104,7 +81,7 @@ t_vector			rt_viewdir_inter(t_env *env, t_ray ray_orig, int depth)
 
 	ft_bzero(&inter, sizeof(t_inter));
 	ft_bzero(&color, sizeof(t_vector));
-	if (rt_first_inter(env, ray_orig, &inter)  < 0)
+	if (rt_first_inter(env, ray_orig, &inter) < 0)
 		return (ft_vadd(color, rt_no_inter()));
 	rt_getinter_data(env, &inter, ray_orig.dir);
 	if (env->form[inter.id].itpy && inter.kr < 1)
