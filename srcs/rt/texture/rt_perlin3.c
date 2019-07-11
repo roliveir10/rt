@@ -12,14 +12,18 @@
 
 #include "rt.h"
 
-float			rt_grad3( int hash,  float x, float y , float z ) {
+float			rt_grad3(int hash, float x, float y, float z)
+{
 	int		h;
 	float	u;
 	float	v;
 
 	h = hash & 15;
 	u = h < 8 ? x : y;
-	v = h < 4 ? y : h == 12 || h == 14 ? x : z;
+	if (h < 4)
+		v = y;
+	else
+		v = h == 12 || h == 14 ? x : z;
 	return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
 }
 
@@ -40,30 +44,36 @@ void			rt_init_noise3(float x, float y, float z, t_perlin *perl)
 	perl->ix0 = perl->ix0 & 0xff;
 	perl->iy0 = perl->iy0 & 0xff;
 	perl->iz0 = perl->iz0 & 0xff;
-	
-	perl->r = rt_fade( perl->fz0 );
-	perl->t = rt_fade( perl->fy0 );
-	perl->s = rt_fade( perl->fx0 );
+	perl->r = rt_fade(perl->fz0);
+	perl->t = rt_fade(perl->fy0);
+	perl->s = rt_fade(perl->fx0);
 }
 
 float			rt_noise3(float x, float y, float z)
 {
-	t_perlin    perl;
+	t_perlin		perl;
 
 	rt_init_noise3(x, y, z, &perl);
-	perl.nxy0 = rt_grad3(rt_perm(perl.ix0 + rt_perm(perl.iy0 + rt_perm(perl.iz0))), perl.fx0, perl.fy0, perl.fz0);
-	perl.nxy1 = rt_grad3(rt_perm(perl.ix0 + rt_perm(perl.iy0 + rt_perm(perl.iz1))), perl.fx0, perl.fy0, perl.fz1);
-	perl.nx0 = rt_lerp( perl.r, perl.nxy0, perl.nxy1 );
-	perl.nxy0 = rt_grad3(rt_perm(perl.ix0 + rt_perm(perl.iy1 + rt_perm(perl.iz0))), perl.fx0, perl.fy1, perl.fz0);
-	perl.nxy1 = rt_grad3(rt_perm(perl.ix0 + rt_perm(perl.iy1 + rt_perm(perl.iz1))), perl.fx0, perl.fy1, perl.fz1);
-	perl.nx1 = rt_lerp( perl.r, perl.nxy0, perl.nxy1 );
-	perl.n0 = rt_lerp( perl.t, perl.nx0, perl.nx1 );
-	perl.nxy0 = rt_grad3(rt_perm(perl.ix1 + rt_perm(perl.iy0 + rt_perm(perl.iz0))), perl.fx1, perl.fy0, perl.fz0);
-	perl.nxy1 = rt_grad3(rt_perm(perl.ix1 + rt_perm(perl.iy0 + rt_perm(perl.iz1))), perl.fx1, perl.fy0, perl.fz1);
-	perl.nx0 = rt_lerp( perl.r, perl.nxy0, perl.nxy1 );
-	perl.nxy0 = rt_grad3(rt_perm(perl.ix1 + rt_perm(perl.iy1 + rt_perm(perl.iz0))), perl.fx1, perl.fy1, perl.fz0);
-	perl.nxy1 = rt_grad3(rt_perm(perl.ix1 + rt_perm(perl.iy1 + rt_perm(perl.iz1))), perl.fx1, perl.fy1, perl.fz1);
+	perl.nxy0 = rt_grad3(rt_perm(perl.ix0 + rt_perm(perl.iy0
+		+ rt_perm(perl.iz0))), perl.fx0, perl.fy0, perl.fz0);
+	perl.nxy1 = rt_grad3(rt_perm(perl.ix0 + rt_perm(perl.iy0
+		+ rt_perm(perl.iz1))), perl.fx0, perl.fy0, perl.fz1);
+	perl.nx0 = rt_lerp(perl.r, perl.nxy0, perl.nxy1);
+	perl.nxy0 = rt_grad3(rt_perm(perl.ix0 + rt_perm(perl.iy1
+		+ rt_perm(perl.iz0))), perl.fx0, perl.fy1, perl.fz0);
+	perl.nxy1 = rt_grad3(rt_perm(perl.ix0 + rt_perm(perl.iy1
+		+ rt_perm(perl.iz1))), perl.fx0, perl.fy1, perl.fz1);
 	perl.nx1 = rt_lerp(perl.r, perl.nxy0, perl.nxy1);
-	perl.n1 = rt_lerp(perl.t, perl.nx0, perl.nx1);
+	perl.n0 = rt_lerp(perl.t, perl.nx0, perl.nx1);
+	perl.nxy0 = rt_grad3(rt_perm(perl.ix1 + rt_perm(perl.iy0
+		+ rt_perm(perl.iz0))), perl.fx1, perl.fy0, perl.fz0);
+	perl.nxy1 = rt_grad3(rt_perm(perl.ix1 + rt_perm(perl.iy0
+		+ rt_perm(perl.iz1))), perl.fx1, perl.fy0, perl.fz1);
+	perl.nx0 = rt_lerp(perl.r, perl.nxy0, perl.nxy1);
+	perl.nxy0 = rt_grad3(rt_perm(perl.ix1 + rt_perm(perl.iy1
+		+ rt_perm(perl.iz0))), perl.fx1, perl.fy1, perl.fz0);
+	perl.nxy1 = rt_grad3(rt_perm(perl.ix1 + rt_perm(perl.iy1
+		+ rt_perm(perl.iz1))), perl.fx1, perl.fy1, perl.fz1);
+	perl.n1 = rt_lerp(perl.t, perl.nx0, rt_lerp(perl.r, perl.nxy0, perl.nxy1));
 	return (0.936f * (rt_lerp(perl.s, perl.n0, perl.n1)));
 }

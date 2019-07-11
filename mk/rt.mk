@@ -37,7 +37,8 @@ RT = rt_main.c						\
 	 texture/rt_perlin2.c			\
 	 texture/rt_perlin3_utils.c		\
 	 texture/rt_perlin3.c			\
-	 texture/rt_proc_perlin.c
+	 texture/rt_proc_perlin.c		\
+	 texture/rt_bump.c
 
 RT_SRCS = $(addprefix $(RT_PATH),$(RT))
 SRCS += $(RT_SRCS)

@@ -2,7 +2,7 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0.05
+		"ambient":0.0
 	},
 	"camera":
 	{
@@ -40,8 +40,7 @@
 		{
 			"name":"plan",
 			"origin":[0, -8, 0],
-			"texture":"marble",
 			"reflection":0.0,
-			"color":[0, 0, 0]
+			"color":[255, 120,255]
 		}]
 }

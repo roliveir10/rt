@@ -18,13 +18,13 @@
 t_vector			rt_perlinval(float u, float v, t_texture text)
 {
 	// if (text.perlin == PMARBLE)
-		// return (rt_perlin_marble(u, v, text));
+		return (rt_perlin_marble(u, v, text));
 	// else if (text.perlin == PLAVA)
 		// return (rt_perlin_lava(u, v, text));
 	// else if (text.perlin == PSAND)
 		// return (rt_perlin_sand(u, v, text));
 	// else if (text.perlin == PWOOD)
-		return (rt_perlin_wood(u, v, text));
+		// return (rt_perlin_wood(u, v, text));
 	return ((t_vector) {1, 1, 1});
 }
 
@@ -56,10 +56,10 @@ t_vector			rt_perlin_plan(t_vector normal, t_vector intercolor,
 		uv_axis[0] = ft_vrotate(ft_normalize((t_vector) {normal.y,
 			normal.x, 0}), env->form[inter->id].mat[i]);
 	uv_axis[1] = ft_cross(normal, uv_axis[0]);
-	uv_coord[0] = ft_dot(uv_axis[0], inter->pos) /
-		env->form[inter->id].texture.scale;
-	uv_coord[1] = ft_dot(uv_axis[1], inter->pos) /
-		env->form[inter->id].texture.scale;
+	uv_coord[0] = ft_dot(uv_axis[0], inter->pos)
+		/ env->form[inter->id].texture.scale;
+	uv_coord[1] = ft_dot(uv_axis[1], inter->pos)
+		/ env->form[inter->id].texture.scale;
 	intercolor = rt_perlinval(uv_coord[0], uv_coord[1],
 		env->form[inter->id].texture);
 	return (intercolor);

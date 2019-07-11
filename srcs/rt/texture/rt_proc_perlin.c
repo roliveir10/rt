@@ -16,11 +16,14 @@
 t_vector			rt_perlin_marble(float u, float v, t_texture text)
 {
 	double		perl;
+	t_vector	c[2];
 
 	(void)text;
 	perl = 1 - sqrt(fabs(cos(2 * M_PI *
 		rt_perlin2d(u, v, 5, 4/*text->freq, text->depth*/))));
-	return ((t_vector) {1 - perl, 1 - perl, 1 - perl});
+	c[0] = (t_vector) {0.15, 0.15, 0.15}; // palette de couleur
+	c[1] = (t_vector) {1, 1, 1};
+	return (ft_vadd(ft_vmul(c[1], 1 - perl), ft_vmul(c[0], perl)));
 }
 
 t_vector			rt_perlin_lava(float u, float v, t_texture text)
@@ -44,21 +47,17 @@ t_vector			rt_perlin_sand(float u, float v, t_texture text)
 
 t_vector			rt_perlin_wood(float u, float v, t_texture text)
 {
-	double		perl;
-	double		value;
-	t_vector	c1;
-	t_vector	c2;
-	t_vector	color;
+	double		n;
+	double		ft;
+	double		f;
+	t_vector	c[2];
 
 	(void)text;
-	c1 = (t_vector) {1.0, 0.99, 0.98};
-	c2 = (t_vector) {0.2, 0.12, 0.02};
-	value = fmod(rt_perlin2d(u, v, 5, 4), 0.1);
-	if (value > 0.05)
-		value = 0.1 - value;
-	perl = (1 - cos(M_PI * value / (0.05))) / 2;
-	color.x = (c1.x * (1 - perl) + c2.x * perl);
-	color.y = (c1.y * (1 - perl) + c2.y * perl);
-	color.z = (c1.z * (1 - perl) + c2.z * perl);
-	return (color);
+	c[0] = (t_vector) {0.8, 0.6, 0.25}; // palette de couleur
+	c[1] = (t_vector) {0.34, 0.176, 0.035};
+	n = 20 * rt_perlin2d(u, v, 5, 4);
+	n -= floor(n);
+	ft = n * M_PI;
+	f = (1 - cos(ft)) / 2;
+	return (ft_vadd(ft_vmul(c[0], 1 - f), ft_vmul(c[1], f)));
 }

@@ -404,5 +404,10 @@ t_vector				rt_perlin_lava(float u, float v, t_texture text);
 t_vector				rt_perlin_sand(float u, float v, t_texture text);
 t_vector				rt_perlin_wood(float u, float v, t_texture text);
 
+/*
+** bump mapping
+*/
+
+void					rt_bump_mapping(t_vector *bump, t_vector pos);
 
 #endif

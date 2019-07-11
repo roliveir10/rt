@@ -2,7 +2,7 @@
 	"scene":
 	{
 		"specular":0,
-		"ambient":0.1
+		"ambient":0.0
 	},
 	"camera":
 	{
@@ -17,31 +17,29 @@
 		"type":"cast"
 	}],
 	"object":[
-		{
-			"name":"sphere",
-			"origin":[0, -3, 0],
-			"radius":5,
-			"color":[58, 157, 35]
-		},
-		{
-			"name":"sphere",
-			"origin":[3, -5, -7],
-			"radius":3,
-			"color":[157, 35, 59]
-        },
-        {
-			"name":"sphere",
-			"origin":[22, -1, -7],
-            "radius":7,
-            "texture":"dayearth",
-			"color":[157, 35, 59]
-		},
-		{
-			"name":"plan",
-			"origin":[0, -8, 0],
-            "texture":"checkerboard",
-			"reflection":0.4,
-			"color":[200, 200, 200],
-			"tilscolor":[180, 100, 120]
-		}]
+	{
+		"name":"sphere",
+		"origin":[0, -3, 0],
+		"radius":5,
+		"color":[58, 157, 35]
+	},
+	{
+		"name":"sphere",
+		"origin":[3, -5, -7],
+		"radius":3,
+		"color":[157, 35, 59]
+	},
+	{
+		"name":"sphere",
+		"origin":[22, -1, -7],
+		"radius":7,
+		"texture":"dayearth",
+		"color":[157, 35, 59]
+	},
+	{
+		"name":"plan",
+		"origin":[0, -8, 0],
+		"reflection":0.1,
+		"color":[0, 119, 190]
+	}]
 }
