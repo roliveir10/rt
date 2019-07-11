@@ -6,7 +6,7 @@
 /*   By: mmoussa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 18:25:07 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/06/25 18:25:09 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/11 18:57:37 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			rt_init_texture(t_env *env)
 	i = -1;
 	while (++i < env->nbr_form)
 		if (env->form[i].texture.type != TCHECKER
-			&& env->form[i].texture.type != TPERLIN
+			&& env->form[i].texture.type < PWOOD
 			&& env->form[i].texture.type != TNOTHING)
 			rt_load_texture(env, i);
 }
@@ -74,7 +74,7 @@ void			rt_get_texture(t_env *env, t_texture texture, t_vector normal,
 	if (texture.type == TCHECKER)
 		inter->color = ft_vadd(inter->color,
 			(rt_tchecker(normal, inter->color, env, inter)));
-	else if (texture.type == TPERLIN)
+	else if (texture.type >= PWOOD)
 		inter->color = ft_vadd(inter->color,
 			(rt_tperlin(normal, inter->color, env, inter)));
 	else if (texture.type != TNOTHING)

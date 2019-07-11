@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/11 18:02:54 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 19:05:38 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define NBR_KEY_REPEAT 11
 # define NBR_MKEY 2
 # define PIX 32
-# define DEPTH_MAX 5
+# define DEPTH_MAX 10
 
 /*
 ** ENUM
@@ -117,7 +117,10 @@ typedef enum			e_etexture
 	TWOOD,
 	TPLOT,
 	TBLUR,
-	TPERLIN
+	PWOOD,
+	PMARBLE,
+	PLAVA,
+	PSAND
 }						t_etexture;
 
 /*

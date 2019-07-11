@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 20:42:41 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/10 17:11:53 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 18:15:16 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ t_vector				rt_get_normal(t_vector pos, t_form form, t_vector vdir)
 
 	bump = (t_vector) {0, 0, 0};
 	(void)vdir;
-	// if (form.texture.bump.type == BCOS)
-	// 	rt_bump_cos(&bump, pos);
-	// else if (form.texture.bump.type == BWATER)
+	if (form.texture.bump_type == BCOS)
+		rt_bump_cos(&bump, pos);
+	else if (form.texture.bump_type == BWATER)
 		rt_bump_water(&bump, pos);
-	// else if (form.texture.bump.type == BIDK)
-		// rt_bump_idk(&bump, pos);
+	else if (form.texture.bump_type == BSAND)
+		rt_bump_idk(&bump, pos);
 	if (ft_dot(bump, vdir) > 0)
 		bump = ft_vmul(bump, -1);
 	return (ft_normalize(ft_vadd(func[form.ftype](pos, form), bump)));

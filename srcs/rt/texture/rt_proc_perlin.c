@@ -6,7 +6,7 @@
 /*   By: mmoussa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 15:56:28 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/07/04 15:56:30 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/11 19:05:39 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_vector			rt_perlin_sand(float u, float v, t_texture text)
 	double		perl;
 
 	(void)text;
-	perl = rt_perlin2d(u, v, 1, 4/*text->freq, text->depth*/);
+	perl = rt_perlin2d(u, v, text.pfrequ, text.pdepth);
 	return ((t_vector) {perl, perl, perl});
 }
 
