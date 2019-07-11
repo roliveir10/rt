@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:11:34 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/25 12:43:12 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 19:09:18 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void		init_form(t_form *form, int size)
 {
 	ft_bzero(form, size);
 	form->texture.scale = 10;
+	form->texture.pfrequ = 5;
+	form->texture.pdepth = 4;
+	form->texture.bfrequ = 1;
+	form->texture.bdepth = 0.1;
 	form->ftype = NOTAFORM;
 }
 
