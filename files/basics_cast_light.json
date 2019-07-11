@@ -30,12 +30,13 @@
 		{
 			"name":"plan",
 			"origin":[0, 8, 0],
+			"rotation":[0, 0, 180],
 			"color":[255, 203, 96]
 		},
 		{
 			"name":"plan",
 			"origin":[-8, 0, 0],
-			"rotation":[90, 0, 0],
+			"rotation":[-90, 0, 0],
 			"color":[255, 203, 96]
 		},
 		{

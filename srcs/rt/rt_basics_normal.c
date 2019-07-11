@@ -52,11 +52,22 @@ static t_vector			rt_norm_cone(t_vector pos, t_form form)
 	return (ft_normalize(norm));
 }
 
-t_vector				rt_get_normal(t_vector pos, t_form form)
+t_vector				rt_get_normal(t_vector pos, t_form form, t_vector vdir)
 {
 	static t_vector		(*func[NBR_FORM])(t_vector, t_form) = {
 		rt_norm_sphere, rt_norm_plan, rt_norm_cylindre, rt_norm_cone,
 		rt_norm_torus, rt_norm_hyper, rt_norm_cubet};
+	t_vector			bump;
 
-	return (func[form.ftype](pos, form));
+	bump = (t_vector) {0, 0, 0};
+	(void)vdir;
+	// if (form.texture.bump.type == BCOS)
+	// 	rt_bump_cos(&bump, pos);
+	// else if (form.texture.bump.type == BWATER)
+	//	rt_bump_water(&bump, pos);
+	// else if (form.texture.bump.type == BIDK)
+	// 	rt_bump_idk(&bump, pos);
+	// if (ft_dot(bump, vdir) > 0)
+	// 	bump = ft_vmul(bump, -1);
+	return (ft_normalize(ft_vadd(func[form.ftype](pos, form), bump)));
 }

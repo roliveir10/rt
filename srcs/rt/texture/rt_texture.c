@@ -40,7 +40,10 @@ void			rt_load_texture(t_env *env, int i)
 	char			*pathname;
 
 	if (!(pathname = rt_tpathname(env, i)) ||
-		(fd = open(pathname, O_RDONLY)) < 0)
+		(fd = open(pathname, O_RDONLY)) < 0 ||
+		!(env->form[i].timage.buffer = mlx_xpm_file_to_image(env->mlx.mlx,
+		pathname, &env->form[i].timage.width,
+		&env->form[i].timage.height)))
 	{
 		ft_putendl(pathname);
 		ft_putstr_fd("rt: can not read texture\n", 2);
@@ -48,9 +51,6 @@ void			rt_load_texture(t_env *env, int i)
 		env->form[i].texture.type = TCHECKER;
 		return ;
 	}
-	env->form[i].timage.buffer = mlx_xpm_file_to_image(env->mlx.mlx,
-		pathname, &env->form[i].timage.width,
-		&env->form[i].timage.height);
 	env->form[i].timage.buffer_ptr = mlx_get_data_addr(
 		env->form[i].timage.buffer, &env->mlx.pix, &env->mlx.size_line,
 		&env->mlx.endian);
