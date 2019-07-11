@@ -6,7 +6,7 @@
 /*   By: mmoussa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:37:10 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/07/10 17:32:33 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 18:04:05 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,14 +106,14 @@ t_vector		rt_checker_c(t_vector normal, t_vector intercolor,
 t_vector		rt_tchecker(t_vector normal, t_vector intercolor, t_env *env,
 					t_inter *inter)
 {
-	static int		tftype[NBR_FORM - 4] = {SPHERE, PLAN, CYLINDRE, CONE};
-	static t_vector	(*func[NBR_FORM - 4])(t_vector, t_vector, t_inter*,
+	static int		tftype[NBR_FORM_TEXT] = {SPHERE, PLAN, CYLINDRE, CONE};
+	static t_vector	(*func[NBR_FORM_TEXT])(t_vector, t_vector, t_inter*,
 		t_env*) = {rt_checker_sphere, rt_checker_plan,
 		rt_checker_c, rt_checker_c};
 	int				i;
 
 	i = -1;
-	while (++i < NBR_FORM)
+	while (++i < NBR_FORM_TEXT)
 	{
 		if (env->form[inter->id].ftype == tftype[i])
 			intercolor = func[i](normal, intercolor, inter, env);

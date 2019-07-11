@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/11 17:52:59 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 18:02:54 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define NBR_TEXT 17
 # define NBR_FORM 9
+# define NBR_FORM_TEXT 4
 # define NBR_BUMP 4
 # define NBR_FORM_COMP 2
 # define NBR_THREAD 4

@@ -6,7 +6,7 @@
 /*   By: mmoussa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 14:06:56 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/07/01 14:06:58 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/11 18:05:28 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ t_vector			rt_perlin_cylindre(t_vector normal, t_vector intercolor,
 t_vector			rt_tperlin(t_vector normal, t_vector intercolor, t_env *env,
 						t_inter *inter)
 {
-	static int		tftype[NBR_FORM] = {SPHERE, PLAN, CYLINDRE, CONE};
-	static t_vector	(*func[NBR_FORM])(t_vector, t_vector, t_inter*,
+	static int		tftype[NBR_FORM_TEXT] = {SPHERE, PLAN, CYLINDRE, CONE};
+	static t_vector	(*func[NBR_FORM_TEXT])(t_vector, t_vector, t_inter*,
 		t_env*) = {rt_perlin_sphere, rt_perlin_plan,
 		rt_perlin_cylindre, rt_perlin_cylindre};
 	int				i;
 
 	i = -1;
-	while (++i < NBR_FORM)
+	while (++i < NBR_FORM_TEXT)
 		if (env->form[inter->id].ftype == tftype[i])
 			intercolor = func[i](normal, intercolor, inter, env);
 	return (intercolor);

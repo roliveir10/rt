@@ -6,7 +6,7 @@
 /*   By: mmoussa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 18:02:56 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/07/02 17:47:56 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/11 18:05:17 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,14 @@ t_vector			rt_map_cylindre(t_vector normal, t_vector intercolor,
 t_vector			rt_tmap(t_vector normal, t_vector intercolor, t_env *env,
 						t_inter *inter)
 {
-	static int		tftype[NBR_FORM] = {SPHERE, PLAN, CYLINDRE, CONE};
-	static t_vector	(*func[NBR_FORM])(t_vector, t_vector, t_inter*,
+	static int		tftype[NBR_FORM_TEXT] = {SPHERE, PLAN, CYLINDRE, CONE};
+	static t_vector	(*func[NBR_FORM_TEXT])(t_vector, t_vector, t_inter*,
 		t_env*) = {rt_map_sphere, rt_map_plan,
 		rt_map_cylindre, rt_map_cylindre};
 	int				i;
 
 	i = -1;
-	while (++i < NBR_FORM)
+	while (++i < NBR_FORM_TEXT)
 		if (env->form[inter->id].ftype == tftype[i])
 			intercolor = func[i](normal, intercolor, inter, env);
 	return (intercolor);
