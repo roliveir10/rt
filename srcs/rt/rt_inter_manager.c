@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 11:28:08 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/11 14:29:57 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/11 17:53:28 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double				rt_selectf(t_ftype ftype, t_ray *ray, t_form form)
 {
-	static double	(*func[NBR_FORM])(t_ray, t_form) = {
+	static double	(*func[NBR_FORM - 2])(t_ray, t_form) = {
 		rt_sphere, rt_plan, rt_cylindre, rt_cone, rt_torus, rt_hyperbol,
 		rt_cubet};
 

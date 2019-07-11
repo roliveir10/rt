@@ -1,0 +1,49 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":1
+	},
+	"camera":
+	{
+		"origin":[30, 30, -40],
+		"rotation":[-40, 0, 10]
+	},
+	"light":[
+	{
+		"origin":[-30, 0, 10],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"type":"point"
+	},
+	{
+		"origin":[-10, -10, 20],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"outercutoff":10.0,
+		"type":"point"
+	},
+	{	
+		"origin":[50, 20, 30],
+		"color":[255, 255, 255],
+		"intensity":20,
+		"type":"point"
+	},
+
+	{
+		"origin":[20, 20, 20],
+		"color":[255, 180, 150],
+		"intensity":40,
+		"type":"point"
+
+	}],
+	"object":[
+		{
+			"name":"cube",
+			"origin":[0, 0, 0],
+			"rotation":[45, 0, 0],
+			"radius":10,
+			"material":"obsidian",
+			"color":[100, 200, 200]
+		}]
+}
