@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/10 15:02:39 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 14:29:58 by roliveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,6 +255,10 @@ void					rt_delenv(t_env *env);
 **	shapes
 */
 
+t_vector				rt_no_inter(void);
+double					rt_first_inter(t_env *env, t_ray ray_o, t_inter *inter);
+int						rt_shape_inter(t_env *env, int *indsh, t_ray *ray,
+		double *min);
 t_vector				rt_viewdir_inter(t_env *env, t_ray ray, int depth);
 double					rt_sphere(t_ray ray, t_form form);
 double					rt_torus(t_ray ray, t_form form);
@@ -279,7 +283,6 @@ double					rt_selectf(t_ftype ftype, t_ray *ray, t_form form);
 int						rt_print(void *param);
 void					rt_thread(void *env, void *(func)(void*));
 void					rt_add_pixel(t_env *env, t_vector color, int pos);
-int						rt_antialiasing(t_env *env);
 t_vector				rt_reflection(t_env *env, t_inter inter, int depth);
 t_vector				rt_refraction(t_env *env, t_inter inter, int depth);
 
@@ -301,7 +304,7 @@ t_vector				rt_get_refdir(t_vector normal, t_vector dir,
 		double ndoti);
 t_vector				rt_get_refrdir(double n2, t_inter inter, double ndoti,
 		t_vector vdir);
-double					rt_fresnel(double idir, t_inter inter, double n2);
+double					rt_fresnel(double idir, double n2);
 
 /*
 ** color
