@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 17:41:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/06 12:47:18 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/10 15:32:23 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int				pars_name(t_token **token)
 	int			k;
 	static char	*lst[NBR_FORM] = {"\"sphere\"", "\"plan\"",
 		"\"cylindre\"", "\"cone\"", "\"torus\"", "\"hyperbol\"",
-		"\"cubetroue\""};
+		"\"cubetroue\"", "\"verre\"", "\"cube\""};
 
 	if (!(name = ft_strdup((*token)->word)))
 		return (NOTAFORM);

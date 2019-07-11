@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 02:35:09 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 07:16:45 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 17:04:48 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		print_no_field(char *field, char *elmt, char *type)
 
 char	*get_name(int k)
 {
-	static char	*names[NBR_FORM] = {"Sphere", "Plan", "Cylindre", "Cone"};
+	static char	*names[NBR_FORM] = {"Sphere", "Plan", "Cylindre", "Cone",
+	   "Torus", "Hyperbol", "cubetroue", "verre", "cube"};
 
 	if (k < 0 || k >= NBR_FORM)
 		return ("Undefine Form");
@@ -48,18 +49,23 @@ int		pars_check_form(t_form form)
 {
 	int			k;
 	int			ret;
-	static int	mat[NBR_FORM][NB_FIELDS] = {
-		{SPHERE, 1, 0, 0, 1, 0, 0, 1, 2},
-		{PLAN, 1, 0, 0, 0, 0, 0, 1, 2},
-		{CYLINDRE, 1, 0, 0, 1, 0, 0, 1, 2},
-		{CONE, 1, 0, 0, 0, 0, 1, 1, 2}};
+	static int	mat[4][NB_FIELDS] = {
+		{SPHERE, 3, NAME, ORIGIN, RADIUS},
+		{PLAN, 2, NAME, ORIGIN},
+		{CYLINDRE, 3, NAME, ORIGIN, RADIUS},
+		{CONE, 3, NAME, ORIGIN, ANGLE}};
 
-	k = 0;
+	k = 1;
 	ret = 0;
-	while (++k < NB_FIELDS)
+	if (!form.fields[NAME])
+		return (print_no_field("name", "undefine", "form"));
+	if (form.ftype > 3)
+		return (0);
+	while (++k < mat[form.ftype][1] + 2)
 	{
-		if (!form.fields[k] && mat[form.ftype][k] == 1)
-			ret = print_no_field(get_field(k), get_name(form.ftype), "form");
+		if (!form.fields[mat[form.ftype][k]])
+			ret = print_no_field(get_field(mat[form.ftype][k]),
+					get_name(form.ftype), "form");
 	}
 	if (ret)
 		ft_putstr_fd("rt: Warning: Dropping form\n", 2);

@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 23:39:23 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/06/26 06:14:41 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 17:04:52 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@ t_lstform		*new_form(t_form form)
 {
 	t_lstform	*new;
 
-	if (!(new = (t_lstform*)ft_memalloc(sizeof(t_lstform))))
-		return (NULL);
-	new->form = form;
+	if (form.ftype == CUBE)
+		new = comp_cube(form);
+	else
+	{
+		if (!(new = (t_lstform*)ft_memalloc(sizeof(t_lstform))))
+			return (NULL);
+		new->form = form;
+	}
 	return (new);
 }
 

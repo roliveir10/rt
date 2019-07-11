@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/10 15:02:39 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 17:48:07 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 # define SCREENY 1170
 # define SCREEN SCREENX * SCREENY
 
-# define NBR_TEXT 14
-# define NBR_FORM 7
+# define NBR_TEXT 17
+# define NBR_FORM 9
+# define NBR_BUMP 4
+# define NBR_FORM_COMP 2
 # define NBR_THREAD 4
 # define NBR_MATERIAL 12
 # define NBR_KEY 13
@@ -73,8 +75,18 @@ typedef enum			e_ftype
 	TORUS,
 	HYPER,
 	CUBET,
+	VERRE,
+	CUBE,
 	NOTAFORM
 }						t_ftype;
+
+typedef enum			e_bump
+{
+	BNOTHING,
+	BWATER,
+	BCOS,
+	BSAND
+}						t_bump;
 
 typedef enum			e_ltype
 {
@@ -152,6 +164,13 @@ typedef struct			s_texture
 	double				atexture;
 	int					scale;
 	int					type;
+	double				pdepth;
+	double				bdepth;
+	double				offsetx;
+	double				offsety;
+	double				bfrequ;
+	double				pfrequ;
+	t_bump				bump_type;
 	double				x;
 	double				y;
 }						t_texture;
@@ -197,7 +216,7 @@ typedef struct			s_cam
 	double				vp_dist;
 }						t_cam;
 
-# define NB_FIELDS 18
+# define NB_FIELDS 25
 # define NBR_VECTOR_FORM 5
 
 typedef struct			s_form

@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:15:46 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/10 14:57:50 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 17:48:02 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,13 @@ typedef enum		e_fields
 	MIN,
 	MAX,
 	TRANSP,
+	OFFX,
+	OFFY,
+	PFREQ,
+	BFREQ,
+	PDEPTH,
+	BDEPTH,
+	BTYPE,
 	DENSITY
 }					t_fields;
 
@@ -168,6 +175,7 @@ void				init_form(t_form *form, int size);
 void				print_warning(char *str);
 int					print_no_field(char *field, char *elmt, char *type);
 void				print_na_recon(char *str, char *type);
+t_lstform			*comp_cube(t_form form);
 
 /*
 **	Parsing tokens
@@ -199,6 +207,7 @@ t_vector			pars_vector_color(t_token **token);
 t_vector			pars_vector(t_token **token);
 double				pars_double(t_token **token);
 int					pars_name(t_token **token);
+int					pars_bump(t_token **token);
 int					pars_check_form(t_form form);
 int					pars_check_light(t_lum light);
 int					pars_name_light(t_token **token);
@@ -225,6 +234,15 @@ void				*set_reflection_form(t_form *form, t_token **token);
 void				*set_transp_form(t_form *form, t_token **token);
 void				*set_density_form(t_form *form, t_token **token);
 void				*set_scale_form(t_form *form, t_token **token);
+
+void				*set_offsetx_form(t_form *form, t_token **token);
+void				*set_offsety_form(t_form *form, t_token **token);
+void				*set_bfrequ_form(t_form *form, t_token **token);
+void				*set_pfrequ_form(t_form *form, t_token **token);
+void				*set_bdepth_form(t_form *form, t_token **token);
+void				*set_pdepth_form(t_form *form, t_token **token);
+void				*set_bumpname_form(t_form *form, t_token **token);
+
 void				*set_origin_lum(t_lum *lum, t_token **token);
 void				*set_direct_lum(t_lum *lum, t_token **token);
 void				*set_color_lum(t_lum *lum, t_token **token);

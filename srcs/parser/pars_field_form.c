@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 00:14:42 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/10 15:02:32 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/11 17:48:04 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,17 @@ static int		pars_select_field(t_token **token, t_form *form, t_env *env)
 		"\"origin\"", "\"color\"", "\"rotation\"", "\"direct\"", "\"point\"",
 		"\"radius\"", "\"height\"", "\"angle\"", "\"name\"", "\"texture\"",
 		"\"atexture\"", "\"scale\"", "\"tilscolor\"", "\"reflection\"",
-		"\"max\"", "\"min\"", "\"transp\"", "\"density\""};
+		"\"max\"", "\"min\"", "\"transp\"", "\"density\"", "\"offsetx\"",
+		"\"offsety\"", "\"pfrequ\"", "\"bfrequ\"", "\"pdepth\"", "\"bdepth\"",
+		"\"bump\""};
 	static void		*(*fct_set[NB_FIELDS])(t_form*, t_token**) = {
 		set_origin_form, set_color_form, set_rotation_form, set_direct_form,
 		set_point_form, set_radius_form, set_height_form, set_angle_form,
 		set_name_form, set_texture_form, set_atexture_form,
 		set_scale_form, set_tcolor_form, set_reflection_form, set_max_form,
-		set_min_form, set_transp_form, set_density_form};
+		set_min_form, set_transp_form, set_density_form, set_offsetx_form,
+		set_offsety_form, set_pfrequ_form, set_bfrequ_form, set_pdepth_form,
+		set_bdepth_form, set_bumpname_form};
 
 	if (!(word = ft_strdup((*token)->word)))
 		return (1);
