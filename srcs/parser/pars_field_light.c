@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 20:35:34 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/03 03:37:17 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/12 14:13:37 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ static int		pars_select_field(t_token **token, t_lum *light)
 		set_origin_lum, set_direct_lum, set_color_lum, set_type_lum,
 		set_intensity_lum, set_cutoff_lum, set_outercutoff_lum};
 
-	k = -1;
 	word = ft_strdup((*token)->word);
-	if (!word)
+	if ((k = -1) && !word)
 		return (1);
 	free_double_move(token);
 	while (++k < NB_FIELDS_LUM)

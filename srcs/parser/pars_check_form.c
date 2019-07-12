@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 02:35:09 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/11 17:04:48 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/12 14:04:27 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		print_no_field(char *field, char *elmt, char *type)
 char	*get_name(int k)
 {
 	static char	*names[NBR_FORM] = {"Sphere", "Plan", "Cylindre", "Cone",
-	   "Torus", "Hyperbol", "cubetroue", "verre", "cube"};
+		"Torus", "Hyperbol", "cubetroue", "verre", "cube"};
 
 	if (k < 0 || k >= NBR_FORM)
 		return ("Undefine Form");

@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 06:43:44 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/11 19:05:33 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/12 14:14:25 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			pars_texture(t_token **token)
 		"\"dayearth\"", "\"nightearth\"", "\"brick\"", "\"marble\"",
 		"\"jupiter\"", "\"stars\"", "\"snow\"", "\"rock\"", "\"wood\"",
 		"\"plot\"", "\"blur\"", "\"perlin_wood\"", "\"perlin_marble\"",
-		"\"perlin_lava\"","\"perlin_sand\""};
+		"\"perlin_lava\"", "\"perlin_sand\""};
 	int			k;
 
 	if (!(name = ft_strdup((*token)->word)))

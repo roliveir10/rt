@@ -22,7 +22,7 @@
 			"name":"cube",
 			"origin":[0, 0, 0],
 			"texture":"marble",
-			"rotation":[20, 0, 0],
+			"rotation":[30, 0, 0],
 			"radius":10,
 			"material":"obsidian",
 			"color":[100, 200, 200]
@@ -33,17 +33,15 @@
 			"rotation":[20, 0, 0],
 			"radius":10,
 			"texture":"perlin_sand",
-			"pfrequ":1000,
-			"pdepth":4,
 			"reflection":0.5,
-			"bump":"cos",
+			"bump":"water",
 			"color":[100, 200, 200]
 		},
 	{
 			"name":"cube",
 			"origin":[20, 10, 5],
 			"texture":"brick",
-			"rotation":[20, 0, 0],
+			"rotation":[-10, 0, 0],
 			"radius":10,
 			"material":"obsidian",
 			"color":[100, 200, 200]

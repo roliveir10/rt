@@ -6,7 +6,7 @@
 #    By: roliveir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 10:04:52 by roliveir          #+#    #+#              #
-#    Updated: 2019/07/11 10:14:53 by oboutrol         ###   ########.fr        #
+#    Updated: 2019/07/12 14:03:36 by oboutrol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,9 @@ PARSER =	parser_main.c		\
 			set_light.c			\
 			set_light_double.c	\
 			set_form_double.c	\
+			set_form_perl.c		\
+			set_form_limit.c	\
+			set_form_modif.c	\
 			set_form_text.c		\
 			comp_cube.c			\
 			free_token.c		\
