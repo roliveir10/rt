@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/13 09:58:21 by atelli           ###   ########.fr       */
+/*   Updated: 2019/07/13 10:02:08 by atelli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,8 @@ typedef struct			s_mlx
 {
 	void				*mlx;
 	void				*image;
-	void				*interface;
 	void				*id;
-	void				*id_interface;
 	unsigned int		*mem_image;
-	unsigned int		*mem_interf;
 	int					pix;
 	int					size_line;
 	int					endian;

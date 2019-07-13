@@ -6,7 +6,7 @@
 /*   By: atelli <atelli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:57:56 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/07 16:43:36 by atelli           ###   ########.fr       */
+/*   Updated: 2019/07/13 10:02:34 by atelli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 void				rt_delenv(t_env *env)
 {
 	mlx_destroy_image(env->mlx.mlx, env->mlx.image);
-	mlx_destroy_image(env->mlx.mlx, env->mlx.interface);
 	if (env->form)
 		ft_memdel((void**)&env->form);
 	if (env->lum)
@@ -29,12 +28,8 @@ static void			rt_initmlx(t_env *env)
 {
 	env->mlx.mlx = mlx_init();
 	env->mlx.image = mlx_new_image(env->mlx.mlx, SCREENX, SCREENY);
-	env->mlx.interface = mlx_new_image(env->mlx.mlx, 500, 500);
 	env->mlx.id = mlx_new_window(env->mlx.mlx, SCREENX, SCREENY, "rt");
-	env->mlx.id_interface = mlx_new_window(env->mlx.mlx, 500, 500, "interface");
 	env->mlx.mem_image = (unsigned int*)mlx_get_data_addr(env->mlx.image,
-			&env->mlx.pix, &env->mlx.size_line, &env->mlx.endian);
-	env->mlx.mem_interf = (unsigned int*)mlx_get_data_addr(env->mlx.interface,
 			&env->mlx.pix, &env->mlx.size_line, &env->mlx.endian);
 }
 
