@@ -1,0 +1,39 @@
+{
+	"scene":
+	{
+		"specular":0,
+		"ambient":0.2
+	},
+	"camera":
+	{
+		"origin":[0, 0, -15],
+		"rotation":[0, 0, 0]
+	},
+	"light":[
+	{
+		"origin":[10, 10, -10],
+		"color":[255,200,67],
+		"intensity": 500,
+		"type":"point"
+	},
+	{
+		"origin":[-10, 10, -10],
+		"color":[255,200,67],
+		"intensity": 20,
+		"type":"point"
+	},
+	{
+		"origin":[0, 400, 0],
+		"color":[100, 255, 180],
+		"intensity": 100,
+		"type":"point"
+	}],
+	"object":[
+		{
+			"name":"cubetroue",
+			"origin":[0, 0, 0],
+			"rotation":[30, 30, -10],
+			"radius":20,
+			"color":[255, 255, 255]
+		}]
+}
