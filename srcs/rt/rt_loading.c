@@ -32,8 +32,8 @@ int			rt_loading(int i, t_env *env, int b)
 	if (b == 1)
 	{
 		i++;
-		if (i >= 730)
-			i = 730;
+		if (i >= (SCREENY / 2) - 32)
+			i = (SCREENY / 2) - 32;
 	}
 	return (i);
 }
@@ -44,7 +44,7 @@ char		*rt_loading1(int i)
 	char		*lol;
 	char		*loading;
 
-	test = ft_itoa(i * 100 / 730);
+	test = ft_itoa(i * 100 / ((SCREENY / 2) - 32));
 	lol = ft_strjoin("Loading : ", test);
 	loading = ft_strjoin(lol, "%");
 	ft_strdel(&test);

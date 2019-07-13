@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 11:05:07 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/25 22:49:42 by atelli           ###   ########.fr       */
+/*   Updated: 2019/07/13 09:56:54 by atelli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int						rt_print(void *param)
 		mlx_put_image_to_window(env->mlx.mlx, env->mlx.id,
 				env->mlx.image, 0, 0);
 		mlx_string_put(env->mlx.mlx, env->mlx.id, 50, 50, 0xFFFFFF, loading);
-		rt_menu(env);
 		ft_strdel(&loading);
 		return (rt_antialiasing(env));
 	}

@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/02 18:20:08 by mmoussa          ###   ########.fr       */
+/*   Updated: 2019/07/13 09:58:21 by atelli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -382,7 +382,6 @@ t_vector				rt_tperlin(t_vector normal, t_vector intercolor, t_env *env,
 
 int						rt_loading(int i, t_env *env, int b);
 char					*rt_loading1(int i);
-void        			rt_menu(t_env *env);
 
 
 #endif

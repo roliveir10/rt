@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: atelli <atelli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:57:56 by roliveir          #+#    #+#             */
-/*   Updated: 2019/06/26 17:18:42 by roliveir         ###   ########.fr       */
+/*   Updated: 2019/07/07 16:43:36 by atelli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 void				rt_delenv(t_env *env)
 {
 	mlx_destroy_image(env->mlx.mlx, env->mlx.image);
+	mlx_destroy_image(env->mlx.mlx, env->mlx.interface);
 	if (env->form)
 		ft_memdel((void**)&env->form);
 	if (env->lum)
