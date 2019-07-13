@@ -6,12 +6,12 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 15:03:59 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/06 16:30:02 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/13 09:45:23 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
+#include "rt.h"
 #include <math.h>
 
 static double	valid_small(double r1, double r2)
@@ -39,42 +39,6 @@ static double	valid_smallt(double r1, double r2, double r3, double r4)
 	return (r1);
 }
 
-double			term_a(double var[5], double fast[3])
-{
-	double		res;
-	double		den;
-
-	res = pow(var[0], 2) / 4;
-	res -= 2 * var[1] / 3;
-	den = 3 * cbrt(fast[2]);
-	res += cbrt(2) * fast[0] / den;
-	res += cbrt(fast[2] / 54);
-	return (res);
-}
-
-double			term_b(double var[5], double fast[3])
-{
-	double		res;
-
-	res = pow(var[0], 2) / 2 - 4 * var[1] / 3;
-	res -= (cbrt(2) * fast[0] / (3 * cbrt(fast[2])));
-	res -= cbrt(fast[2] / 54);
-	return (res);
-}
-
-double			term_c(double var[5], double fast[3])
-{
-	double		res;
-	double		deno;
-	double		nume;
-
-	res = -pow(var[0], 3) + 4 * var[0] * var[1] - 8 * var[2];
-	deno = cbrt(2) * fast[0] / (3 * cbrt(fast[2]));
-	nume = cbrt(fast[2] / 54);
-	res /= 4 * sqrt(pow(var[0], 2) / 4 - 2 * var[1] / 3 + deno + nume);
-	return (res);
-}
-
 void			slide(double var[5])
 {
 	double		div;
@@ -92,8 +56,8 @@ double			bi_carr(double var[5])
 	double		res;
 
 	fact[0] = -3 * var[0] * var[0] / 8 + var[1];
-	fact[1] = pow(var[0] / 2 ,3) - 0.5 * var[0] * var[1] + var[2];
-	fact[2] = -3 * pow(var[0] / 4 ,4) + var[1] * pow(var[0] / 4, 2)
+	fact[1] = pow(var[0] / 2, 3) - 0.5 * var[0] * var[1] + var[2];
+	fact[2] = -3 * pow(var[0] / 4, 4) + var[1] * pow(var[0] / 4, 2)
 		- 0.25 * var[0] * var[2] + var[3];
 	if (fact[1] == 0)
 	{
@@ -106,14 +70,11 @@ double			bi_carr(double var[5])
 
 double			ft_4th_degree(double var[5])
 {
-	double	r1;
-	double	r2;
-	double	r3;
-	double	r4;
+	double	r[4];
 	double	elmt[3];
 	double	fast[3];
 	double	el;
-	
+
 	slide(var);
 	if ((el = bi_carr(var)) != -1)
 		return (el);
@@ -128,9 +89,9 @@ double			ft_4th_degree(double var[5])
 	elmt[0] = term_a(var, fast);
 	elmt[1] = term_b(var, fast);
 	elmt[2] = term_c(var, fast);
-	r1 = -0.25 * var[0] - 0.5 * sqrt(elmt[0]) - 0.5 * sqrt(elmt[1] - elmt[2]);
-	r2 = -0.25 * var[0] - 0.5 * sqrt(elmt[0]) + 0.5 * sqrt(elmt[1] - elmt[2]);
-	r3 = -0.25 * var[0] + 0.5 * sqrt(elmt[0]) - 0.5 * sqrt(elmt[1] + elmt[2]);
-	r4 = -0.25 * var[0] + 0.5 * sqrt(elmt[0]) + 0.5 * sqrt(elmt[1] + elmt[2]);
-	return (valid_smallt(r1, r2, r3, r4));
+	r[0] = -0.25 * var[0] - 0.5 * sqrt(elmt[0]) - 0.5 * sqrt(elmt[1] - elmt[2]);
+	r[1] = -0.25 * var[0] - 0.5 * sqrt(elmt[0]) + 0.5 * sqrt(elmt[1] - elmt[2]);
+	r[2] = -0.25 * var[0] + 0.5 * sqrt(elmt[0]) - 0.5 * sqrt(elmt[1] + elmt[2]);
+	r[3] = -0.25 * var[0] + 0.5 * sqrt(elmt[0]) + 0.5 * sqrt(elmt[1] + elmt[2]);
+	return (valid_smallt(r[0], r[1], r[2], r[3]));
 }

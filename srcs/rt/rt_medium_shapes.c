@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 15:31:15 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/06 13:43:27 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/13 09:29:03 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ double			rt_cubet(t_ray ray, t_form form)
 	vect[2] = 6 * (ray.dir.x * ray.dir.x * ray.o.x * ray.o.x
 			+ ray.dir.y * ray.dir.y * ray.o.y * ray.o.y
 			+ ray.dir.z * ray.dir.z * ray.o.z * ray.o.z)
-	   - 5 * (ray.dir.x * ray.dir.x + ray.dir.y * ray.dir.y
+		- 5 * (ray.dir.x * ray.dir.x + ray.dir.y * ray.dir.y
 			+ ray.dir.z * ray.dir.z);
 	vect[3] = 4 * (pow(ray.o.x, 3) * ray.dir.x + pow(ray.o.y, 3) * ray.dir.y
 			+ pow(ray.o.z, 3) * ray.dir.z) - 10 * (ray.dir.x * ray.o.x

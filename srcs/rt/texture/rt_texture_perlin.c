@@ -6,7 +6,7 @@
 /*   By: mmoussa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 14:06:56 by mmoussa           #+#    #+#             */
-/*   Updated: 2019/07/11 19:05:40 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/13 09:28:03 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 t_vector			rt_perlinval(float u, float v, t_texture text)
 {
-	 if (text.type == PMARBLE)
+	if (text.type == PMARBLE)
 		return (rt_perlin_marble(u, v, text));
-	 else if (text.type == PLAVA)
-		 return (rt_perlin_lava(u, v, text));
-	 else if (text.type == PSAND)
-		 return (rt_perlin_sand(u, v, text));
-	 else if (text.type == PWOOD)
-		 return (rt_perlin_wood(u, v, text));
+	else if (text.type == PLAVA)
+		return (rt_perlin_lava(u, v, text));
+	else if (text.type == PSAND)
+		return (rt_perlin_sand(u, v, text));
+	else if (text.type == PWOOD)
+		return (rt_perlin_wood(u, v, text));
 	return ((t_vector) {1, 1, 1});
 }
 

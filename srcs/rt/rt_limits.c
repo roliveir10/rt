@@ -6,7 +6,7 @@
 /*   By: oboutrol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 07:37:42 by oboutrol          #+#    #+#             */
-/*   Updated: 2019/07/11 17:04:46 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/13 09:29:42 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int			is_planed(double res, t_ray *ray, t_form form)
 
 	if (form.ftype == PLAN && form.fields[POINT] && form.fields[RADIUS])
 	{
-		x =	res * ray->dir.x + ray->o.x - form.point.x;
-		y =	res * ray->dir.z + ray->o.z - form.point.z;
+		x = res * ray->dir.x + ray->o.x - form.point.x;
+		y = res * ray->dir.z + ray->o.z - form.point.z;
 		if (x * x + y * y > form.r * form.r)
 			return (1);
 	}

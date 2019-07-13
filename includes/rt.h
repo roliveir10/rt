@@ -6,7 +6,7 @@
 /*   By: roliveir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:58:12 by roliveir          #+#    #+#             */
-/*   Updated: 2019/07/11 19:05:38 by oboutrol         ###   ########.fr       */
+/*   Updated: 2019/07/13 09:40:56 by oboutrol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,6 +377,9 @@ t_vector				rt_get_vecdir(t_cam cam, double x, double y);
 t_vector				rt_get_posinter(t_ray ray, double dist);
 t_vector				rt_get_normal(t_vector v, t_form form, t_vector vdir);
 double					rt_inter(t_ftype ftype, t_ray *ray, t_form form);
+double					term_a(double var[5], double fast[3]);
+double					term_b(double var[5], double fast[3]);
+double					term_c(double var[5], double fast[3]);
 
 /*
 **	key_handler
