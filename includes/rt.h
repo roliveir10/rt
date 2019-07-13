@@ -169,7 +169,7 @@ typedef struct			s_texture
 	int					scale;
 	int					type;
 	double				pdepth;
-	double				bdepth;
+	double				bscale;
 	double				offsetx;
 	double				offsety;
 	double				bfrequ;
@@ -186,8 +186,6 @@ typedef struct			s_timage
 	void				*buffer;
 	char				*buffer_ptr;
 }						t_timage;
-
-// #define NB_FIELDS_LUM 5
 
 typedef struct			s_lum
 {
@@ -433,7 +431,7 @@ void					rt_init_texture(t_env *env);
 void					rt_get_texture(t_env *env, t_texture texture,
 		t_vector normal, t_inter *inter);
 t_vector				rt_tchecker(t_vector normal, t_vector intercolor,
-		t_env *env,	t_inter *inter);
+		t_env *env, t_inter *inter);
 t_vector				rt_tmap(t_vector normal, t_vector intercolor,
 		t_env *env, t_inter *inter);
 t_vector				rt_tperlin(t_vector normal, t_vector intercolor,
@@ -458,8 +456,9 @@ t_vector				rt_perlin_wood(float u, float v, t_texture text);
 ** bump mapping
 */
 
-void					rt_bump_idk(t_vector *bump, t_vector pos);
-void					rt_bump_water(t_vector *bump, t_vector pos);
-void					rt_bump_cos(t_vector *bump, t_vector pos);
+void					rt_bump_idk(t_vector *bump, t_vector pos, t_form form);
+void					rt_bump_water(t_vector *bump, t_vector pos,
+	t_form form);
+void					rt_bump_cos(t_vector *bump, t_vector pos, t_form form);
 
 #endif

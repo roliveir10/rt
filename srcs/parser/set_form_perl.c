@@ -40,12 +40,12 @@ void		*set_bfrequ_form(t_form *form, t_token **token)
 	return (NULL);
 }
 
-void		*set_bdepth_form(t_form *form, t_token **token)
+void		*set_bscale_form(t_form *form, t_token **token)
 {
-	form->texture.bdepth = pars_double(token);
-	if (form->fields[BDEPTH])
+	form->texture.bscale = pars_double(token);
+	if (form->fields[BSCALE])
 		print_warning("redifinition of Bumping Depth field");
-	form->fields[BDEPTH] = 1;
+	form->fields[BSCALE] = 1;
 	return (NULL);
 }
 

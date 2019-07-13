@@ -20,8 +20,8 @@ void		init_form(t_form *form, int size)
 	form->texture.scale = 10;
 	form->texture.pfrequ = 5;
 	form->texture.pdepth = 4;
-	form->texture.bfrequ = 1;
-	form->texture.bdepth = 0.1;
+	form->texture.bfrequ = 0.1;
+	form->texture.bscale = 1;
 	form->ftype = NOTAFORM;
 }
 

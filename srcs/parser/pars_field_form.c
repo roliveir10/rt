@@ -36,7 +36,7 @@ static void		*fct_set_select(t_form *form, t_token **token, int k)
 		set_scale_form, set_tcolor_form, set_reflection_form, set_max_form,
 		set_min_form, set_transp_form, set_density_form, set_offsetx_form,
 		set_offsety_form, set_pfrequ_form, set_bfrequ_form, set_pdepth_form,
-		set_bdepth_form, set_bumpname_form};
+		set_bscale_form, set_bumpname_form};
 
 	return (fct_set[k](form, token));
 }
@@ -51,7 +51,7 @@ static int		pars_select_field(t_token **token, t_form *form, t_env *env)
 		"\"radius\"", "\"height\"", "\"angle\"", "\"name\"", "\"texture\"",
 		"\"atexture\"", "\"scale\"", "\"tilscolor\"", "\"reflection\"",
 		"\"max\"", "\"min\"", "\"transp\"", "\"density\"", "\"offsetx\"",
-		"\"offsety\"", "\"pfrequ\"", "\"bfrequ\"", "\"pdepth\"", "\"bdepth\"",
+		"\"offsety\"", "\"pfrequ\"", "\"bfrequ\"", "\"pdepth\"", "\"bscale\"",
 		"\"bump\""};
 
 	if (!(word = ft_strdup((*token)->word)))

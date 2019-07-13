@@ -43,9 +43,11 @@ t_vector			rt_map_sphere(t_vector normal, t_vector intercolor,
 	u = 0.5 + atan2(normal.z, normal.x) / M_PI * 0.5;
 	v = 0.5 - asin(normal.y) / M_PI;
 	u = (int)(u * env->form[inter->id].timage.width
-		/* + offset x */) % env->form[inter->id].timage.width;
+		+ env->form[inter->id].texture.offsetx)
+		% env->form[inter->id].timage.width;
 	v = (int)(v * env->form[inter->id].timage.height
-		/* + offset y */) % env->form[inter->id].timage.height;
+		+ env->form[inter->id].texture.offsety)
+		% env->form[inter->id].timage.height;
 	intercolor = rt_getcolor(env->form[inter->id].timage, (int)u, (int)v);
 	return (intercolor);
 }
@@ -64,16 +66,18 @@ t_vector			rt_map_plan(t_vector normal, t_vector intercolor,
 		uv_axis[0] = ft_vrotate(ft_normalize((t_vector) {normal.y,
 			normal.x, 0}), env->form[inter->id].mat[i]);
 	uv_axis[1] = ft_cross(normal, uv_axis[0]);
-	uv_coord[0] = ft_dot(uv_axis[0], inter->pos) /
-		env->form[inter->id].texture.scale;
-	uv_coord[1] = ft_dot(uv_axis[1], inter->pos) /
-		env->form[inter->id].texture.scale;
+	uv_coord[0] = ft_dot(uv_axis[0], inter->pos)
+		/ env->form[inter->id].texture.scale;
+	uv_coord[1] = ft_dot(uv_axis[1], inter->pos)
+		/ env->form[inter->id].texture.scale;
 	uv_coord[0] -= floor(uv_coord[0]);
 	uv_coord[1] -= floor(uv_coord[1]);
 	imagex = (int)(fabs(uv_coord[0]) * (env->form[inter->id].timage.width
-		- 1)/* + offset X */) % env->form[inter->id].timage.width;
+		- 1) + env->form[inter->id].texture.offsetx)
+		% env->form[inter->id].timage.width;
 	imagey = (int)(fabs(uv_coord[1]) * (env->form[inter->id].timage.height
-		- 1)/* + offset y */) % env->form[inter->id].timage.height;
+		- 1) + env->form[inter->id].texture.offsety)
+		% env->form[inter->id].timage.height;
 	intercolor = rt_getcolor(env->form[inter->id].timage, imagex, imagey);
 	return (intercolor);
 }
@@ -94,9 +98,11 @@ t_vector			rt_map_cylindre(t_vector normal, t_vector intercolor,
 	u = 0.5 + atan2(d.z, d.x) / M_PI * 0.5;
 	v = d.y / env->form[inter->id].texture.scale;
 	v -= floor(v);
-	u = (int)(u * env->form[inter->id].timage.width/* + offset x*/)
+	u = (int)(u * env->form[inter->id].timage.width
+		+ env->form[inter->id].texture.offsetx)
 		% (env->form[inter->id].timage.width - 1);
-	v = (int)(v * env->form[inter->id].timage.height/* + offset y*/)
+	v = (int)(v * env->form[inter->id].timage.height
+		+ env->form[inter->id].texture.offsetx)
 		% (env->form[inter->id].timage.height - 1);
 	intercolor = rt_getcolor(env->form[inter->id].timage, (int)u, (int)v);
 	return (intercolor);

@@ -13,13 +13,13 @@
 #include "rt.h"
 #include <math.h>
 
-void			rt_bump_water(t_vector *bump, t_vector pos)
+void			rt_bump_water(t_vector *bump, t_vector pos, t_form form)
 {
 	float		freq;
 	t_vector	resize;
 
-	resize = ft_vmul(pos, 1/*bump scale*/);
-	freq = 0.1;//bump depth
+	resize = ft_vmul(pos, form.texture.bscale);
+	freq = form.texture.bfrequ;
 	bump->x = rt_noise3(resize.x - freq, resize.y, resize.z)
 		- rt_noise3(resize.x + freq, resize.y, resize.z);
 	bump->y = rt_noise3(resize.x, resize.y - freq, resize.z)
@@ -28,13 +28,13 @@ void			rt_bump_water(t_vector *bump, t_vector pos)
 		- rt_noise3(resize.x, resize.y, resize.z + freq);
 }
 
-void			rt_bump_idk(t_vector *bump, t_vector pos)
+void			rt_bump_idk(t_vector *bump, t_vector pos, t_form form)
 {
 	float		freq;
 	t_vector	resize;
 
-	resize = ft_vmul(pos, 1/*bump scale*/);
-	freq = 0.08;//bump depth
+	resize = ft_vmul(pos, form.texture.bscale);
+	freq = form.texture.bfrequ;
 	bump->x = sqrt(fabs(cos(2 * M_PI
 		* rt_noise3(resize.x - freq, resize.y, resize.z)
 		- rt_noise3(resize.x + freq, resize.y, resize.z))));
@@ -46,13 +46,13 @@ void			rt_bump_idk(t_vector *bump, t_vector pos)
 		- rt_noise3(resize.x, resize.y, resize.z + freq))));
 }
 
-void			rt_bump_cos(t_vector *bump, t_vector pos)
+void			rt_bump_cos(t_vector *bump, t_vector pos, t_form form)
 {
 	float		freq;
 	t_vector	resize;
 
-	resize = ft_vmul(pos, 1/*bump scale*/);
-	freq = 0.5;//bump depth
+	resize = ft_vmul(pos, form.texture.bscale);
+	freq = form.texture.bfrequ;
 	bump->x = (1 + cos(resize.x + rt_noise3(resize.x - freq, resize.y, resize.z)
 		- rt_noise3(resize.x + freq, resize.y, resize.z))) / 2;
 	bump->y = (1 + cos(resize.x + rt_noise3(resize.x, resize.y - freq, resize.z)

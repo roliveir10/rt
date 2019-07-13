@@ -119,7 +119,7 @@ typedef enum		e_fields
 	PFREQ,
 	BFREQ,
 	PDEPTH,
-	BDEPTH,
+	BSCALE,
 	BTYPE,
 	DENSITY
 }					t_fields;
@@ -239,7 +239,7 @@ void				*set_offsetx_form(t_form *form, t_token **token);
 void				*set_offsety_form(t_form *form, t_token **token);
 void				*set_bfrequ_form(t_form *form, t_token **token);
 void				*set_pfrequ_form(t_form *form, t_token **token);
-void				*set_bdepth_form(t_form *form, t_token **token);
+void				*set_bscale_form(t_form *form, t_token **token);
 void				*set_pdepth_form(t_form *form, t_token **token);
 void				*set_bumpname_form(t_form *form, t_token **token);
 

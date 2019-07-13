@@ -60,13 +60,12 @@ t_vector				rt_get_normal(t_vector pos, t_form form, t_vector vdir)
 	t_vector			bump;
 
 	bump = (t_vector) {0, 0, 0};
-	(void)vdir;
 	if (form.texture.bump_type == BCOS)
-		rt_bump_cos(&bump, pos);
+		rt_bump_cos(&bump, pos, form);
 	else if (form.texture.bump_type == BWATER)
-		rt_bump_water(&bump, pos);
+		rt_bump_water(&bump, pos, form);
 	else if (form.texture.bump_type == BSAND)
-		rt_bump_idk(&bump, pos);
+		rt_bump_idk(&bump, pos, form);
 	if (ft_dot(bump, vdir) > 0)
 		bump = ft_vmul(bump, -1);
 	return (ft_normalize(ft_vadd(func[form.ftype](pos, form), bump)));
